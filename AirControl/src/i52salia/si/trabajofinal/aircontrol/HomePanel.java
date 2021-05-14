@@ -27,17 +27,17 @@ public class HomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        programsListMainPanel = new javax.swing.JPanel();
+        devicesListMainPanel = new javax.swing.JPanel();
         scrollPanePanel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         programsList = new javax.swing.JPanel();
-        programsListButtonsPanel = new javax.swing.JPanel();
+        devicesListButtonsPanel = new javax.swing.JPanel();
         addDeviceButton = new javax.swing.JButton();
         programMainPanel = new javax.swing.JPanel();
 
         setLayout(new javax.swing.OverlayLayout(this));
 
-        programsListMainPanel.setLayout(new java.awt.BorderLayout());
+        devicesListMainPanel.setLayout(new java.awt.BorderLayout());
 
         scrollPanePanel.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -46,16 +46,16 @@ public class HomePanel extends javax.swing.JPanel {
 
         scrollPanePanel.add(scrollPane);
 
-        programsListMainPanel.add(scrollPanePanel, java.awt.BorderLayout.CENTER);
+        devicesListMainPanel.add(scrollPanePanel, java.awt.BorderLayout.CENTER);
 
-        programsListButtonsPanel.setLayout(new java.awt.GridBagLayout());
+        devicesListButtonsPanel.setLayout(new java.awt.GridBagLayout());
 
         addDeviceButton.setText("Add New Device");
-        programsListButtonsPanel.add(addDeviceButton, new java.awt.GridBagConstraints());
+        devicesListButtonsPanel.add(addDeviceButton, new java.awt.GridBagConstraints());
 
-        programsListMainPanel.add(programsListButtonsPanel, java.awt.BorderLayout.SOUTH);
+        devicesListMainPanel.add(devicesListButtonsPanel, java.awt.BorderLayout.SOUTH);
 
-        add(programsListMainPanel);
+        add(devicesListMainPanel);
 
         programMainPanel.setEnabled(false);
         programMainPanel.setLayout(new javax.swing.BoxLayout(programMainPanel, javax.swing.BoxLayout.Y_AXIS));
@@ -64,10 +64,10 @@ public class HomePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDeviceButton;
+    private javax.swing.JPanel devicesListButtonsPanel;
+    private javax.swing.JPanel devicesListMainPanel;
     private javax.swing.JPanel programMainPanel;
     private javax.swing.JPanel programsList;
-    private javax.swing.JPanel programsListButtonsPanel;
-    private javax.swing.JPanel programsListMainPanel;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JPanel scrollPanePanel;
     // End of variables declaration//GEN-END:variables
