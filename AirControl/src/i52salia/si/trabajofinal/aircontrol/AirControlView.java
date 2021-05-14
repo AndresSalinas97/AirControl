@@ -17,6 +17,7 @@ public class AirControlView extends javax.swing.JFrame {
     private final static Dimension INITIAL_SIZE = new Dimension(400, 600);
 
     public ProgrammingPanel programmingPanel;
+    public HomePanel homePanel;
 
     /**
      * Creates new form MainView
@@ -30,6 +31,9 @@ public class AirControlView extends javax.swing.JFrame {
     private void initSubcomponents() {
         programmingPanel = new ProgrammingPanel();
         programmingTab.add(programmingPanel);
+        
+        homePanel = new HomePanel();
+        homeTab.add(homePanel);
     }
 
     private void customizeComponents() {
