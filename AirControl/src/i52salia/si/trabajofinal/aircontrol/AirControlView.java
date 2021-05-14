@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package i52salia.si.trabajofinal.aircontrol;
 
 import java.awt.Dimension;
@@ -17,14 +12,16 @@ import javax.swing.JPanel;
  *
  * @author andres
  */
-public class View extends javax.swing.JFrame {
-    public ProgrammingPanel programmingPanel;
+public class AirControlView extends javax.swing.JFrame {
+
     private final static Dimension INITIAL_SIZE = new Dimension(400, 600);
+
+    public ProgrammingPanel programmingPanel;
 
     /**
      * Creates new form MainView
      */
-    public View() {
+    public AirControlView() {
         initComponents();
         initSubcomponents();
         customizeComponents();
@@ -34,29 +31,29 @@ public class View extends javax.swing.JFrame {
         programmingPanel = new ProgrammingPanel();
         programmingTab.add(programmingPanel);
     }
-    
+
     private void customizeComponents() {
         customizeTabs();
-        
+
         this.setPreferredSize(INITIAL_SIZE);
         this.setSize(INITIAL_SIZE);
     }
-    
+
     private void customizeTabs() {
         JPanel tab0ContainerPanel = new JPanel();
         JPanel tab1ContainerPanel = new JPanel();
         JPanel tab2ContainerPanel = new JPanel();
-                
+
         Dimension containerPanelsSize = new Dimension(100, 55);
         tab0ContainerPanel.setPreferredSize(containerPanelsSize);
         tab1ContainerPanel.setPreferredSize(containerPanelsSize);
         tab2ContainerPanel.setPreferredSize(containerPanelsSize);
-        
+
         GridBagLayout containerPanelsLayout = new GridBagLayout();
         tab0ContainerPanel.setLayout(containerPanelsLayout);
         tab1ContainerPanel.setLayout(containerPanelsLayout);
         tab2ContainerPanel.setLayout(containerPanelsLayout);
-        
+
         tab0ContainerPanel.setOpaque(false);
         tab1ContainerPanel.setOpaque(false);
         tab2ContainerPanel.setOpaque(false);
@@ -64,8 +61,8 @@ public class View extends javax.swing.JFrame {
         JPanel tab0Panel = new JPanel();
         JPanel tab1Panel = new JPanel();
         JPanel tab2Panel = new JPanel();
-        
-        tab0Panel.setOpaque(false);        
+
+        tab0Panel.setOpaque(false);
         tab1Panel.setOpaque(false);
         tab2Panel.setOpaque(false);
 
@@ -94,7 +91,7 @@ public class View extends javax.swing.JFrame {
         tab0ContainerPanel.add(tab0Panel);
         tab1ContainerPanel.add(tab1Panel);
         tab2ContainerPanel.add(tab2Panel);
-                
+
         tab0Panel.add(tab0IconLabel);
         tab0Panel.add(tab0Label);
         tab1Panel.add(tab1IconLabel);
@@ -180,21 +177,23 @@ public class View extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AirControlView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AirControlView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AirControlView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AirControlView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                new AirControlView().setVisible(true);
             }
         });
     }

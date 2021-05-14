@@ -62,7 +62,6 @@ public class ProgrammingPanel extends javax.swing.JPanel {
         add(programMainPanel);
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProgramButton;
     private javax.swing.JPanel programMainPanel;

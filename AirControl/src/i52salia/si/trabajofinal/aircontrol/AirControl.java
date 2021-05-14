@@ -1,21 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package i52salia.si.trabajofinal.aircontrol;
 
 /**
+ * Trabajo Final de Prácticas de la Asignatura de Sistemas Interactivos
  *
- * @author andres
+ * Interface of a mobile app to control air conditioning systems implemented
+ * with Java Swing.
+ *
+ * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
 public class AirControl {
 
     /**
+     * The main function: starts the application.
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Assemble all the pieces of the MVC
+        new AirControlController(new AirControlModel(), new AirControlView());
     }
-    
 }
