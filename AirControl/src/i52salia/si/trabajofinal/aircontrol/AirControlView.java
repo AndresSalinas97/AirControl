@@ -105,9 +105,9 @@ public final class AirControlView extends javax.swing.JFrame {
         tab2Panel.add(tab2IconLabel);
         tab2Panel.add(tab2Label);
 
-        tabbedPanel.setTabComponentAt(0, tab0ContainerPanel);
-        tabbedPanel.setTabComponentAt(1, tab1ContainerPanel);
-        tabbedPanel.setTabComponentAt(2, tab2ContainerPanel);
+        tabbedPane.setTabComponentAt(0, tab0ContainerPanel);
+        tabbedPane.setTabComponentAt(1, tab1ContainerPanel);
+        tabbedPane.setTabComponentAt(2, tab2ContainerPanel);
     }
 
     /**
@@ -121,7 +121,7 @@ public final class AirControlView extends javax.swing.JFrame {
 
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        tabbedPanel = new javax.swing.JTabbedPane();
+        tabbedPane = new javax.swing.JTabbedPane();
         programmingTab = new javax.swing.JPanel();
         homeTab = new javax.swing.JPanel();
         settingsTab = new javax.swing.JPanel();
@@ -130,39 +130,30 @@ public final class AirControlView extends javax.swing.JFrame {
         setTitle("AirControl");
 
         titlePanel.setBackground(new java.awt.Color(0, 195, 255));
+        titlePanel.setLayout(new javax.swing.BoxLayout(titlePanel, javax.swing.BoxLayout.LINE_AXIS));
 
         titleLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         titleLabel.setText("titleLabel");
         titleLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
-        titlePanel.setLayout(titlePanelLayout);
-        titlePanelLayout.setHorizontalGroup(
-            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        titlePanelLayout.setVerticalGroup(
-            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleLabel)
-        );
+        titlePanel.add(titleLabel);
 
         getContentPane().add(titlePanel, java.awt.BorderLayout.NORTH);
 
-        tabbedPanel.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        tabbedPane.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
-        programmingTab.setLayout(new java.awt.GridLayout());
-        tabbedPanel.addTab("Programming", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/programming-icon.png")), programmingTab); // NOI18N
+        programmingTab.setLayout(new java.awt.GridLayout(1, 0));
+        tabbedPane.addTab("Programming", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/programming-icon.png")), programmingTab); // NOI18N
 
-        homeTab.setLayout(new java.awt.GridLayout());
-        tabbedPanel.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/home-icon.png")), homeTab); // NOI18N
+        homeTab.setLayout(new java.awt.GridLayout(1, 0));
+        tabbedPane.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/home-icon.png")), homeTab); // NOI18N
 
-        settingsTab.setLayout(new java.awt.GridLayout());
-        tabbedPanel.addTab("Settings", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/settings-icon.png")), settingsTab); // NOI18N
+        settingsTab.setLayout(new java.awt.GridLayout(1, 0));
+        tabbedPane.addTab("Settings", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/settings-icon.png")), settingsTab); // NOI18N
 
-        tabbedPanel.setSelectedIndex(1);
+        tabbedPane.setSelectedIndex(1);
 
-        getContentPane().add(tabbedPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,7 +162,7 @@ public final class AirControlView extends javax.swing.JFrame {
     private javax.swing.JPanel homeTab;
     private javax.swing.JPanel programmingTab;
     private javax.swing.JPanel settingsTab;
-    private javax.swing.JTabbedPane tabbedPanel;
+    public javax.swing.JTabbedPane tabbedPane;
     public javax.swing.JLabel titleLabel;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables

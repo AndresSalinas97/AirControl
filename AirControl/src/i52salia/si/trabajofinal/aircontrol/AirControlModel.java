@@ -7,12 +7,15 @@ import java.util.ArrayList;
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
 public final class AirControlModel {
-    public ArrayList<AirConditioner> devices;
+    private ArrayList<AirConditioner> devices;
 
     public AirControlModel() {
         devices = new ArrayList<AirConditioner>();
 
-        // TESTING DEVICES
+        ///////////////////////////////////////////////////////////////////////
+        /////////////////////////////// TESTING ///////////////////////////////
+
+        // Add test devices
         devices.add(new AirConditioner("Dormitorio", "Daikin Wall Split Model A34GH3",
                 "A34GH3", "DYPTP7584JCLK3", true, true));
         devices.add(new AirConditioner("Salón", "Daikin Wall Split Model A34GH5",
@@ -22,7 +25,7 @@ public final class AirControlModel {
         devices.add(new AirConditioner("Despacho", "Daikin Wall Split Model A34GH5",
                 "A34GH5", "DYPTP7584ALKSJ3", false, false));
         
-        // TESTING PROGRAMS
+        // Add test programs
         ACProgram p1 = new ACProgram();
         p1.setOnSaturdays(true);
         p1.setOnSundays(true);
@@ -58,4 +61,10 @@ public final class AirControlModel {
         devices.get(0).getPrograms().add(p2);
         devices.get(1).getPrograms().add(p2);
     }
+
+    public ArrayList<AirConditioner> getDevices() {
+        return devices;
+    }
+    
+    
 }

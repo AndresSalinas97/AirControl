@@ -27,15 +27,28 @@ public final class HomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backHomeButton = new javax.swing.JButton();
+        backACButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        programMainPanel = new javax.swing.JPanel();
         devicesListMainPanel = new javax.swing.JPanel();
         scrollPanePanel = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
         programsList = new javax.swing.JPanel();
         devicesListButtonsPanel = new javax.swing.JPanel();
         addDeviceButton = new javax.swing.JButton();
-        programMainPanel = new javax.swing.JPanel();
+
+        backHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/back-icon.png"))); // NOI18N
+
+        backACButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/back-icon.png"))); // NOI18N
 
         setLayout(new javax.swing.OverlayLayout(this));
+
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+
+        programMainPanel.setEnabled(false);
+        programMainPanel.setLayout(new javax.swing.BoxLayout(programMainPanel, javax.swing.BoxLayout.Y_AXIS));
+        jPanel1.add(programMainPanel);
 
         devicesListMainPanel.setLayout(new java.awt.BorderLayout());
 
@@ -55,17 +68,18 @@ public final class HomePanel extends javax.swing.JPanel {
 
         devicesListMainPanel.add(devicesListButtonsPanel, java.awt.BorderLayout.SOUTH);
 
-        add(devicesListMainPanel);
+        jPanel1.add(devicesListMainPanel);
 
-        programMainPanel.setEnabled(false);
-        programMainPanel.setLayout(new javax.swing.BoxLayout(programMainPanel, javax.swing.BoxLayout.Y_AXIS));
-        add(programMainPanel);
+        add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDeviceButton;
+    private javax.swing.JButton backACButton;
+    private javax.swing.JButton backHomeButton;
     private javax.swing.JPanel devicesListButtonsPanel;
     private javax.swing.JPanel devicesListMainPanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel programMainPanel;
     private javax.swing.JPanel programsList;
     private javax.swing.JScrollPane scrollPane;
