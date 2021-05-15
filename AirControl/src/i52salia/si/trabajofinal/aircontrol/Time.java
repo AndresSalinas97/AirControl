@@ -2,7 +2,7 @@ package i52salia.si.trabajofinal.aircontrol;
 
 /**
  * A simple class to deal with time, both in 24-hour and 12-hour formats.
- * 
+ *
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
 public final class Time {
@@ -16,7 +16,6 @@ public final class Time {
          * From Latin "ante meridiem", translating to "before midday".
          */
         AM,
-
         /**
          * From Latin "post meridiem", translating to "after midday".
          */
@@ -28,7 +27,7 @@ public final class Time {
 
     /**
      * Constructor for the Time class using 24-hour format.
-     * 
+     *
      * @param hour hour (integer from 0 to 23)
      * @param minute minute (integer from 0 to 59)
      */
@@ -38,7 +37,7 @@ public final class Time {
 
     /**
      * Constructor for the Time class using 12-hour format.
-     * 
+     *
      * @param hour hour (integer from 1 to 12)
      * @param minute minute (integer from 0 to 59)
      * @param period DayPeriod (AM or PM)
@@ -49,13 +48,22 @@ public final class Time {
 
     /**
      * Sets the time using 24-hour format.
-     * 
+     *
      * @param hour hour (integer from 0 to 23)
      * @param minute minute (integer from 0 to 59)
+     * 
+     * @throws IllegalArgumentException if the hour or minute values aren't
+     * correct for the 24-hour format
      */
     public void setTime(int hour, int minute) {
-        assert (hour >= 0 && hour <= 23);
-        assert (minute >= 0 && minute <= 59);
+        if (hour < 0 || hour > 23) {
+            throw new IllegalArgumentException(
+                    "Hour value must be between 0 and 23");
+        }
+        if (minute < 0 || minute > 59) {
+            throw new IllegalArgumentException(
+                    "Minute value must be between 0 and 59");
+        }
 
         this.hour = hour;
         this.minute = minute;
@@ -63,15 +71,24 @@ public final class Time {
 
     /**
      * Sets the time using 12-hour format.
-     * 
+     *
      * @param hour hour (integer from 1 to 12)
      * @param minute minute (integer from 0 to 59)
      * @param period DayPeriod (AM or PM)
+     * 
+     * @throws IllegalArgumentException if the hour or minute values aren't
+     * correct for the 12-hour format
      */
     public void setTime(int hour, int minute, DayPeriod period) {
-        assert (hour >= 1 && hour <= 12);
-        assert (minute >= 0 && minute <= 59);
-        
+        if (hour < 1 || hour > 12) {
+            throw new IllegalArgumentException(
+                    "Hour value must be between 1 and 12");
+        }
+        if (minute < 0 || minute > 59) {
+            throw new IllegalArgumentException(
+                    "Minute value must be between 0 and 59");
+        }
+
         this.minute = minute;
 
         if (hour == 12) {
