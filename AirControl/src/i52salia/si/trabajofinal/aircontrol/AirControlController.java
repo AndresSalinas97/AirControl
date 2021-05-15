@@ -4,7 +4,7 @@ package i52salia.si.trabajofinal.aircontrol;
  *
  * @author andres
  */
-public class AirControlController {
+public final class AirControlController {
 
     private final AirControlModel model;
     private final AirControlView view;

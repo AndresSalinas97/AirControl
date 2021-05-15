@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
-public class AirControlModel {
+public final class AirControlModel {
     public ArrayList<AirConditioner> devices;
 
     public AirControlModel() {

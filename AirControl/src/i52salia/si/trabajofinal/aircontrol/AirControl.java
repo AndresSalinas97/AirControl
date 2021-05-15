@@ -8,7 +8,7 @@ package i52salia.si.trabajofinal.aircontrol;
  *
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
-public class AirControl {
+public final class AirControl {
 
     /**
      * The main function: starts the application.

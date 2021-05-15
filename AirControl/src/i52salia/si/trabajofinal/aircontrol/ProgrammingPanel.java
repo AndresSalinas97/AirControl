@@ -9,7 +9,7 @@ package i52salia.si.trabajofinal.aircontrol;
  *
  * @author andres
  */
-public class ProgrammingPanel extends javax.swing.JPanel {
+public final class ProgrammingPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel

@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  *
  * @author andres
  */
-public class AirControlView extends javax.swing.JFrame {
+public final class AirControlView extends javax.swing.JFrame {
 
     private final static Dimension INITIAL_SIZE = new Dimension(400, 600);
 
