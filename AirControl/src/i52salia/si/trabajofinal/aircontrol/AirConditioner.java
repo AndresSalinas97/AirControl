@@ -93,9 +93,10 @@ public final class AirConditioner {
      * @param hasHorizontalVanes a boolean indicating whether the air conditioning
      * device has swinging horizontal vanes or not
      */
-    public AirConditioner(String modelName, String modelNumber,
+    public AirConditioner(String givenName, String modelName, String modelNumber,
             String serialNumber, boolean hasVerticalVanes, 
             boolean hasHorizontalVanes) {
+        this.givenName = givenName;
         this.modelName = modelName;
         this.modelNumber = modelNumber;
         this.serialNumber = serialNumber;
@@ -273,5 +274,12 @@ public final class AirConditioner {
      */
     public boolean hasHorizontalVanes() {
         return hasHorizontalVanes;
+    }
+
+    /**
+     * @return the programs ArrayList
+     */
+    public ArrayList<ACProgram> getPrograms() {
+        return programs;
     }
 }
