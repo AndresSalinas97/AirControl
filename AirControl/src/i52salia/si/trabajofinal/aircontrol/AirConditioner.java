@@ -14,27 +14,27 @@ public final class AirConditioner {
     public static enum Mode {
 
         /**
-         * Cooling mode
+         * Cooling mode.
          */
         COOL,
 
         /**
-         * Fan mode
+         * Fan mode.
          */
         FAN,
 
         /**
-         * Dehumidifier mode
+         * Dehumidifier mode.
          */
         DRY,
 
         /**
-         * Heating mode
+         * Heating mode.
          */
         HEAT,
 
         /**
-         * Automatic mode
+         * Automatic mode.
          */
         AUTO
     }
@@ -45,22 +45,22 @@ public final class AirConditioner {
     public static enum FanSpeed {
 
         /**
-         * Low speed
+         * Low speed.
          */
         LOW,
 
         /**
-         * Medium speed
+         * Medium speed.
          */
         MEDIUM,
 
         /**
-         * High speed
+         * High speed.
          */
         HIGH,
 
         /**
-         * Automatic speed
+         * Automatic speed.
          */
         AUTO
     }
