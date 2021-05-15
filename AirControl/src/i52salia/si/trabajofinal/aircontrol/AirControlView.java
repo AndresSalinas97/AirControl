@@ -37,7 +37,9 @@ public class AirControlView extends javax.swing.JFrame {
     }
 
     private void customizeComponents() {
-        customizeTabs();
+        if (!System.getProperty("os.name").toLowerCase().contains("mac")) {
+            customizeTabs(); // Doesn't work with macOS look and feel
+        }
 
         this.setPreferredSize(INITIAL_SIZE);
         this.setSize(INITIAL_SIZE);
