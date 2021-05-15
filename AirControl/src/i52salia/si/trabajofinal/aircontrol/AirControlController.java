@@ -3,10 +3,6 @@ package i52salia.si.trabajofinal.aircontrol;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-/**
- *
- * @author andres
- */
 public final class AirControlController {
 
     private final AirControlModel model;

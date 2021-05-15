@@ -2,10 +2,6 @@ package i52salia.si.trabajofinal.aircontrol;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
- */
 public final class AirControlModel {
     public ArrayList<AirConditioner> devices;
     public AirConditioner selectedDevice;

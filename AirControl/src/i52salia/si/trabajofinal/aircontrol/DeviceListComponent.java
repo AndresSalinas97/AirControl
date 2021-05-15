@@ -1,19 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package i52salia.si.trabajofinal.aircontrol;
 
-/**
- *
- * @author andres
- */
 public class DeviceListComponent extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ACPanel
-     */
     public DeviceListComponent() {
         initComponents();
     }
