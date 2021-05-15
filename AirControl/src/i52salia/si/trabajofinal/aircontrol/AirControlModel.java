@@ -7,7 +7,9 @@ import java.util.ArrayList;
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
 public final class AirControlModel {
-    private ArrayList<AirConditioner> devices;
+    public ArrayList<AirConditioner> devices;
+    public AirConditioner selectedDevice;
+    public ACProgram selectedProgram;
 
     public AirControlModel() {
         devices = new ArrayList<AirConditioner>();
@@ -61,10 +63,4 @@ public final class AirControlModel {
         devices.get(0).getPrograms().add(p2);
         devices.get(1).getPrograms().add(p2);
     }
-
-    public ArrayList<AirConditioner> getDevices() {
-        return devices;
-    }
-    
-    
 }

@@ -16,6 +16,12 @@ public final class HomePanel extends javax.swing.JPanel {
      */
     public HomePanel() {
         initComponents();
+        customizeComponents();
+    }
+    
+    public void customizeComponents() {
+        deviceListMainPanel.setVisible(true);
+        deviceSettingsMainPanel.setVisible(false);
     }
 
     /**
@@ -27,62 +33,144 @@ public final class HomePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backHomeButton = new javax.swing.JButton();
-        backACButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        programMainPanel = new javax.swing.JPanel();
-        devicesListMainPanel = new javax.swing.JPanel();
-        scrollPanePanel = new javax.swing.JPanel();
-        scrollPane = new javax.swing.JScrollPane();
-        programsList = new javax.swing.JPanel();
-        devicesListButtonsPanel = new javax.swing.JPanel();
+        deviceListMainPanel = new javax.swing.JPanel();
+        deviceListScrollPane = new javax.swing.JScrollPane();
+        deviceList = new javax.swing.JPanel();
+        deviceListButtonsPanel = new javax.swing.JPanel();
         addDeviceButton = new javax.swing.JButton();
-
-        backHomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/back-icon.png"))); // NOI18N
-
-        backACButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/back-icon.png"))); // NOI18N
+        deviceSettingsMainPanel = new javax.swing.JPanel();
+        deviceSettingsScrollPane = new javax.swing.JScrollPane();
+        deviceSettingsList = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        deviceSettingsButtonsPanel = new javax.swing.JPanel();
+        moreSettingsButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.OverlayLayout(this));
 
-        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+        deviceListMainPanel.setLayout(new java.awt.BorderLayout());
 
-        programMainPanel.setEnabled(false);
-        programMainPanel.setLayout(new javax.swing.BoxLayout(programMainPanel, javax.swing.BoxLayout.Y_AXIS));
-        jPanel1.add(programMainPanel);
+        deviceListScrollPane.setBorder(null);
 
-        devicesListMainPanel.setLayout(new java.awt.BorderLayout());
+        deviceList.setLayout(new java.awt.GridLayout(0, 1));
+        deviceListScrollPane.setViewportView(deviceList);
 
-        scrollPanePanel.setLayout(new java.awt.GridLayout(1, 0));
+        deviceListMainPanel.add(deviceListScrollPane, java.awt.BorderLayout.CENTER);
 
-        programsList.setLayout(new javax.swing.BoxLayout(programsList, javax.swing.BoxLayout.LINE_AXIS));
-        scrollPane.setViewportView(programsList);
-
-        scrollPanePanel.add(scrollPane);
-
-        devicesListMainPanel.add(scrollPanePanel, java.awt.BorderLayout.CENTER);
-
-        devicesListButtonsPanel.setLayout(new java.awt.GridBagLayout());
+        deviceListButtonsPanel.setLayout(new java.awt.GridBagLayout());
 
         addDeviceButton.setText("Add New Device");
-        devicesListButtonsPanel.add(addDeviceButton, new java.awt.GridBagConstraints());
+        deviceListButtonsPanel.add(addDeviceButton, new java.awt.GridBagConstraints());
 
-        devicesListMainPanel.add(devicesListButtonsPanel, java.awt.BorderLayout.SOUTH);
+        deviceListMainPanel.add(deviceListButtonsPanel, java.awt.BorderLayout.SOUTH);
 
-        jPanel1.add(devicesListMainPanel);
+        add(deviceListMainPanel);
 
-        add(jPanel1);
+        deviceSettingsMainPanel.setEnabled(false);
+        deviceSettingsMainPanel.setLayout(new java.awt.BorderLayout());
+
+        deviceSettingsScrollPane.setBorder(null);
+
+        deviceSettingsList.setLayout(new java.awt.GridLayout(0, 1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Power"));
+
+        jToggleButton1.setText("jToggleButton1");
+
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 373, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jToggleButton1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 159, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jToggleButton1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        deviceSettingsList.add(jPanel1);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Current Temperature"));
+
+        jLabel2.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 373, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 159, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        deviceSettingsList.add(jPanel2);
+
+        deviceSettingsScrollPane.setViewportView(deviceSettingsList);
+
+        deviceSettingsMainPanel.add(deviceSettingsScrollPane, java.awt.BorderLayout.CENTER);
+
+        deviceSettingsButtonsPanel.setLayout(new java.awt.GridBagLayout());
+
+        moreSettingsButton.setText("More Settings");
+        deviceSettingsButtonsPanel.add(moreSettingsButton, new java.awt.GridBagConstraints());
+
+        deviceSettingsMainPanel.add(deviceSettingsButtonsPanel, java.awt.BorderLayout.SOUTH);
+
+        add(deviceSettingsMainPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDeviceButton;
-    private javax.swing.JButton backACButton;
-    private javax.swing.JButton backHomeButton;
-    private javax.swing.JPanel devicesListButtonsPanel;
-    private javax.swing.JPanel devicesListMainPanel;
+    public javax.swing.JPanel deviceList;
+    private javax.swing.JPanel deviceListButtonsPanel;
+    public javax.swing.JPanel deviceListMainPanel;
+    private javax.swing.JScrollPane deviceListScrollPane;
+    private javax.swing.JPanel deviceSettingsButtonsPanel;
+    public javax.swing.JPanel deviceSettingsList;
+    public javax.swing.JPanel deviceSettingsMainPanel;
+    private javax.swing.JScrollPane deviceSettingsScrollPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel programMainPanel;
-    private javax.swing.JPanel programsList;
-    private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JPanel scrollPanePanel;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton moreSettingsButton;
     // End of variables declaration//GEN-END:variables
 }
