@@ -1,5 +1,7 @@
 package i52salia.si.trabajofinal.aircontrol;
 
+import java.util.ArrayList;
+
 /**
  * Class to hold the information, settings and current state of an air
  * conditioning device.
@@ -77,7 +79,8 @@ public final class AirConditioner {
     private final boolean hasVerticalVanes;
     private final boolean hasHorizontalVanes;
     private boolean verticalVanesSwinging;
-    private boolean horizontalVanesSwinging;    
+    private boolean horizontalVanesSwinging;
+    private ArrayList<ACProgram> programs;
 
     /**
      * Constructor of the AirConditioner class.
@@ -106,6 +109,7 @@ public final class AirConditioner {
         this.currentCelsius = getRandomCurrentCelsius();
         this.horizontalVanesSwinging = false;
         this.verticalVanesSwinging = false;
+        this.programs = new ArrayList<ACProgram>();
     }
     
 
