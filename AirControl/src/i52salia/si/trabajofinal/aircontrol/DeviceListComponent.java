@@ -9,12 +9,12 @@ package i52salia.si.trabajofinal.aircontrol;
  *
  * @author andres
  */
-public class ACPanel extends javax.swing.JPanel {
+public class DeviceListComponent extends javax.swing.JPanel {
 
     /**
      * Creates new form ACPanel
      */
-    public ACPanel() {
+    public DeviceListComponent() {
         initComponents();
     }
 
