@@ -24,7 +24,7 @@ public final class ACProgram {
      * Constructor for the ACProgram class.
      */
     public ACProgram() {
-        this.enabled = true;
+        this.enabled = false;
         this.onMondays = false;
         this.onTuesdays = false;
         this.onWednesdays = false;
