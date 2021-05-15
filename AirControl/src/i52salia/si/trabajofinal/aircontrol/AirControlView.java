@@ -125,6 +125,7 @@ public class AirControlView extends javax.swing.JFrame {
         settingsTab = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("AirControl");
 
         titlePanel.setBackground(new java.awt.Color(0, 195, 255));
 
