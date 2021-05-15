@@ -1,12 +1,6 @@
 package i52salia.si.trabajofinal.aircontrol;
 
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -18,10 +12,8 @@ public final class AirControlView extends javax.swing.JFrame {
 
     public ProgrammingPanel programmingPanel;
     public HomePanel homePanel;
+    public SettingsPanel settingsPanel;
 
-    /**
-     * Creates new form MainView
-     */
     public AirControlView() {
         initComponents();
         initSubcomponents();
@@ -30,84 +22,21 @@ public final class AirControlView extends javax.swing.JFrame {
 
     private void initSubcomponents() {
         programmingPanel = new ProgrammingPanel();
-        programmingTab.add(programmingPanel);
+        programmingPanel.setVisible(false);
+        mainPanel.add(programmingPanel);
         
         homePanel = new HomePanel();
-        homeTab.add(homePanel);
+        homePanel.setVisible(true);
+        mainPanel.add(homePanel);
+        
+        settingsPanel = new SettingsPanel();
+        settingsPanel.setVisible(false);
+        mainPanel.add(settingsPanel);
     }
 
     private void customizeComponents() {
-        if (!System.getProperty("os.name").toLowerCase().contains("mac")) {
-            customizeTabs(); // Doesn't work well with macOS look and feel
-        }
-
         this.setPreferredSize(INITIAL_SIZE);
         this.setSize(INITIAL_SIZE);
-    }
-
-    private void customizeTabs() {
-        JPanel tab0ContainerPanel = new JPanel();
-        JPanel tab1ContainerPanel = new JPanel();
-        JPanel tab2ContainerPanel = new JPanel();
-
-        Dimension containerPanelsSize = new Dimension(100, 55);
-        tab0ContainerPanel.setPreferredSize(containerPanelsSize);
-        tab1ContainerPanel.setPreferredSize(containerPanelsSize);
-        tab2ContainerPanel.setPreferredSize(containerPanelsSize);
-
-        GridBagLayout containerPanelsLayout = new GridBagLayout();
-        tab0ContainerPanel.setLayout(containerPanelsLayout);
-        tab1ContainerPanel.setLayout(containerPanelsLayout);
-        tab2ContainerPanel.setLayout(containerPanelsLayout);
-
-        tab0ContainerPanel.setOpaque(false);
-        tab1ContainerPanel.setOpaque(false);
-        tab2ContainerPanel.setOpaque(false);
-
-        JPanel tab0Panel = new JPanel();
-        JPanel tab1Panel = new JPanel();
-        JPanel tab2Panel = new JPanel();
-
-        tab0Panel.setOpaque(false);
-        tab1Panel.setOpaque(false);
-        tab2Panel.setOpaque(false);
-
-        GridLayout tabPanelsLayout = new GridLayout(2, 1);
-        tab0Panel.setLayout(tabPanelsLayout);
-        tab1Panel.setLayout(tabPanelsLayout);
-        tab2Panel.setLayout(tabPanelsLayout);
-
-        ImageIcon tab0Icon = new ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/programming-icon.png"));
-        ImageIcon tab1Icon = new ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/home-icon.png"));
-        ImageIcon tab2Icon = new ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/settings-icon.png"));
-
-        JLabel tab0IconLabel = new JLabel(tab0Icon);
-        JLabel tab1IconLabel = new JLabel(tab1Icon);
-        JLabel tab2IconLabel = new JLabel(tab2Icon);
-
-        JLabel tab0Label = new JLabel("Programming");
-        JLabel tab1Label = new JLabel("Home");
-        JLabel tab2Label = new JLabel("Settings");
-
-        Font tabLabelsFont = new Font(javax.swing.UIManager.getDefaults().getFont("Label.font").toString(), Font.PLAIN, 10);
-        tab0Label.setFont(tabLabelsFont);
-        tab1Label.setFont(tabLabelsFont);
-        tab2Label.setFont(tabLabelsFont);
-
-        tab0ContainerPanel.add(tab0Panel);
-        tab1ContainerPanel.add(tab1Panel);
-        tab2ContainerPanel.add(tab2Panel);
-
-        tab0Panel.add(tab0IconLabel);
-        tab0Panel.add(tab0Label);
-        tab1Panel.add(tab1IconLabel);
-        tab1Panel.add(tab1Label);
-        tab2Panel.add(tab2IconLabel);
-        tab2Panel.add(tab2Label);
-
-        tabbedPane.setTabComponentAt(0, tab0ContainerPanel);
-        tabbedPane.setTabComponentAt(1, tab1ContainerPanel);
-        tabbedPane.setTabComponentAt(2, tab2ContainerPanel);
     }
 
     /**
@@ -121,48 +50,112 @@ public final class AirControlView extends javax.swing.JFrame {
 
         titlePanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
-        tabbedPane = new javax.swing.JTabbedPane();
+        mainPanel = new javax.swing.JPanel();
+        tabBarPanel = new javax.swing.JPanel();
         programmingTab = new javax.swing.JPanel();
+        programmingTabIcon = new javax.swing.JLabel();
+        ProgrammingTabLabel = new javax.swing.JLabel();
         homeTab = new javax.swing.JPanel();
+        homeTabIcon = new javax.swing.JLabel();
+        homeTabLabel = new javax.swing.JLabel();
         settingsTab = new javax.swing.JPanel();
+        settingsTabIcon = new javax.swing.JLabel();
+        settingsTabLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AirControl");
 
         titlePanel.setBackground(new java.awt.Color(0, 195, 255));
-        titlePanel.setLayout(new javax.swing.BoxLayout(titlePanel, javax.swing.BoxLayout.LINE_AXIS));
 
         titleLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         titleLabel.setText("titleLabel");
         titleLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        titlePanel.add(titleLabel);
+
+        javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
+        titlePanel.setLayout(titlePanelLayout);
+        titlePanelLayout.setHorizontalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titleLabel)
+        );
+        titlePanelLayout.setVerticalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(titleLabel)
+        );
 
         getContentPane().add(titlePanel, java.awt.BorderLayout.NORTH);
 
-        tabbedPane.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        mainPanel.setLayout(new javax.swing.OverlayLayout(mainPanel));
+        getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
-        programmingTab.setLayout(new java.awt.GridLayout(1, 0));
-        tabbedPane.addTab("Programming", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/programming-icon.png")), programmingTab); // NOI18N
+        tabBarPanel.setMinimumSize(new java.awt.Dimension(0, 0));
+        tabBarPanel.setLayout(new java.awt.GridLayout(1, 3));
 
-        homeTab.setLayout(new java.awt.GridLayout(1, 0));
-        tabbedPane.addTab("Home", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/home-icon.png")), homeTab); // NOI18N
+        programmingTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        programmingTab.setLayout(new java.awt.GridLayout(2, 1));
 
-        settingsTab.setLayout(new java.awt.GridLayout(1, 0));
-        tabbedPane.addTab("Settings", new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/settings-icon.png")), settingsTab); // NOI18N
+        programmingTabIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        programmingTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/programming-icon.png"))); // NOI18N
+        programmingTabIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        programmingTab.add(programmingTabIcon);
 
-        tabbedPane.setSelectedIndex(1);
+        ProgrammingTabLabel.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        ProgrammingTabLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ProgrammingTabLabel.setText("Programming");
+        programmingTab.add(ProgrammingTabLabel);
 
-        getContentPane().add(tabbedPane, java.awt.BorderLayout.CENTER);
+        tabBarPanel.add(programmingTab);
+
+        homeTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        homeTab.setMinimumSize(new java.awt.Dimension(0, 0));
+        homeTab.setLayout(new java.awt.GridLayout(2, 1));
+
+        homeTabIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        homeTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/home-icon.png"))); // NOI18N
+        homeTabIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        homeTab.add(homeTabIcon);
+
+        homeTabLabel.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        homeTabLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        homeTabLabel.setText("Home");
+        homeTabLabel.setBorder(null);
+        homeTab.add(homeTabLabel);
+
+        tabBarPanel.add(homeTab);
+
+        settingsTab.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        settingsTab.setLayout(new java.awt.GridLayout(2, 1));
+
+        settingsTabIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        settingsTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/resources/images/settings-icon.png"))); // NOI18N
+        settingsTabIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        settingsTab.add(settingsTabIcon);
+
+        settingsTabLabel.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
+        settingsTabLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        settingsTabLabel.setText("Settings");
+        settingsTabLabel.setBorder(null);
+        settingsTab.add(settingsTabLabel);
+
+        tabBarPanel.add(settingsTab);
+
+        getContentPane().add(tabBarPanel, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel homeTab;
-    private javax.swing.JPanel programmingTab;
-    private javax.swing.JPanel settingsTab;
-    public javax.swing.JTabbedPane tabbedPane;
+    private javax.swing.JLabel ProgrammingTabLabel;
+    public javax.swing.JPanel homeTab;
+    private javax.swing.JLabel homeTabIcon;
+    private javax.swing.JLabel homeTabLabel;
+    private javax.swing.JPanel mainPanel;
+    public javax.swing.JPanel programmingTab;
+    private javax.swing.JLabel programmingTabIcon;
+    public javax.swing.JPanel settingsTab;
+    private javax.swing.JLabel settingsTabIcon;
+    private javax.swing.JLabel settingsTabLabel;
+    private javax.swing.JPanel tabBarPanel;
     public javax.swing.JLabel titleLabel;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
