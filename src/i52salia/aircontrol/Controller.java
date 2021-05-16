@@ -81,10 +81,18 @@ public final class Controller {
                         (float) view.homePanel.setpointTempSpinner.getValue());
             }
         });
+        
         view.homePanel.modeButtons.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 model.selectedDevice.setMode(view.homePanel.modeButtons.getSelectedMode());
+            }
+        });
+        
+        view.homePanel.fanSpeedSelector.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.selectedDevice.setFanSpeed(view.homePanel.fanSpeedSelector.getSelectedFanSpeed());
             }
         });
     }
@@ -229,5 +237,7 @@ public final class Controller {
         view.homePanel.setpointTempSpinner.setValue(device.getSetpointCelsius());
 
         view.homePanel.modeButtons.setSelectedMode(device.getMode());
+        
+        view.homePanel.fanSpeedSelector.setSelectedFanSpeed(device.getFanSpeed());
     }
 }

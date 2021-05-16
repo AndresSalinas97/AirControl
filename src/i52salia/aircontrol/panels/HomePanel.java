@@ -39,7 +39,7 @@ public final class HomePanel extends javax.swing.JPanel {
         modePanel = new javax.swing.JPanel();
         modeButtons = new i52salia.aircontrol.components.ModeSelector();
         fanSpeedPanel = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        fanSpeedSelector = new i52salia.aircontrol.components.FanSpeedSelector();
         deviceSettingsButtonsPanel = new javax.swing.JPanel();
         moreSettingsButton = new javax.swing.JButton();
 
@@ -109,9 +109,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        fanSpeedPanel.add(jComboBox1);
+        fanSpeedPanel.add(fanSpeedSelector);
 
         deviceSettingsList.add(fanSpeedPanel);
 
@@ -144,7 +142,7 @@ public final class HomePanel extends javax.swing.JPanel {
     public javax.swing.JPanel deviceSettingsMainPanel;
     private javax.swing.JScrollPane deviceSettingsScrollPane;
     private javax.swing.JPanel fanSpeedPanel;
-    private javax.swing.JComboBox jComboBox1;
+    public i52salia.aircontrol.components.FanSpeedSelector fanSpeedSelector;
     private javax.swing.JLabel jLabel1;
     public i52salia.aircontrol.components.ModeSelector modeButtons;
     private javax.swing.JPanel modePanel;
