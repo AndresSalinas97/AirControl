@@ -43,6 +43,9 @@ public class ModeButtons extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         autoButton = new javax.swing.JRadioButton();
 
+        setBorder(null);
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new java.awt.GridLayout(2, 1));
 
@@ -51,6 +54,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel1.add(jLabel1);
 
         coolButton.setText("Cool");
+        coolButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(coolButton);
 
         add(jPanel1);
@@ -63,6 +67,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel2.add(jLabel2);
 
         fanButton.setText("Fan");
+        fanButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel2.add(fanButton);
 
         add(jPanel2);
@@ -75,6 +80,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel3.add(jLabel3);
 
         dryButton.setText("Dry");
+        dryButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel3.add(dryButton);
 
         add(jPanel3);
@@ -87,6 +93,12 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel4.add(jLabel4);
 
         heatButton.setText("Heat");
+        heatButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        heatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                heatButtonActionPerformed(evt);
+            }
+        });
         jPanel4.add(heatButton);
 
         add(jPanel4);
@@ -99,10 +111,15 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel5.add(jLabel5);
 
         autoButton.setText("AUTO");
+        autoButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel5.add(autoButton);
 
         add(jPanel5);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void heatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heatButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_heatButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
