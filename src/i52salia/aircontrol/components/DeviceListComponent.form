@@ -216,7 +216,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
       <SubComponents>
-        <Component class="i52salia.aircontrol.components.onoffbutton.OnOffButton" name="onOffButton">
+        <Component class="i52salia.aircontrol.components.OnOffButton" name="onOffButton">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

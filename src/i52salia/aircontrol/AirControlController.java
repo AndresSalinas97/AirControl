@@ -81,6 +81,12 @@ public final class AirControlController {
                         (float) view.homePanel.setpointTempSpinner.getValue());
             }
         });
+        view.homePanel.modeButtons.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                model.selectedDevice.setMode(view.homePanel.modeButtons.getSelectedMode());
+            }
+        });
     }
 
     private void initProgrammingPanelController() {
@@ -209,17 +215,19 @@ public final class AirControlController {
     }
 
     private void openSelectedDevice() {
-        AirConditioner selectedDevice = model.selectedDevice;
+        AirConditioner device = model.selectedDevice;
 
-        view.titleLabel.setText(selectedDevice.getGivenName());
+        view.titleLabel.setText(device.getGivenName());
 
         view.homePanel.deviceListMainPanel.setVisible(false);
         view.homePanel.deviceSettingsMainPanel.setVisible(true);
 
-        view.homePanel.onOffButton.setTurnedOn(selectedDevice.isTurnedOn());
+        view.homePanel.onOffButton.setTurnedOn(device.isTurnedOn());
 
-        view.homePanel.currentTempLabel.setText(TemperatureConverter.celsiusToCelsiusString(selectedDevice.getCurrentCelsius()));
+        view.homePanel.currentTempLabel.setText(TemperatureConverter.celsiusToCelsiusString(device.getCurrentCelsius()));
 
-        view.homePanel.setpointTempSpinner.setValue(selectedDevice.getSetpointCelsius());
+        view.homePanel.setpointTempSpinner.setValue(device.getSetpointCelsius());
+        
+        view.homePanel.modeButtons.setSelectedMode(device.getMode());
     }
 }

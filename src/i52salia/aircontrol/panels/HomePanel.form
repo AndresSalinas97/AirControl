@@ -126,7 +126,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
-                    <Component class="i52salia.aircontrol.components.onoffbutton.OnOffButton" name="onOffButton">
+                    <Component class="i52salia.aircontrol.components.OnOffButton" name="onOffButton">
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
@@ -214,7 +214,10 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
-                    <Component class="i52salia.aircontrol.components.modebuttons.ModeButtons" name="modeButtons">
+                    <Component class="i52salia.aircontrol.components.ModeSelector" name="modeButtons">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

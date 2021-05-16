@@ -36,7 +36,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
         offLabel = new javax.swing.JLabel();
         currentTempOffLabel = new javax.swing.JLabel();
         buttonPanel = new javax.swing.JPanel();
-        onOffButton = new i52salia.aircontrol.components.onoffbutton.OnOffButton();
+        onOffButton = new i52salia.aircontrol.components.OnOffButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(500, 100));
@@ -110,7 +110,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
     public javax.swing.JLabel nameLabel;
     private javax.swing.JLabel offLabel;
     public javax.swing.JPanel offPanel;
-    public i52salia.aircontrol.components.onoffbutton.OnOffButton onOffButton;
+    public i52salia.aircontrol.components.OnOffButton onOffButton;
     public javax.swing.JPanel onPanel;
     public javax.swing.JLabel setpointTempLabel;
     private javax.swing.JPanel stuffPanel;

@@ -1,4 +1,4 @@
-package i52salia.aircontrol.components.onoffbutton;
+package i52salia.aircontrol.components;
 
 import java.awt.event.ActionListener;
 
