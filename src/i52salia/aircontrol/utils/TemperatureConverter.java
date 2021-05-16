@@ -11,10 +11,10 @@ public final class TemperatureConverter {
 
     /**
      * @param celsius temperature in Celsius
-     * @return string with the temperature in Celsius with 2 decimal points
+     * @return string with the temperature in Celsius with 1 decimal point
      */
     public final static String celsiusToCelsiusString(double celsius) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        DecimalFormat decimalFormat = new DecimalFormat("#.0");
 
         return (decimalFormat.format(celsius) + " ºC");
     }
