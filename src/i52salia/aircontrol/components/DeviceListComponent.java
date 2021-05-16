@@ -57,7 +57,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
         modeLabel.setBorder(null);
         onPanel.add(modeLabel);
 
-        setpointTempLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        setpointTempLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         setpointTempLabel.setText("jLabel1");
         setpointTempLabel.setBorder(null);
         onPanel.add(setpointTempLabel);
@@ -77,7 +77,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
 
         offPanel.setLayout(new java.awt.GridLayout(2, 1));
 
-        offLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        offLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         offLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         offLabel.setText("OFF");
         offPanel.add(offLabel);
