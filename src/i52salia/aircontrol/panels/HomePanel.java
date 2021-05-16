@@ -20,10 +20,7 @@ public final class HomePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         deviceListMainPanel = new javax.swing.JPanel();
         deviceListScrollPane = new javax.swing.JScrollPane();
         deviceList = new javax.swing.JPanel();
@@ -37,7 +34,7 @@ public final class HomePanel extends javax.swing.JPanel {
         currentTempPanel = new javax.swing.JPanel();
         currentTempLabel = new javax.swing.JLabel();
         setPointTempPanel = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
+        setpointTempSpinner = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         modePanel = new javax.swing.JPanel();
         modeButtons = new i52salia.aircontrol.components.modebuttons.ModeButtons();
@@ -77,52 +74,44 @@ public final class HomePanel extends javax.swing.JPanel {
 
         powerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Power"));
         powerPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        powerPanel.setLayout(new java.awt.GridBagLayout());
-        powerPanel.add(onOffButton, new java.awt.GridBagConstraints());
+        powerPanel.add(onOffButton);
 
         deviceSettingsList.add(powerPanel);
 
         currentTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Current Temperature"));
         currentTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        currentTempPanel.setLayout(new java.awt.GridBagLayout());
 
+        currentTempLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         currentTempLabel.setText("jLabel2");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(32, 172, 20, 172);
-        currentTempPanel.add(currentTempLabel, gridBagConstraints);
+        currentTempPanel.add(currentTempLabel);
 
         deviceSettingsList.add(currentTempPanel);
 
         setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
         setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        setPointTempPanel.add(jSpinner1);
 
-        jLabel1.setText("jLabel1");
+        setpointTempSpinner.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        setpointTempSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(30.0f), Float.valueOf(0.5f)));
+        setpointTempSpinner.setPreferredSize(new java.awt.Dimension(70, 28));
+        setPointTempPanel.add(setpointTempSpinner);
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel1.setText("ºC");
         setPointTempPanel.add(jLabel1);
 
         deviceSettingsList.add(setPointTempPanel);
 
         modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        modePanel.setLayout(new java.awt.GridLayout(1, 0));
         modePanel.add(modeButtons);
 
         deviceSettingsList.add(modePanel);
 
         fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        fanSpeedPanel.setLayout(new java.awt.GridBagLayout());
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 174, 9, 174);
-        fanSpeedPanel.add(jComboBox1, gridBagConstraints);
+        fanSpeedPanel.add(jComboBox1);
 
         deviceSettingsList.add(fanSpeedPanel);
 
@@ -144,8 +133,6 @@ public final class HomePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDeviceButton;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JLabel currentTempLabel;
     private javax.swing.JPanel currentTempPanel;
     public javax.swing.JPanel deviceList;
@@ -159,12 +146,12 @@ public final class HomePanel extends javax.swing.JPanel {
     private javax.swing.JPanel fanSpeedPanel;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSpinner jSpinner1;
     private i52salia.aircontrol.components.modebuttons.ModeButtons modeButtons;
     private javax.swing.JPanel modePanel;
     private javax.swing.JButton moreSettingsButton;
-    private i52salia.aircontrol.components.onoffbutton.OnOffButton onOffButton;
+    public i52salia.aircontrol.components.onoffbutton.OnOffButton onOffButton;
     private javax.swing.JPanel powerPanel;
     private javax.swing.JPanel setPointTempPanel;
+    public javax.swing.JSpinner setpointTempSpinner;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public final class AirControlController {
 
@@ -35,6 +37,13 @@ public final class AirControlController {
     }
 
     private void initController() {
+        initTabController();
+        initHomePanelController();
+        initProgrammingPanelController();
+        initSettingsPanelController();
+    }
+
+    private void initTabController() {
         view.homeTab.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -55,6 +64,31 @@ public final class AirControlController {
                 switchToSettingsTab();
             }
         });
+    }
+
+    private void initHomePanelController() {
+        view.homePanel.onOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.selectedDevice.setTurnedOn(!model.selectedDevice.isTurnedOn());
+            }
+        });
+
+        view.homePanel.setpointTempSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                model.selectedDevice.setSetpointCelsius(
+                        (float) view.homePanel.setpointTempSpinner.getValue());
+            }
+        });
+    }
+
+    private void initProgrammingPanelController() {
+
+    }
+
+    private void initSettingsPanelController() {
+
     }
 
     private void switchToHomeTab() {
@@ -90,36 +124,36 @@ public final class AirControlController {
         view.homePanel.deviceList.removeAll();
 
         for (AirConditioner device : model.devices) {
-            DeviceListComponent component = new DeviceListComponent();
+            DeviceListComponent newDeviceComponent = new DeviceListComponent();
 
-            component.nameLabel.setText(device.getGivenName());
+            newDeviceComponent.nameLabel.setText(device.getGivenName());
 
             if (device.isTurnedOn()) {
-                component.onPanel.setVisible(true);
-                component.offPanel.setVisible(false);
+                newDeviceComponent.onPanel.setVisible(true);
+                newDeviceComponent.offPanel.setVisible(false);
 
-                component.onOffButton.setTurnedOn(true);
+                newDeviceComponent.onOffButton.setTurnedOn(true);
 
-                component.currentTempOnLabel.setText(
+                newDeviceComponent.currentTempOnLabel.setText(
                         TemperatureConverter.celsiusToCelsiusString(
                                 device.getCurrentCelsius()));
-                component.setpointTempLabel.setText(
+                newDeviceComponent.setpointTempLabel.setText(
                         TemperatureConverter.celsiusToCelsiusString(
                                 device.getSetpointCelsius()));
-                component.modeLabel.setText("Mode: " + device.getMode());
-                component.fanSpeedLabel.setText("Fan Speed: " + device.getFanSpeed());
+                newDeviceComponent.modeLabel.setText("Mode: " + device.getMode());
+                newDeviceComponent.fanSpeedLabel.setText("Fan Speed: " + device.getFanSpeed());
             } else {
-                component.onPanel.setVisible(false);
-                component.offPanel.setVisible(true);
+                newDeviceComponent.onPanel.setVisible(false);
+                newDeviceComponent.offPanel.setVisible(true);
 
-                component.onOffButton.setTurnedOn(false);
+                newDeviceComponent.onOffButton.setTurnedOn(false);
 
-                component.currentTempOffLabel.setText(
+                newDeviceComponent.currentTempOffLabel.setText(
                         TemperatureConverter.celsiusToCelsiusString(
                                 device.getCurrentCelsius()));
             }
 
-            component.addMouseListener(new MouseAdapter() {
+            newDeviceComponent.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     model.selectedDevice = device;
@@ -127,8 +161,7 @@ public final class AirControlController {
                 }
             });
 
-            component.onOffButton.addActionListener(new ActionListener() {
-
+            newDeviceComponent.onOffButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     device.setTurnedOn(!device.isTurnedOn());
@@ -136,7 +169,7 @@ public final class AirControlController {
                 }
             });
 
-            view.homePanel.deviceList.add(component);
+            view.homePanel.deviceList.add(newDeviceComponent);
         }
 
         view.homePanel.deviceList.revalidate();
@@ -144,9 +177,17 @@ public final class AirControlController {
     }
 
     private void openSelectedDevice() {
-        view.titleLabel.setText(model.selectedDevice.getGivenName());
+        AirConditioner selectedDevice = model.selectedDevice;
+
+        view.titleLabel.setText(selectedDevice.getGivenName());
 
         view.homePanel.deviceListMainPanel.setVisible(false);
         view.homePanel.deviceSettingsMainPanel.setVisible(true);
+
+        view.homePanel.onOffButton.setTurnedOn(selectedDevice.isTurnedOn());
+
+        view.homePanel.currentTempLabel.setText(TemperatureConverter.celsiusToCelsiusString(selectedDevice.getCurrentCelsius()));
+
+        view.homePanel.setpointTempSpinner.setValue(selectedDevice.getSetpointCelsius());
     }
 }
