@@ -69,7 +69,7 @@ public class OnOffButton extends javax.swing.JPanel {
     private void turnOff() {
         turnedOn = false;
 
-        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/on-icon.png")));
+        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/off-icon.png")));
 
         //button.setForeground(new java.awt.Color(255, 0, 0));
 
