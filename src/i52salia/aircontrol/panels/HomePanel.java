@@ -126,7 +126,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         invisibleSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
         invisibleSeparator.setBorder(null);
-        invisibleSeparator.setPreferredSize(new java.awt.Dimension(50, 0));
+        invisibleSeparator.setPreferredSize(new java.awt.Dimension(25, 0));
         deviceSettingsButtonsPanel.add(invisibleSeparator);
 
         moreSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/settings-small-icon.png"))); // NOI18N
