@@ -1,6 +1,8 @@
 package i52salia.aircontrol;
 
 import i52salia.aircontrol.components.DeviceListItem;
+import i52salia.aircontrol.components.ProgramListItem;
+import i52salia.aircontrol.utils.ACProgram;
 import i52salia.aircontrol.utils.AirConditioner;
 import i52salia.aircontrol.utils.TemperatureConverter;
 import java.awt.event.ActionEvent;
@@ -81,21 +83,21 @@ public final class Controller {
                         (float) view.homePanel.setpointTempSpinner.getValue());
             }
         });
-        
+
         view.homePanel.modeButtons.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 model.selectedDevice.setMode(view.homePanel.modeButtons.getSelectedMode());
             }
         });
-        
+
         view.homePanel.fanSpeedSelector.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.selectedDevice.setFanSpeed(view.homePanel.fanSpeedSelector.getSelectedFanSpeed());
             }
         });
-        
+
         view.homePanel.backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,7 +107,12 @@ public final class Controller {
     }
 
     private void initProgrammingPanelController() {
-
+        view.programmingPanel.cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchToProgrammingTab();
+            }
+        });
     }
 
     private void initSettingsPanelController() {
@@ -128,9 +135,14 @@ public final class Controller {
     private void switchToProgrammingTab() {
         view.titleLabel.setText("Programming");
 
+        reloadProgramList();
+
         view.programmingPanel.setVisible(true);
         view.homePanel.setVisible(false);
         view.settingsPanel.setVisible(false);
+        
+        view.programmingPanel.programListMainPanel.setVisible(true);
+        view.programmingPanel.programSettingsMainPanel.setVisible(false);
     }
 
     private void switchToSettingsTab() {
@@ -158,6 +170,7 @@ public final class Controller {
                 newDeviceComponent.currentTempOnLabel.setText(
                         TemperatureConverter.celsiusToCelsiusString(
                                 device.getCurrentCelsius()));
+
                 newDeviceComponent.setpointTempLabel.setText(
                         TemperatureConverter.celsiusToCelsiusString(
                                 device.getSetpointCelsius()));
@@ -244,7 +257,167 @@ public final class Controller {
         view.homePanel.setpointTempSpinner.setValue(device.getSetpointCelsius());
 
         view.homePanel.modeButtons.setSelectedMode(device.getMode());
-        
+
         view.homePanel.fanSpeedSelector.setSelectedFanSpeed(device.getFanSpeed());
+    }
+
+    private void reloadProgramList() {
+        view.programmingPanel.programListPanel.removeAll();
+
+        for (AirConditioner device : model.devices) {
+            for (ACProgram program : device.getPrograms()) {
+                ProgramListItem newDeviceComponent = new ProgramListItem();
+
+                newDeviceComponent.nameLabel.setText(device.getGivenName());
+
+                newDeviceComponent.toggleButton.setToggledOn(program.isEnabled());
+
+                String daysOfWeekText = "";
+                if (program.isOnMondays() && program.isOnTuesdays()
+                        && program.isOnWednesdays() && program.isOnThursdays()
+                        && program.isOnFridays() && program.isOnSaturdays()
+                        && program.isOnSundays()) {
+                    daysOfWeekText = "Everyday";
+                } else if (program.isOnMondays() && program.isOnTuesdays()
+                        && program.isOnWednesdays() && program.isOnThursdays()
+                        && program.isOnFridays() && !program.isOnSaturdays()
+                        && !program.isOnSundays()) {
+                    daysOfWeekText = "Weekdays";
+                } else if (!program.isOnMondays() && !program.isOnTuesdays()
+                        && !program.isOnWednesdays() && !program.isOnThursdays()
+                        && !program.isOnFridays() && program.isOnSaturdays()
+                        && program.isOnSundays()) {
+                    daysOfWeekText = "Weekends";
+                } else {
+                    boolean first = true;
+                    if (program.isOnMondays()) {
+                        daysOfWeekText += "Mon";
+                        first = false;
+                    }
+                    if (program.isOnTuesdays()) {
+                        if (!first) {
+                            daysOfWeekText += ", ";
+                        }
+                        daysOfWeekText += "Tue";
+                        first = false;
+                    }
+                    if (program.isOnWednesdays()) {
+                        if (!first) {
+                            daysOfWeekText += ", ";
+                        }
+                        daysOfWeekText += "Wed";
+                        first = false;
+                    }
+                    if (program.isOnThursdays()) {
+                        if (!first) {
+                            daysOfWeekText += ", ";
+                        }
+                        daysOfWeekText += "Thu";
+                        first = false;
+                    }
+                    if (program.isOnFridays()) {
+                        if (!first) {
+                            daysOfWeekText += ", ";
+                        }
+                        daysOfWeekText += "Fri";
+                        first = false;
+                    }
+                    if (program.isOnSaturdays()) {
+                        if (!first) {
+                            daysOfWeekText += ", ";
+                        }
+                        daysOfWeekText += "Sat";
+                        first = false;
+                    }
+                    if (program.isOnSundays()) {
+                        if (!first) {
+                            daysOfWeekText += ", ";
+                        }
+                        daysOfWeekText += "Sun";
+                        first = false;
+                    }
+                }
+                newDeviceComponent.daysLabel.setText(daysOfWeekText);
+
+                newDeviceComponent.timeLabel.setText(
+                        program.getStartTime().get24HourString() + " - "
+                        + program.getEndTime().get24HourString());
+
+                view.programmingPanel.programListPanel.add(newDeviceComponent);
+
+                newDeviceComponent.setpointTempLabel.setText(
+                        TemperatureConverter.celsiusToCelsiusString(
+                                program.getSetpointCelsius()));
+
+                switch (program.getMode()) {
+                    case COOL:
+                        newDeviceComponent.modeLabel.setText("Mode: Cool");
+                        break;
+                    case FAN:
+                        newDeviceComponent.modeLabel.setText("Mode: Fan");
+                        break;
+                    case DRY:
+                        newDeviceComponent.modeLabel.setText("Mode: Dry");
+                        break;
+                    case HEAT:
+                        newDeviceComponent.modeLabel.setText("Mode: Heat");
+                        break;
+                    case AUTO:
+                        newDeviceComponent.modeLabel.setText("Mode: Auto");
+                        break;
+                }
+
+                switch (program.getFanSpeed()) {
+                    case LOW:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: Low");
+                        break;
+                    case MEDIUM:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: Medium");
+                        break;
+                    case HIGH:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: High");
+                        break;
+                    case AUTO:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: Auto");
+                        break;
+                }
+
+                newDeviceComponent.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        model.selectedDevice = device;
+                        model.selectedProgram = program;
+                        openSelectedProgram();
+                    }
+                });
+
+                newDeviceComponent.toggleButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        program.setEnabled(!program.isEnabled());
+                    }
+                });
+            }
+        }
+
+        view.programmingPanel.programListPanel.revalidate();
+        view.programmingPanel.programListPanel.repaint();
+    }
+
+    /**
+     * TODO
+     */
+    public void openSelectedProgram() {
+        AirConditioner device = model.selectedDevice;
+        ACProgram program = model.selectedProgram;
+
+        view.titleLabel.setText(device.getGivenName() + " Program");
+
+        view.programmingPanel.programListMainPanel.setVisible(false);
+        view.programmingPanel.programSettingsMainPanel.setVisible(true);
+        
+        view.programmingPanel.deviceLabel.setText(device.getGivenName());
+        
+        view.programmingPanel.toggleButton.setToggledOn(program.isEnabled());
     }
 }

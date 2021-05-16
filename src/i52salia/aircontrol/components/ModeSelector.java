@@ -15,6 +15,8 @@ import javax.swing.event.ChangeListener;
  */
 public class ModeSelector extends javax.swing.JPanel {
 
+    private boolean enabled = true;
+
     /**
      * Creates new form ModeButtons
      */
@@ -32,31 +34,41 @@ public class ModeSelector extends javax.swing.JPanel {
         coolPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                coolButton.setSelected(true);
+                if (enabled) {
+                    coolButton.setSelected(true);
+                }
             }
         });
         fanPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                fanButton.setSelected(true);
+                if (enabled) {
+                    fanButton.setSelected(true);
+                }
             }
         });
         dryPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                dryButton.setSelected(true);
+                if (enabled) {
+                    dryButton.setSelected(true);
+                }
             }
         });
         heatPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                heatButton.setSelected(true);
+                if (enabled) {
+                    heatButton.setSelected(true);
+                }
             }
         });
         autoPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                autoButton.setSelected(true);
+                if (enabled) {
+                    autoButton.setSelected(true);
+                }
             }
         });
     }
@@ -67,6 +79,10 @@ public class ModeSelector extends javax.swing.JPanel {
      * @param mode the mode to be selected
      */
     public void setSelectedMode(AirConditioner.Mode mode) {
+        if (!enabled) {
+            return;
+        }
+
         switch (mode) {
             case COOL:
                 coolButton.setSelected(true);
@@ -115,6 +131,27 @@ public class ModeSelector extends javax.swing.JPanel {
         dryButton.addChangeListener(l);
         heatButton.addChangeListener(l);
         autoButton.addChangeListener(l);
+    }
+
+    /**
+     * Allows to enable/disable the buttons.
+     *
+     * @param b boolean indicating the buttons enability
+     */
+    public void setEnabled(boolean b) {
+        enabled = b;
+
+        coolButton.setEnabled(b);
+        fanButton.setEnabled(b);
+        dryButton.setEnabled(b);
+        heatButton.setEnabled(b);
+        autoButton.setEnabled(b);
+        
+        coolLabel.setEnabled(b);
+        fanLabel.setEnabled(b);
+        dryLabel.setEnabled(b);
+        heatLabel.setEnabled(b);
+        autoLabel.setEnabled(b);
     }
 
     /**

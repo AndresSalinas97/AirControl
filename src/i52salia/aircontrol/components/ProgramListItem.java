@@ -47,33 +47,39 @@ public class ProgramListItem extends javax.swing.JPanel {
         nameLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
         add(nameLabel, java.awt.BorderLayout.NORTH);
 
-        stuffPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
-        stuffPanel.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
-
-        schedulePanel.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
+        stuffPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 20, 5, 10));
+        stuffPanel.setLayout(new java.awt.GridLayout(2, 1));
 
         daysLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        daysLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         daysLabel.setText("jLabel1");
+        daysLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
         schedulePanel.add(daysLabel);
 
         timeLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         timeLabel.setText("jLabel1");
+        timeLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
         schedulePanel.add(timeLabel);
 
         stuffPanel.add(schedulePanel);
 
-        settingsPanel.setLayout(new java.awt.GridLayout(1, 3, 5, 0));
-
         setpointTempLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        setpointTempLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         setpointTempLabel.setText("jLabel1");
+        setpointTempLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
         settingsPanel.add(setpointTempLabel);
 
         modeLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        modeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         modeLabel.setText("jLabel1");
+        modeLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
         settingsPanel.add(modeLabel);
 
         fanSpeedLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        fanSpeedLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         fanSpeedLabel.setText("jLabel1");
+        fanSpeedLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
         settingsPanel.add(fanSpeedLabel);
 
         stuffPanel.add(settingsPanel);

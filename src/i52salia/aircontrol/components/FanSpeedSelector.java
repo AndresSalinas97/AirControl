@@ -71,6 +71,15 @@ public class FanSpeedSelector extends javax.swing.JPanel {
     public void addActionListener(ActionListener al) {
         comboBox.addActionListener(al);
     }
+    
+    /**
+     * Allows to enable/disable the comboBox.
+     * 
+     * @param b boolean indicating the comboBox enability
+     */
+    public void setEnabled(boolean b) {
+        comboBox.setEnabled(b);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

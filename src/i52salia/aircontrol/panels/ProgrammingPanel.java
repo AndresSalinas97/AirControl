@@ -67,6 +67,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         addProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
         addProgramButton.setText("Add New Program");
+        addProgramButton.setEnabled(false);
         programListButtonsPanel.add(addProgramButton);
 
         programListMainPanel.add(programListButtonsPanel, java.awt.BorderLayout.SOUTH);
@@ -91,6 +92,8 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         StatusPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Status"));
         StatusPanel.setMaximumSize(new java.awt.Dimension(500, 100));
+
+        toggleButton.setEnabled(false);
         StatusPanel.add(toggleButton);
 
         programSettingsListPanel.add(StatusPanel);
@@ -136,6 +139,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         setpointTempSpinner.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         setpointTempSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(30.0f), Float.valueOf(0.5f)));
+        setpointTempSpinner.setEnabled(false);
         setpointTempSpinner.setPreferredSize(new java.awt.Dimension(70, 28));
         setPointTempPanel.add(setpointTempSpinner);
 
@@ -147,12 +151,16 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
+
+        modeButtons.setEnabled(false);
         modePanel.add(modeButtons);
 
         programSettingsListPanel.add(modePanel);
 
         fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
+
+        fanSpeedSelector.setEnabled(false);
         fanSpeedPanel.add(fanSpeedSelector);
 
         programSettingsListPanel.add(fanSpeedPanel);
@@ -166,6 +174,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         deletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/delete-program-icon.png"))); // NOI18N
         deletteButton.setText("Delete Program");
+        deletteButton.setEnabled(false);
         deletteButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         programSettingsButtonsPanel2.add(deletteButton);
 
@@ -189,6 +198,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
         saveButton.setText("Save");
+        saveButton.setEnabled(false);
         programSettingsButtonsPanel3.add(saveButton);
 
         programSettingsButtonsPanel1.add(programSettingsButtonsPanel3);

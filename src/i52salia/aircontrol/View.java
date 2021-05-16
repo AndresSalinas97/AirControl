@@ -11,7 +11,7 @@ import java.awt.Dimension;
  */
 public final class View extends javax.swing.JFrame {
 
-    private final static Dimension INITIAL_SIZE = new Dimension(400, 650);
+    private final static Dimension INITIAL_SIZE = new Dimension(450, 650);
 
     public ProgrammingPanel programmingPanel;
     public HomePanel homePanel;

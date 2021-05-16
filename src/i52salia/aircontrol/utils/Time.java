@@ -143,4 +143,40 @@ public final class Time {
     public int getMinute() {
         return minute;
     }
+
+    /**
+     * @return a string with the time in 24-hour format
+     */
+    public String get24HourString() {
+        String str = "";
+
+        str += get24Hour();
+        str += ":";
+        if (getMinute() == 0) {
+            str += "00";
+        } else {
+            str += getMinute();
+        }
+
+        return str;
+    }
+
+    /**
+     * @return a string with the time in 12-hour format
+     */
+    public String get12HourString() {
+        String str = "";
+
+        str += get12Hour();
+        str += ":";
+        if (getMinute() == 0) {
+            str += "00";
+        } else {
+            str += getMinute();
+        }
+        str += " ";
+        str += getDayPeriod();
+
+        return str;
+    }
 }

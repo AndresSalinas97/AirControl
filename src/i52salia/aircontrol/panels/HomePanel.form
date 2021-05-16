@@ -68,6 +68,7 @@
                   <Image iconType="3" name="/i52salia/aircontrol/resources/images/add-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add New Device"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -285,6 +286,7 @@
                   <Image iconType="3" name="/i52salia/aircontrol/resources/images/settings-small-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="More Settings"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

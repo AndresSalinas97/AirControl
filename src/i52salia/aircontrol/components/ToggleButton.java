@@ -57,6 +57,15 @@ public class ToggleButton extends javax.swing.JPanel {
     public void addActionListener(ActionListener l) {
         button.addActionListener(l);
     }
+    
+    /**
+     * Allows to enable/disable the button.
+     * 
+     * @param b boolean indicating the button's enability
+     */
+    public void setEnabled(boolean b) {
+        button.setEnabled(b);
+    }
 
     private void toggleOn() {
         toggledOn = true;

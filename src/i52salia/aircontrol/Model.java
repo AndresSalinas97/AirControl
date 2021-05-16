@@ -43,23 +43,23 @@ public final class Model {
         p1.setEndTime(new Time(14, 30));
         p1.setEnabled(true);
         devices.get(0).getPrograms().add(p1);
-        devices.get(1).getPrograms().add(p1);
-        devices.get(2).getPrograms().add(p1);
-        devices.get(3).getPrograms().add(p1);
 
         ACProgram p2 = new ACProgram();
+        p2.setOnMondays(true);
         p2.setOnTuesdays(true);
+        p2.setOnWednesdays(true);
         p2.setOnThursdays(true);
+        p2.setOnFridays(true);
+        p2.setOnSaturdays(true);
+        p2.setOnSundays(true);
         p2.setStartTime(new Time(16, 0));
         p2.setEndTime(new Time(21, 30));
         p2.setEnabled(true);
         devices.get(0).getPrograms().add(p2);
-        devices.get(1).getPrograms().add(p2);
 
         ACProgram p3 = new ACProgram();
         p3.setOnMondays(true);
         p3.setOnTuesdays(true);
-        p3.setOnThursdays(true);
         p3.setOnWednesdays(true);
         p3.setOnThursdays(true);
         p3.setOnFridays(true);
@@ -68,7 +68,18 @@ public final class Model {
         p3.setFanSpeed(AirConditioner.FanSpeed.HIGH);
         p3.setMode(AirConditioner.Mode.COOL);
         p3.setSetpointCelsius(24);
-        devices.get(0).getPrograms().add(p2);
-        devices.get(1).getPrograms().add(p2);
+        devices.get(1).getPrograms().add(p3);
+
+        ACProgram p4 = new ACProgram();
+        p4.setOnMondays(true);
+        p4.setOnTuesdays(true);
+        p4.setOnWednesdays(true);
+        p4.setOnThursdays(true);
+        p4.setOnFridays(true);
+        p4.setOnSaturdays(true);
+        p4.setStartTime(new Time(16, 0));
+        p4.setEndTime(new Time(21, 30));
+        p4.setEnabled(true);
+        devices.get(2).getPrograms().add(p4);
     }
 }
