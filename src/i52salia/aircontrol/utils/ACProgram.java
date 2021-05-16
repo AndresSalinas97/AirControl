@@ -1,4 +1,4 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol.utils;
 
 /**
  * Class to hold the configuration of an air conditioning device weekly program. 

@@ -1,5 +1,8 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol;
 
+import i52salia.aircontrol.utils.Time;
+import i52salia.aircontrol.utils.AirConditioner;
+import i52salia.aircontrol.utils.ACProgram;
 import java.util.ArrayList;
 
 public final class AirControlModel {

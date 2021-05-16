@@ -1,4 +1,4 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol;
 
 /**
  * Trabajo Final de Prácticas de la Asignatura de Sistemas Interactivos

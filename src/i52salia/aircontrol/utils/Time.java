@@ -1,4 +1,4 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol.utils;
 
 /**
  * A simple class to deal with time, both in 24-hour and 12-hour formats.

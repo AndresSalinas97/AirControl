@@ -1,4 +1,4 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol.panels;
 
 public final class HomePanel extends javax.swing.JPanel {
 
@@ -33,14 +33,14 @@ public final class HomePanel extends javax.swing.JPanel {
         deviceSettingsScrollPane = new javax.swing.JScrollPane();
         deviceSettingsList = new javax.swing.JPanel();
         powerPanel = new javax.swing.JPanel();
-        onOffButton = new i52salia.si.trabajofinal.aircontrol.onoffbutton.OnOffButton();
+        onOffButton = new i52salia.aircontrol.components.onoffbutton.OnOffButton();
         currentTempPanel = new javax.swing.JPanel();
         currentTempLabel = new javax.swing.JLabel();
         setPointTempPanel = new javax.swing.JPanel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         modePanel = new javax.swing.JPanel();
-        modeButtons = new i52salia.si.trabajofinal.aircontrol.modebuttons.ModeButtons();
+        modeButtons = new i52salia.aircontrol.components.modebuttons.ModeButtons();
         fanSpeedPanel = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         deviceSettingsButtonsPanel = new javax.swing.JPanel();
@@ -105,7 +105,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        modePanel.setLayout(new java.awt.GridLayout());
+        modePanel.setLayout(new java.awt.GridLayout(1, 0));
         modePanel.add(modeButtons);
 
         deviceSettingsList.add(modePanel);
@@ -156,10 +156,10 @@ public final class HomePanel extends javax.swing.JPanel {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSpinner jSpinner1;
-    private i52salia.si.trabajofinal.aircontrol.modebuttons.ModeButtons modeButtons;
+    private i52salia.aircontrol.components.modebuttons.ModeButtons modeButtons;
     private javax.swing.JPanel modePanel;
     private javax.swing.JButton moreSettingsButton;
-    private i52salia.si.trabajofinal.aircontrol.onoffbutton.OnOffButton onOffButton;
+    private i52salia.aircontrol.components.onoffbutton.OnOffButton onOffButton;
     private javax.swing.JPanel powerPanel;
     private javax.swing.JPanel setPointTempPanel;
     // End of variables declaration//GEN-END:variables

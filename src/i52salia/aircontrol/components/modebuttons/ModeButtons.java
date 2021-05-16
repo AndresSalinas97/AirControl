@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package i52salia.si.trabajofinal.aircontrol.modebuttons;
+package i52salia.aircontrol.components.modebuttons;
 
 /**
  *
@@ -47,7 +47,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.GridLayout(2, 1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/modebuttons/icons/auto-icon.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/modebuttons/icons/cool-icon.png"))); // NOI18N
         jPanel1.add(jLabel1);
 
         coolButton.setText("Cool");
@@ -59,7 +59,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.GridLayout(2, 1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/modebuttons/icons/auto-icon.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/modebuttons/icons/fan-icon.png"))); // NOI18N
         jPanel2.add(jLabel2);
 
         fanButton.setText("Fan");
@@ -71,7 +71,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel3.setLayout(new java.awt.GridLayout(2, 1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/modebuttons/icons/auto-icon.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/modebuttons/icons/dry-icon.png"))); // NOI18N
         jPanel3.add(jLabel3);
 
         dryButton.setText("Dry");
@@ -83,7 +83,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel4.setLayout(new java.awt.GridLayout(2, 1));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/modebuttons/icons/auto-icon.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/modebuttons/icons/heat-icon.png"))); // NOI18N
         jPanel4.add(jLabel4);
 
         heatButton.setText("Heat");
@@ -95,7 +95,7 @@ public class ModeButtons extends javax.swing.JPanel {
         jPanel5.setLayout(new java.awt.GridLayout(2, 1));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/modebuttons/icons/auto-icon.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/modebuttons/icons/auto-icon.png"))); // NOI18N
         jPanel5.add(jLabel5);
 
         autoButton.setText("AUTO");

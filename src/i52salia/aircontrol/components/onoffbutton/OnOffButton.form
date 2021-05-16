@@ -22,7 +22,7 @@
     <Component class="javax.swing.JButton" name="button">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/i52salia/si/trabajofinal/aircontrol/onoffbutton/icons/off-icon.png"/>
+          <Image iconType="3" name="/i52salia/aircontrol/components/onoffbutton/icons/off-icon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="(OFF)"/>
       </Properties>

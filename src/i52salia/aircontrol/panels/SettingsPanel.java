@@ -1,8 +1,8 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol.panels;
 
-public class ProgramListComponent extends javax.swing.JPanel {
+public class SettingsPanel extends javax.swing.JPanel {
 
-    public ProgramListComponent() {
+    public SettingsPanel() {
         initComponents();
     }
 
@@ -19,11 +19,11 @@ public class ProgramListComponent extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 91, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -1,4 +1,4 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol.panels;
 
 public final class ProgrammingPanel extends javax.swing.JPanel {
 
@@ -27,7 +27,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         programsListMainPanel.setLayout(new java.awt.BorderLayout());
 
-        scrollPanePanel.setLayout(new java.awt.GridLayout());
+        scrollPanePanel.setLayout(new java.awt.GridLayout(1, 0));
 
         programsList.setLayout(new javax.swing.BoxLayout(programsList, javax.swing.BoxLayout.LINE_AXIS));
         scrollPane.setViewportView(programsList);

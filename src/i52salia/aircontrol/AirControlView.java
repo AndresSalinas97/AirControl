@@ -1,5 +1,8 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol;
 
+import i52salia.aircontrol.panels.SettingsPanel;
+import i52salia.aircontrol.panels.HomePanel;
+import i52salia.aircontrol.panels.ProgrammingPanel;
 import java.awt.Dimension;
 
 /**
@@ -96,7 +99,7 @@ public final class AirControlView extends javax.swing.JFrame {
         programmingTab.setLayout(new java.awt.GridLayout(2, 1));
 
         programmingTabIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        programmingTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/icons/programming-icon.png"))); // NOI18N
+        programmingTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/programming-icon.png"))); // NOI18N
         programmingTabIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
         programmingTab.add(programmingTabIcon);
 
@@ -112,7 +115,7 @@ public final class AirControlView extends javax.swing.JFrame {
         homeTab.setLayout(new java.awt.GridLayout(2, 1));
 
         homeTabIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        homeTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/icons/home-icon.png"))); // NOI18N
+        homeTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/home-icon.png"))); // NOI18N
         homeTabIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
         homeTab.add(homeTabIcon);
 
@@ -128,7 +131,7 @@ public final class AirControlView extends javax.swing.JFrame {
         settingsTab.setLayout(new java.awt.GridLayout(2, 1));
 
         settingsTabIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        settingsTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/icons/settings-icon.png"))); // NOI18N
+        settingsTabIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/settings-icon.png"))); // NOI18N
         settingsTabIcon.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 0, 0));
         settingsTab.add(settingsTabIcon);
 

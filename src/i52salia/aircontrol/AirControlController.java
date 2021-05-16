@@ -1,5 +1,8 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol;
 
+import i52salia.aircontrol.components.DeviceListComponent;
+import i52salia.aircontrol.utils.AirConditioner;
+import i52salia.aircontrol.utils.TemperatureConverter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;

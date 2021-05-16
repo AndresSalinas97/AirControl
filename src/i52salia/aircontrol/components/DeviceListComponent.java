@@ -1,4 +1,4 @@
-package i52salia.si.trabajofinal.aircontrol;
+package i52salia.aircontrol.components;
 
 /**
  * JPanel used to show each device in the Home tab devices list.
@@ -36,7 +36,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
         offLabel = new javax.swing.JLabel();
         currentTempOffLabel = new javax.swing.JLabel();
         buttonPanel = new javax.swing.JPanel();
-        onOffButton = new i52salia.si.trabajofinal.aircontrol.onoffbutton.OnOffButton();
+        onOffButton = new i52salia.aircontrol.components.onoffbutton.OnOffButton();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         setMaximumSize(new java.awt.Dimension(500, 100));
@@ -68,7 +68,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
         onPanel.add(fanSpeedLabel);
 
         currentTempOnLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        currentTempOnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/icons/thermometer-icon.png"))); // NOI18N
+        currentTempOnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/thermometer-icon.png"))); // NOI18N
         currentTempOnLabel.setText("jLabel1");
         currentTempOnLabel.setBorder(null);
         onPanel.add(currentTempOnLabel);
@@ -84,7 +84,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
 
         currentTempOffLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         currentTempOffLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        currentTempOffLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/si/trabajofinal/aircontrol/icons/thermometer-icon.png"))); // NOI18N
+        currentTempOffLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/thermometer-icon.png"))); // NOI18N
         currentTempOffLabel.setText("jLabel1");
         currentTempOffLabel.setBorder(null);
         offPanel.add(currentTempOffLabel);
@@ -109,7 +109,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
     public javax.swing.JLabel nameLabel;
     private javax.swing.JLabel offLabel;
     public javax.swing.JPanel offPanel;
-    public i52salia.si.trabajofinal.aircontrol.onoffbutton.OnOffButton onOffButton;
+    public i52salia.aircontrol.components.onoffbutton.OnOffButton onOffButton;
     public javax.swing.JPanel onPanel;
     public javax.swing.JLabel setpointTempLabel;
     private javax.swing.JPanel stuffPanel;
