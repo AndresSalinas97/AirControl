@@ -43,7 +43,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceListScrollPane.setBorder(null);
 
-        deviceList.setLayout(new java.awt.GridLayout(0, 1));
+        deviceList.setLayout(new javax.swing.BoxLayout(deviceList, javax.swing.BoxLayout.Y_AXIS));
         deviceListScrollPane.setViewportView(deviceList);
 
         deviceListMainPanel.add(deviceListScrollPane, java.awt.BorderLayout.CENTER);
@@ -62,7 +62,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceSettingsScrollPane.setBorder(null);
 
-        deviceSettingsList.setLayout(new java.awt.GridLayout(0, 1));
+        deviceSettingsList.setLayout(new javax.swing.BoxLayout(deviceSettingsList, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Power"));
 
@@ -88,7 +88,7 @@ public final class HomePanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+            .addGap(0, 164, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -120,7 +120,7 @@ public final class HomePanel extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+            .addGap(0, 153, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

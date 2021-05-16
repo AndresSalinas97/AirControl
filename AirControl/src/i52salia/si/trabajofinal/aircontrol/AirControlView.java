@@ -67,7 +67,7 @@ public final class AirControlView extends javax.swing.JFrame {
 
         titlePanel.setBackground(new java.awt.Color(0, 195, 255));
 
-        titleLabel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         titleLabel.setText("titleLabel");
         titleLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
