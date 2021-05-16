@@ -140,7 +140,7 @@ public final class Controller {
         view.programmingPanel.setVisible(true);
         view.homePanel.setVisible(false);
         view.settingsPanel.setVisible(false);
-        
+
         view.programmingPanel.programListMainPanel.setVisible(true);
         view.programmingPanel.programSettingsMainPanel.setVisible(false);
     }
@@ -415,9 +415,9 @@ public final class Controller {
 
         view.programmingPanel.programListMainPanel.setVisible(false);
         view.programmingPanel.programSettingsMainPanel.setVisible(true);
-        
+
         view.programmingPanel.deviceLabel.setText(device.getGivenName());
-        
+
         view.programmingPanel.toggleButton.setToggledOn(program.isEnabled());
     }
 }

@@ -18,16 +18,16 @@ public class FanSpeedSelector extends javax.swing.JPanel {
      */
     public FanSpeedSelector() {
         initComponents();
-        
+
         comboBox.addItem("Low");
         comboBox.addItem("Medium");
         comboBox.addItem("High");
         comboBox.addItem("Auto");
     }
-    
+
     /**
      * Selects the comboBox item that corresponds to the selected fan speed.
-     * 
+     *
      * @param fs the selected fan speed.
      */
     public void setSelectedFanSpeed(AirConditioner.FanSpeed fs) {
@@ -46,7 +46,7 @@ public class FanSpeedSelector extends javax.swing.JPanel {
                 break;
         }
     }
-    
+
     /**
      * @return the selected fan speed
      */
@@ -62,19 +62,19 @@ public class FanSpeedSelector extends javax.swing.JPanel {
                 return AirConditioner.FanSpeed.AUTO;
         }
     }
-    
+
     /**
      * Allows to add an ActionListener to the comboBox.
-     * 
+     *
      * @param al the ActionListener
      */
     public void addActionListener(ActionListener al) {
         comboBox.addActionListener(al);
     }
-    
+
     /**
      * Allows to enable/disable the comboBox.
-     * 
+     *
      * @param b boolean indicating the comboBox enability
      */
     public void setEnabled(boolean b) {

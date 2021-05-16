@@ -146,7 +146,7 @@ public class ModeSelector extends javax.swing.JPanel {
         dryButton.setEnabled(b);
         heatButton.setEnabled(b);
         autoButton.setEnabled(b);
-        
+
         coolLabel.setEnabled(b);
         fanLabel.setEnabled(b);
         dryLabel.setEnabled(b);
