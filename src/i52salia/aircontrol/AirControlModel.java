@@ -6,6 +6,7 @@ import i52salia.aircontrol.utils.ACProgram;
 import java.util.ArrayList;
 
 public final class AirControlModel {
+
     public ArrayList<AirConditioner> devices;
     public AirConditioner selectedDevice;
     public ACProgram selectedProgram;
@@ -15,17 +16,25 @@ public final class AirControlModel {
 
         ///////////////////////////////////////////////////////////////////////
         /////////////////////////////// TESTING ///////////////////////////////
-
         // Add test devices
-        devices.add(new AirConditioner("Dormitorio", "Daikin Wall Split Model A34GH3",
-                "A34GH3", "DYPTP7584JCLK3", true, true));
-        devices.add(new AirConditioner("Salón", "Daikin Wall Split Model A34GH5",
-                "A34GH5", "DYPTP7584ALKSJ3", false, false));
-        devices.add(new AirConditioner("Cocina", "Daikin Wall Split Model A34GH3",
-                "A34GH3", "DYPTP7584JCLK3", true, true));
-        devices.add(new AirConditioner("Despacho", "Daikin Wall Split Model A34GH5",
-                "A34GH5", "DYPTP7584ALKSJ3", false, false));
-        
+        AirConditioner ac1 = new AirConditioner("Dormitorio", "Daikin Wall Split Model A34GH3",
+                "A34GH3", "DYPTP7584JCLK3", true, true);
+        ac1.setTurnedOn(true);
+        devices.add(ac1);
+
+        AirConditioner ac2 = new AirConditioner("Salón", "Daikin Wall Split Model A34GH5",
+                "A34GH5", "DYPTP7584ALKSJ3", false, false);
+        ac2.setTurnedOn(true);
+        devices.add(ac2);
+
+        AirConditioner ac3 = new AirConditioner("Cocina", "Daikin Wall Split Model A34GH3",
+                "A34GH3", "DYPTP7584JCLK3", true, true);
+        devices.add(ac3);
+
+        AirConditioner ac4 = new AirConditioner("Despacho", "Daikin Wall Split Model A34GH5",
+                "A34GH5", "DYPTP7584ALKSJ3", false, false);
+        devices.add(ac4);
+
         // Add test programs
         ACProgram p1 = new ACProgram();
         p1.setOnSaturdays(true);
@@ -37,7 +46,7 @@ public final class AirControlModel {
         devices.get(1).getPrograms().add(p1);
         devices.get(2).getPrograms().add(p1);
         devices.get(3).getPrograms().add(p1);
-        
+
         ACProgram p2 = new ACProgram();
         p2.setOnTuesdays(true);
         p2.setOnThursdays(true);
@@ -46,7 +55,7 @@ public final class AirControlModel {
         p2.setEnabled(true);
         devices.get(0).getPrograms().add(p2);
         devices.get(1).getPrograms().add(p2);
-        
+
         ACProgram p3 = new ACProgram();
         p3.setOnMondays(true);
         p3.setOnTuesdays(true);
