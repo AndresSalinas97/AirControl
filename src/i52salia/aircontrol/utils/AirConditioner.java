@@ -85,6 +85,7 @@ public final class AirConditioner {
     /**
      * Constructor of the AirConditioner class.
      * 
+     * @param givenName given name of the air conditioning device
      * @param modelName model name of the air conditioning device
      * @param modelNumber model number (or code) of the air conditioning device
      * @param serialNumber serial number (or code) of the air conditioning device

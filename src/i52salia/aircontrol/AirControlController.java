@@ -1,6 +1,6 @@
 package i52salia.aircontrol;
 
-import i52salia.aircontrol.components.DeviceListComponent;
+import i52salia.aircontrol.components.DeviceListItem;
 import i52salia.aircontrol.utils.AirConditioner;
 import i52salia.aircontrol.utils.TemperatureConverter;
 import java.awt.event.ActionEvent;
@@ -130,7 +130,7 @@ public final class AirControlController {
         view.homePanel.deviceList.removeAll();
 
         for (AirConditioner device : model.devices) {
-            DeviceListComponent newDeviceComponent = new DeviceListComponent();
+            DeviceListItem newDeviceComponent = new DeviceListItem();
 
             newDeviceComponent.nameLabel.setText(device.getGivenName());
 
