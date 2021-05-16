@@ -1,5 +1,7 @@
 package i52salia.si.trabajofinal.onoffbutton;
 
+import java.awt.event.ActionListener;
+
 /**
  * A simple Java Bean Component of an On/Off button.
  * 
@@ -43,6 +45,15 @@ public class OnOffButton extends javax.swing.JPanel {
      */
     public void turn() {
         setTurnedOn(!turnedOn);
+    }
+    
+    /**
+     * Allows to add an ActionListener to the button.
+     * 
+     * @param l ActionListener
+     */
+    public void addActionListener(ActionListener l) {
+        button.addActionListener(l);
     }
 
     private void turnOn() {
