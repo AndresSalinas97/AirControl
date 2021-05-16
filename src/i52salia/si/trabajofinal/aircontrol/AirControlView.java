@@ -85,6 +85,7 @@ public final class AirControlView extends javax.swing.JFrame {
 
         getContentPane().add(titlePanel, java.awt.BorderLayout.NORTH);
 
+        mainPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         mainPanel.setLayout(new javax.swing.OverlayLayout(mainPanel));
         getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
