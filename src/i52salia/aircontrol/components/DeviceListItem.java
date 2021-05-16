@@ -51,7 +51,7 @@ public class DeviceListItem extends javax.swing.JPanel {
         stuffPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
         stuffPanel.setLayout(new javax.swing.OverlayLayout(stuffPanel));
 
-        onPanel.setLayout(new java.awt.GridLayout(2, 2));
+        onPanel.setLayout(new java.awt.GridLayout(2, 2, 10, 0));
 
         modeLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         modeLabel.setText("jLabel1");
