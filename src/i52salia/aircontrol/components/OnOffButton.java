@@ -89,6 +89,7 @@ public class OnOffButton extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridLayout(1, 0));
 
+        button.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
         button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/off-icon.png"))); // NOI18N
         button.setText("(OFF)");
         button.addActionListener(new java.awt.event.ActionListener() {

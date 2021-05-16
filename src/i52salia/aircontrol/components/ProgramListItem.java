@@ -26,18 +26,78 @@ public class ProgramListItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 339, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 91, Short.MAX_VALUE)
-        );
+        nameLabel = new javax.swing.JLabel();
+        stuffPanel = new javax.swing.JPanel();
+        schedulePanel = new javax.swing.JPanel();
+        daysLabel = new javax.swing.JLabel();
+        timeLabel = new javax.swing.JLabel();
+        settingsPanel = new javax.swing.JPanel();
+        setpointTempLabel = new javax.swing.JLabel();
+        modeLabel = new javax.swing.JLabel();
+        fanSpeedLabel = new javax.swing.JLabel();
+        buttonPanel = new javax.swing.JPanel();
+        toggleButton = new i52salia.aircontrol.components.ToggleButton();
+
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        setMaximumSize(new java.awt.Dimension(500, 100));
+        setLayout(new java.awt.BorderLayout());
+
+        nameLabel.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        nameLabel.setText("jLabel2");
+        nameLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        add(nameLabel, java.awt.BorderLayout.NORTH);
+
+        stuffPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        stuffPanel.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
+
+        schedulePanel.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
+
+        daysLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        daysLabel.setText("jLabel1");
+        schedulePanel.add(daysLabel);
+
+        timeLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        timeLabel.setText("jLabel1");
+        schedulePanel.add(timeLabel);
+
+        stuffPanel.add(schedulePanel);
+
+        settingsPanel.setLayout(new java.awt.GridLayout(1, 3, 5, 0));
+
+        setpointTempLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        setpointTempLabel.setText("jLabel1");
+        settingsPanel.add(setpointTempLabel);
+
+        modeLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        modeLabel.setText("jLabel1");
+        settingsPanel.add(modeLabel);
+
+        fanSpeedLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        fanSpeedLabel.setText("jLabel1");
+        settingsPanel.add(fanSpeedLabel);
+
+        stuffPanel.add(settingsPanel);
+
+        add(stuffPanel, java.awt.BorderLayout.CENTER);
+
+        buttonPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 10));
+        buttonPanel.setLayout(new java.awt.GridBagLayout());
+        buttonPanel.add(toggleButton, new java.awt.GridBagConstraints());
+
+        add(buttonPanel, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel buttonPanel;
+    public javax.swing.JLabel daysLabel;
+    public javax.swing.JLabel fanSpeedLabel;
+    public javax.swing.JLabel modeLabel;
+    public javax.swing.JLabel nameLabel;
+    private javax.swing.JPanel schedulePanel;
+    public javax.swing.JLabel setpointTempLabel;
+    private javax.swing.JPanel settingsPanel;
+    private javax.swing.JPanel stuffPanel;
+    public javax.swing.JLabel timeLabel;
+    public i52salia.aircontrol.components.ToggleButton toggleButton;
     // End of variables declaration//GEN-END:variables
 }

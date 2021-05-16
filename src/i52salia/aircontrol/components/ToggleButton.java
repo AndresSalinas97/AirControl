@@ -64,7 +64,7 @@ public class ToggleButton extends javax.swing.JPanel {
         button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/toggle-on-icon.png")));
 
         //button.setForeground(new java.awt.Color(0, 153, 0));
-        button.setText("(Enabled)");
+        button.setText("(ON)");
     }
 
     private void toggleOff() {
@@ -73,7 +73,7 @@ public class ToggleButton extends javax.swing.JPanel {
         button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/toggle-off-icon.png")));
 
         //button.setForeground(new java.awt.Color(255, 0, 0));
-        button.setText("(Disabled)");
+        button.setText("(OFF)");
     }
 
     /**
@@ -89,8 +89,9 @@ public class ToggleButton extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridLayout(1, 0));
 
+        button.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
         button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/toggle-off-icon.png"))); // NOI18N
-        button.setText("(Disabled)");
+        button.setText("(OFF)");
         button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonActionPerformed(evt);

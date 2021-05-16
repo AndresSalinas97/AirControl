@@ -21,6 +21,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="button">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="12" style="2"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/i52salia/aircontrol/resources/images/off-icon.png"/>
         </Property>
