@@ -68,7 +68,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
         onPanel.add(fanSpeedLabel);
 
         currentTempOnLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        currentTempOnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/thermometer-icon.png"))); // NOI18N
+        currentTempOnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/thermometer-icon.png"))); // NOI18N
         currentTempOnLabel.setText("jLabel1");
         currentTempOnLabel.setBorder(null);
         onPanel.add(currentTempOnLabel);
@@ -84,7 +84,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
 
         currentTempOffLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         currentTempOffLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        currentTempOffLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/icons/thermometer-icon.png"))); // NOI18N
+        currentTempOffLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/thermometer-icon.png"))); // NOI18N
         currentTempOffLabel.setText("jLabel1");
         currentTempOffLabel.setBorder(null);
         offPanel.add(currentTempOffLabel);
@@ -93,6 +93,7 @@ public class DeviceListComponent extends javax.swing.JPanel {
 
         add(stuffPanel, java.awt.BorderLayout.CENTER);
 
+        buttonPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 10));
         buttonPanel.setLayout(new java.awt.GridBagLayout());
         buttonPanel.add(onOffButton, new java.awt.GridBagConstraints());
 

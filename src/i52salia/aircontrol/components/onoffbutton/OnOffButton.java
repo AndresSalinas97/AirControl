@@ -59,7 +59,7 @@ public class OnOffButton extends javax.swing.JPanel {
     private void turnOn() {
         turnedOn = true;
 
-        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/onoffbutton/icons/on-icon.png")));
+        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/on-icon.png")));
 
         //button.setForeground(new java.awt.Color(0, 153, 0));
 
@@ -69,7 +69,7 @@ public class OnOffButton extends javax.swing.JPanel {
     private void turnOff() {
         turnedOn = false;
 
-        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/onoffbutton/icons/off-icon.png")));
+        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/on-icon.png")));
 
         //button.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -89,7 +89,7 @@ public class OnOffButton extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridLayout(1, 0));
 
-        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/components/onoffbutton/icons/off-icon.png"))); // NOI18N
+        button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/off-icon.png"))); // NOI18N
         button.setText("(OFF)");
         button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
