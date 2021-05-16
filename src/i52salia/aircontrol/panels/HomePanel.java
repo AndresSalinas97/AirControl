@@ -57,6 +57,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceListMainPanel.add(deviceListScrollPane, java.awt.BorderLayout.CENTER);
 
+        deviceListButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         deviceListButtonsPanel.setLayout(new java.awt.GridBagLayout());
 
         addDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/add-icon.png"))); // NOI18N
@@ -129,6 +130,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceSettingsMainPanel.add(deviceSettingsScrollPane, java.awt.BorderLayout.CENTER);
 
+        deviceSettingsButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         deviceSettingsButtonsPanel.setLayout(new java.awt.GridBagLayout());
 
         moreSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/settings-small-icon.png"))); // NOI18N
