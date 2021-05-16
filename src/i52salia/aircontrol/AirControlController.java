@@ -140,8 +140,40 @@ public final class AirControlController {
                 newDeviceComponent.setpointTempLabel.setText(
                         TemperatureConverter.celsiusToCelsiusString(
                                 device.getSetpointCelsius()));
-                newDeviceComponent.modeLabel.setText("Mode: " + device.getMode());
-                newDeviceComponent.fanSpeedLabel.setText("Fan Speed: " + device.getFanSpeed());
+
+                switch (device.getMode()) {
+                    case COOL:
+                        newDeviceComponent.modeLabel.setText("Mode: Cool");
+                        break;
+                    case FAN:
+                        newDeviceComponent.modeLabel.setText("Mode: Fan");
+                        break;
+                    case DRY:
+                        newDeviceComponent.modeLabel.setText("Mode: Dry");
+                        break;
+                    case HEAT:
+                        newDeviceComponent.modeLabel.setText("Mode: Heat");
+                        break;
+                    case AUTO:
+                        newDeviceComponent.modeLabel.setText("Mode: Auto");
+                        break;
+                }
+
+                switch (device.getFanSpeed()) {
+                    case LOW:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: Low");
+                        break;
+                    case MEDIUM:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: Medium");
+                        break;
+                    case HIGH:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: High");
+                        break;
+                    case AUTO:
+                        newDeviceComponent.fanSpeedLabel.setText("Fan Speed: Auto");
+                        break;
+                }
+
             } else {
                 newDeviceComponent.onPanel.setVisible(false);
                 newDeviceComponent.offPanel.setVisible(true);
