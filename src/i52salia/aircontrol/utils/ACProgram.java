@@ -1,11 +1,12 @@
 package i52salia.aircontrol.utils;
 
 /**
- * Class to hold the configuration of an air conditioning device weekly program. 
+ * Class to hold the configuration of an air conditioning device weekly program.
  *
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
 public final class ACProgram {
+
     private boolean enabled;
     private boolean onMondays;
     private boolean onTuesdays;
@@ -32,8 +33,8 @@ public final class ACProgram {
         this.onFridays = false;
         this.onSaturdays = false;
         this.onSundays = false;
-        this.startTime = new Time(0,0);
-        this.endTime = new Time(0,0);
+        this.startTime = new Time(0, 0);
+        this.endTime = new Time(0, 0);
         this.setpointCelsius = (float) 21.0;
         this.mode = AirConditioner.Mode.AUTO;
         this.fanSpeed = AirConditioner.FanSpeed.AUTO;
@@ -61,7 +62,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onMondays boolean that indicates if the program will run on Mondays
+     * @param onMondays boolean that indicates if the program will run on
+     * Mondays
      */
     public void setOnMondays(boolean onMondays) {
         this.onMondays = onMondays;
@@ -75,7 +77,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onTuesdays boolean that indicates if the program will run on Tuesdays
+     * @param onTuesdays boolean that indicates if the program will run on
+     * Tuesdays
      */
     public void setOnTuesdays(boolean onTuesdays) {
         this.onTuesdays = onTuesdays;
@@ -89,7 +92,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onWednesdays boolean that indicates if the program will run on Wednesdays
+     * @param onWednesdays boolean that indicates if the program will run on
+     * Wednesdays
      */
     public void setOnWednesdays(boolean onWednesdays) {
         this.onWednesdays = onWednesdays;
@@ -103,7 +107,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onThursdays boolean that indicates if the program will run on Thursdays
+     * @param onThursdays boolean that indicates if the program will run on
+     * Thursdays
      */
     public void setOnThursdays(boolean onThursdays) {
         this.onThursdays = onThursdays;
@@ -117,7 +122,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onFridays boolean that indicates if the program will run on Fridays
+     * @param onFridays boolean that indicates if the program will run on
+     * Fridays
      */
     public void setOnFridays(boolean onFridays) {
         this.onFridays = onFridays;
@@ -131,7 +137,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onSaturdays boolean that indicates if the program will run on Saturdays
+     * @param onSaturdays boolean that indicates if the program will run on
+     * Saturdays
      */
     public void setOnSaturdays(boolean onSaturdays) {
         this.onSaturdays = onSaturdays;
@@ -145,7 +152,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param onSundays boolean that indicates if the program will run on Sundays
+     * @param onSundays boolean that indicates if the program will run on
+     * Sundays
      */
     public void setOnSundays(boolean onSundays) {
         this.onSundays = onSundays;
@@ -188,7 +196,8 @@ public final class ACProgram {
     }
 
     /**
-     * @param setpointCelsius desired setpoint temperature in Celsius for the program
+     * @param setpointCelsius desired setpoint temperature in Celsius for the
+     * program
      */
     public void setSetpointCelsius(float setpointCelsius) {
         this.setpointCelsius = setpointCelsius;

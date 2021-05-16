@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Class to hold the information, settings and current state of an air
  * conditioning device.
- * 
+ *
  * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
  */
 public final class AirConditioner {
@@ -19,22 +19,18 @@ public final class AirConditioner {
          * Cooling mode.
          */
         COOL,
-
         /**
          * Fan mode.
          */
         FAN,
-
         /**
          * Dehumidifier mode.
          */
         DRY,
-
         /**
          * Heating mode.
          */
         HEAT,
-
         /**
          * Automatic mode.
          */
@@ -50,17 +46,14 @@ public final class AirConditioner {
          * Low speed.
          */
         LOW,
-
         /**
          * Medium speed.
          */
         MEDIUM,
-
         /**
          * High speed.
          */
         HIGH,
-
         /**
          * Automatic speed.
          */
@@ -84,18 +77,19 @@ public final class AirConditioner {
 
     /**
      * Constructor of the AirConditioner class.
-     * 
+     *
      * @param givenName given name of the air conditioning device
      * @param modelName model name of the air conditioning device
      * @param modelNumber model number (or code) of the air conditioning device
-     * @param serialNumber serial number (or code) of the air conditioning device
+     * @param serialNumber serial number (or code) of the air conditioning
+     * device
      * @param hasVerticalVanes a boolean indicating whether the air conditioning
      * device has swinging vertical vanes or not
-     * @param hasHorizontalVanes a boolean indicating whether the air conditioning
-     * device has swinging horizontal vanes or not
+     * @param hasHorizontalVanes a boolean indicating whether the air
+     * conditioning device has swinging horizontal vanes or not
      */
     public AirConditioner(String givenName, String modelName, String modelNumber,
-            String serialNumber, boolean hasVerticalVanes, 
+            String serialNumber, boolean hasVerticalVanes,
             boolean hasHorizontalVanes) {
         this.givenName = givenName;
         this.modelName = modelName;
@@ -103,7 +97,7 @@ public final class AirConditioner {
         this.serialNumber = serialNumber;
         this.hasVerticalVanes = hasVerticalVanes;
         this.hasHorizontalVanes = hasHorizontalVanes;
-            
+
         this.turnedOn = false;
         this.mode = Mode.AUTO;
         this.fanSpeed = FanSpeed.AUTO;
@@ -113,7 +107,6 @@ public final class AirConditioner {
         this.verticalVanesSwinging = false;
         this.programs = new ArrayList<ACProgram>();
     }
-    
 
     /**
      * @return a random temperature float value between 5 and 35
@@ -189,7 +182,8 @@ public final class AirConditioner {
     }
 
     /**
-     * @param currentCelsius current temperature in Celsius measured by the device
+     * @param currentCelsius current temperature in Celsius measured by the
+     * device
      */
     public void setCurrentCelsius(float currentCelsius) {
         this.currentCelsius = currentCelsius;
@@ -210,7 +204,8 @@ public final class AirConditioner {
     }
 
     /**
-     * @return a boolean indicating if the vertical vanes are currently set to swing
+     * @return a boolean indicating if the vertical vanes are currently set to
+     * swing
      */
     public boolean isVerticalVanesSwinging() {
         return verticalVanesSwinging;
@@ -225,7 +220,8 @@ public final class AirConditioner {
     }
 
     /**
-     * @return a boolean indicating if the horizontal vanes are currently set to swing
+     * @return a boolean indicating if the horizontal vanes are currently set to
+     * swing
      */
     public boolean isHorizontalVanesSwinging() {
         return horizontalVanesSwinging;

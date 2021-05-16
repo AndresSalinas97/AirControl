@@ -10,10 +10,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public final class AirControlController {
+public final class Controller {
 
-    private final AirControlModel model;
-    private final AirControlView view;
+    private final Model model;
+    private final View view;
 
     /**
      * Constructor for class AirControlController.
@@ -21,7 +21,7 @@ public final class AirControlController {
      * @param model the AirControl model
      * @param view the AirControl view
      */
-    public AirControlController(AirControlModel model, AirControlView view) {
+    public Controller(Model model, View view) {
         this.model = model;
         this.view = view;
 
@@ -227,7 +227,7 @@ public final class AirControlController {
         view.homePanel.currentTempLabel.setText(TemperatureConverter.celsiusToCelsiusString(device.getCurrentCelsius()));
 
         view.homePanel.setpointTempSpinner.setValue(device.getSetpointCelsius());
-        
+
         view.homePanel.modeButtons.setSelectedMode(device.getMode());
     }
 }

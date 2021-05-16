@@ -17,6 +17,6 @@ public final class AirControl {
      */
     public static void main(String[] args) {
         // Assemble all the pieces of the MVC
-        new AirControlController(new AirControlModel(), new AirControlView());
+        new Controller(new Model(), new View());
     }
 }

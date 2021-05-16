@@ -6,7 +6,7 @@ public final class HomePanel extends javax.swing.JPanel {
         initComponents();
         customizeComponents();
     }
-    
+
     public void customizeComponents() {
         deviceListMainPanel.setVisible(true);
         deviceSettingsMainPanel.setVisible(false);

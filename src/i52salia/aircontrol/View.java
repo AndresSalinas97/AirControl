@@ -9,7 +9,7 @@ import java.awt.Dimension;
  *
  * @author andres
  */
-public final class AirControlView extends javax.swing.JFrame {
+public final class View extends javax.swing.JFrame {
 
     private final static Dimension INITIAL_SIZE = new Dimension(400, 600);
 
@@ -17,7 +17,7 @@ public final class AirControlView extends javax.swing.JFrame {
     public HomePanel homePanel;
     public SettingsPanel settingsPanel;
 
-    public AirControlView() {
+    public View() {
         initComponents();
         initSubcomponents();
         customizeComponents();
@@ -27,11 +27,11 @@ public final class AirControlView extends javax.swing.JFrame {
         programmingPanel = new ProgrammingPanel();
         programmingPanel.setVisible(false);
         mainPanel.add(programmingPanel);
-        
+
         homePanel = new HomePanel();
         homePanel.setVisible(true);
         mainPanel.add(homePanel);
-        
+
         settingsPanel = new SettingsPanel();
         settingsPanel.setVisible(false);
         mainPanel.add(settingsPanel);

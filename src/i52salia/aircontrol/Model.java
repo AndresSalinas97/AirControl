@@ -5,13 +5,13 @@ import i52salia.aircontrol.utils.AirConditioner;
 import i52salia.aircontrol.utils.ACProgram;
 import java.util.ArrayList;
 
-public final class AirControlModel {
+public final class Model {
 
     public ArrayList<AirConditioner> devices;
     public AirConditioner selectedDevice;
     public ACProgram selectedProgram;
 
-    public AirControlModel() {
+    public Model() {
         devices = new ArrayList<AirConditioner>();
 
         ///////////////////////////////////////////////////////////////////////
