@@ -84,7 +84,7 @@ public class DeviceListItem extends javax.swing.JPanel {
         offPanel.add(offLabel);
 
         currentTempOffLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        currentTempOffLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        currentTempOffLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         currentTempOffLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/thermometer-icon.png"))); // NOI18N
         currentTempOffLabel.setText("jLabel1");
         currentTempOffLabel.setBorder(null);
