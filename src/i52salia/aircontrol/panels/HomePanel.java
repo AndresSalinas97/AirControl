@@ -23,12 +23,12 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceListMainPanel = new javax.swing.JPanel();
         deviceListScrollPane = new javax.swing.JScrollPane();
-        deviceList = new javax.swing.JPanel();
+        deviceListPanel = new javax.swing.JPanel();
         deviceListButtonsPanel = new javax.swing.JPanel();
         addDeviceButton = new javax.swing.JButton();
         deviceSettingsMainPanel = new javax.swing.JPanel();
         deviceSettingsScrollPane = new javax.swing.JScrollPane();
-        deviceSettingsList = new javax.swing.JPanel();
+        deviceSettingsListPanel = new javax.swing.JPanel();
         powerPanel = new javax.swing.JPanel();
         onOffButton = new i52salia.aircontrol.components.OnOffButton();
         currentTempPanel = new javax.swing.JPanel();
@@ -41,6 +41,8 @@ public final class HomePanel extends javax.swing.JPanel {
         fanSpeedPanel = new javax.swing.JPanel();
         fanSpeedSelector = new i52salia.aircontrol.components.FanSpeedSelector();
         deviceSettingsButtonsPanel = new javax.swing.JPanel();
+        backButton = new javax.swing.JButton();
+        invisibleSeparator = new javax.swing.JSeparator();
         moreSettingsButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.OverlayLayout(this));
@@ -49,17 +51,16 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceListScrollPane.setBorder(null);
 
-        deviceList.setLayout(new javax.swing.BoxLayout(deviceList, javax.swing.BoxLayout.Y_AXIS));
-        deviceListScrollPane.setViewportView(deviceList);
+        deviceListPanel.setLayout(new javax.swing.BoxLayout(deviceListPanel, javax.swing.BoxLayout.Y_AXIS));
+        deviceListScrollPane.setViewportView(deviceListPanel);
 
         deviceListMainPanel.add(deviceListScrollPane, java.awt.BorderLayout.CENTER);
 
         deviceListButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        deviceListButtonsPanel.setLayout(new java.awt.GridBagLayout());
 
         addDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/add-icon.png"))); // NOI18N
         addDeviceButton.setText("Add New Device");
-        deviceListButtonsPanel.add(addDeviceButton, new java.awt.GridBagConstraints());
+        deviceListButtonsPanel.add(addDeviceButton);
 
         deviceListMainPanel.add(deviceListButtonsPanel, java.awt.BorderLayout.SOUTH);
 
@@ -70,13 +71,13 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceSettingsScrollPane.setBorder(null);
 
-        deviceSettingsList.setLayout(new javax.swing.BoxLayout(deviceSettingsList, javax.swing.BoxLayout.Y_AXIS));
+        deviceSettingsListPanel.setLayout(new javax.swing.BoxLayout(deviceSettingsListPanel, javax.swing.BoxLayout.Y_AXIS));
 
         powerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Power"));
         powerPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         powerPanel.add(onOffButton);
 
-        deviceSettingsList.add(powerPanel);
+        deviceSettingsListPanel.add(powerPanel);
 
         currentTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Current Temperature"));
         currentTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
@@ -85,7 +86,7 @@ public final class HomePanel extends javax.swing.JPanel {
         currentTempLabel.setText("jLabel2");
         currentTempPanel.add(currentTempLabel);
 
-        deviceSettingsList.add(currentTempPanel);
+        deviceSettingsListPanel.add(currentTempPanel);
 
         setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
         setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
@@ -99,30 +100,38 @@ public final class HomePanel extends javax.swing.JPanel {
         jLabel1.setText("ºC");
         setPointTempPanel.add(jLabel1);
 
-        deviceSettingsList.add(setPointTempPanel);
+        deviceSettingsListPanel.add(setPointTempPanel);
 
         modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
         modePanel.add(modeButtons);
 
-        deviceSettingsList.add(modePanel);
+        deviceSettingsListPanel.add(modePanel);
 
         fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         fanSpeedPanel.add(fanSpeedSelector);
 
-        deviceSettingsList.add(fanSpeedPanel);
+        deviceSettingsListPanel.add(fanSpeedPanel);
 
-        deviceSettingsScrollPane.setViewportView(deviceSettingsList);
+        deviceSettingsScrollPane.setViewportView(deviceSettingsListPanel);
 
         deviceSettingsMainPanel.add(deviceSettingsScrollPane, java.awt.BorderLayout.CENTER);
 
         deviceSettingsButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        deviceSettingsButtonsPanel.setLayout(new java.awt.GridBagLayout());
+
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
+        backButton.setText("Go Back");
+        deviceSettingsButtonsPanel.add(backButton);
+
+        invisibleSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        invisibleSeparator.setBorder(null);
+        invisibleSeparator.setPreferredSize(new java.awt.Dimension(50, 0));
+        deviceSettingsButtonsPanel.add(invisibleSeparator);
 
         moreSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/settings-small-icon.png"))); // NOI18N
         moreSettingsButton.setText("More Settings");
-        deviceSettingsButtonsPanel.add(moreSettingsButton, new java.awt.GridBagConstraints());
+        deviceSettingsButtonsPanel.add(moreSettingsButton);
 
         deviceSettingsMainPanel.add(deviceSettingsButtonsPanel, java.awt.BorderLayout.SOUTH);
 
@@ -131,18 +140,20 @@ public final class HomePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDeviceButton;
+    public javax.swing.JButton backButton;
     public javax.swing.JLabel currentTempLabel;
     private javax.swing.JPanel currentTempPanel;
-    public javax.swing.JPanel deviceList;
     private javax.swing.JPanel deviceListButtonsPanel;
     public javax.swing.JPanel deviceListMainPanel;
+    public javax.swing.JPanel deviceListPanel;
     private javax.swing.JScrollPane deviceListScrollPane;
     private javax.swing.JPanel deviceSettingsButtonsPanel;
-    public javax.swing.JPanel deviceSettingsList;
+    public javax.swing.JPanel deviceSettingsListPanel;
     public javax.swing.JPanel deviceSettingsMainPanel;
     private javax.swing.JScrollPane deviceSettingsScrollPane;
     private javax.swing.JPanel fanSpeedPanel;
     public i52salia.aircontrol.components.FanSpeedSelector fanSpeedSelector;
+    private javax.swing.JSeparator invisibleSeparator;
     private javax.swing.JLabel jLabel1;
     public i52salia.aircontrol.components.ModeSelector modeButtons;
     private javax.swing.JPanel modePanel;

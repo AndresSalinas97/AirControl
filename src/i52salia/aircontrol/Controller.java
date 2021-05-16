@@ -95,6 +95,13 @@ public final class Controller {
                 model.selectedDevice.setFanSpeed(view.homePanel.fanSpeedSelector.getSelectedFanSpeed());
             }
         });
+        
+        view.homePanel.backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchToHomeTab();
+            }
+        });
     }
 
     private void initProgrammingPanelController() {
@@ -135,7 +142,7 @@ public final class Controller {
     }
 
     private void reloadDeviceList() {
-        view.homePanel.deviceList.removeAll();
+        view.homePanel.deviceListPanel.removeAll();
 
         for (AirConditioner device : model.devices) {
             DeviceListItem newDeviceComponent = new DeviceListItem();
@@ -215,11 +222,11 @@ public final class Controller {
                 }
             });
 
-            view.homePanel.deviceList.add(newDeviceComponent);
+            view.homePanel.deviceListPanel.add(newDeviceComponent);
         }
 
-        view.homePanel.deviceList.revalidate();
-        view.homePanel.deviceList.repaint();
+        view.homePanel.deviceListPanel.revalidate();
+        view.homePanel.deviceListPanel.repaint();
     }
 
     private void openSelectedDevice() {
