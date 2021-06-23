@@ -1,7 +1,9 @@
 package i52salia.aircontrol.components;
 
 import i52salia.aircontrol.utils.AirConditioner;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * Java Swing Component (JPanel) to select the fan speed of an air conditioning
@@ -13,72 +15,120 @@ import java.awt.event.ActionListener;
  */
 public class FanSpeedSelector extends javax.swing.JPanel {
 
+    private boolean enabled = true;
+
     /**
-     * Creates new form FanSpeedSelector
+     * Creates new form ModeButtons
      */
     public FanSpeedSelector() {
         initComponents();
 
-        comboBox.addItem("Low");
-        comboBox.addItem("Medium");
-        comboBox.addItem("High");
-        comboBox.addItem("Auto");
+        // Add buttons to the buttonGroup so they are all mutually exclusive
+        buttonGroup.add(lowButton);
+        buttonGroup.add(mediumButton);
+        buttonGroup.add(highButton);
+        buttonGroup.add(autoButton);
+
+        // Add mouse listeners so that clicking on the panel also works
+        lowPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (enabled) {
+                    lowButton.setSelected(true);
+                }
+            }
+        });
+        mediumPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (enabled) {
+                    mediumButton.setSelected(true);
+                }
+            }
+        });
+        highPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (enabled) {
+                    highButton.setSelected(true);
+                }
+            }
+        });
+        autoPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (enabled) {
+                    autoButton.setSelected(true);
+                }
+            }
+        });
     }
 
     /**
-     * Selects the comboBox item that corresponds to the selected fan speed.
-     *
-     * @param fs the selected fan speed.
+     * Selects the button that corresponds to the introduced fan speed.
      */
-    public void setSelectedFanSpeed(AirConditioner.FanSpeed fs) {
-        switch (fs) {
+    public void setSelectedFanSpeed(AirConditioner.FanSpeed fanSpeed) {
+        if (!enabled) {
+            return;
+        }
+
+        switch (fanSpeed) {
             case LOW:
-                comboBox.setSelectedIndex(0);
+                lowButton.setSelected(true);
                 break;
             case MEDIUM:
-                comboBox.setSelectedIndex(1);
+                mediumButton.setSelected(true);
                 break;
             case HIGH:
-                comboBox.setSelectedIndex(2);
+                highButton.setSelected(true);
                 break;
             case AUTO:
-                comboBox.setSelectedIndex(3);
+                autoButton.setSelected(true);
                 break;
         }
     }
 
     /**
-     * @return the selected fan speed
+     * @return the selected mode
      */
     public AirConditioner.FanSpeed getSelectedFanSpeed() {
-        switch (comboBox.getSelectedIndex()) {
-            case 0:
-                return AirConditioner.FanSpeed.LOW;
-            case 1:
-                return AirConditioner.FanSpeed.MEDIUM;
-            case 2:
-                return AirConditioner.FanSpeed.HIGH;
-            default:
-                return AirConditioner.FanSpeed.AUTO;
+        if (lowButton.isSelected()) {
+            return AirConditioner.FanSpeed.LOW;
+        } else if (mediumButton.isSelected()) {
+            return AirConditioner.FanSpeed.MEDIUM;
+        } else if (highButton.isSelected()) {
+            return AirConditioner.FanSpeed.HIGH;
+        } else {
+            return AirConditioner.FanSpeed.AUTO;
         }
     }
 
     /**
-     * Allows to add an ActionListener to the comboBox.
-     *
-     * @param al the ActionListener
+     * Add a ChangeListener to all the buttons so the listener is notified when
+     * any of them changes.
      */
-    public void addActionListener(ActionListener al) {
-        comboBox.addActionListener(al);
+    public void addChangeListener(ChangeListener l) {
+        lowButton.addChangeListener(l);
+        mediumButton.addChangeListener(l);
+        highButton.addChangeListener(l);
+        autoButton.addChangeListener(l);
     }
 
     /**
-     * Allows to enable/disable the comboBox.
-     *
-     * @param b boolean indicating the comboBox enability
+     * Allows to enable/disable the buttons and labels.
      */
     public void setEnabled(boolean b) {
-        comboBox.setEnabled(b);
+        enabled = b;
+
+        lowButton.setEnabled(b);
+        mediumButton.setEnabled(b);
+        highButton.setEnabled(b);
+        autoButton.setEnabled(b);
+
+        lowLabel.setEnabled(b);
+        mediumLabel.setEnabled(b);
+        highLabel.setEnabled(b);
+        autoLabel.setEnabled(b);
     }
 
     /**
@@ -90,13 +140,98 @@ public class FanSpeedSelector extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        comboBox = new javax.swing.JComboBox();
+        buttonGroup = new javax.swing.ButtonGroup();
+        lowPanel = new javax.swing.JPanel();
+        lowLabel = new javax.swing.JLabel();
+        lowButton = new javax.swing.JRadioButton();
+        mediumPanel = new javax.swing.JPanel();
+        mediumLabel = new javax.swing.JLabel();
+        mediumButton = new javax.swing.JRadioButton();
+        highPanel = new javax.swing.JPanel();
+        highLabel = new javax.swing.JLabel();
+        highButton = new javax.swing.JRadioButton();
+        autoPanel = new javax.swing.JPanel();
+        autoLabel = new javax.swing.JLabel();
+        autoButton = new javax.swing.JRadioButton();
 
-        comboBox.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        add(comboBox);
+        setBorder(null);
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
+
+        lowPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lowPanel.setLayout(new java.awt.GridLayout(2, 1));
+
+        lowLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lowLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/low-fanspeed-icon.png"))); // NOI18N
+        lowPanel.add(lowLabel);
+
+        lowButton.setText("Low");
+        lowButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lowPanel.add(lowButton);
+
+        add(lowPanel);
+
+        mediumPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        mediumPanel.setLayout(new java.awt.GridLayout(2, 1));
+
+        mediumLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mediumLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/medium-fanspeed-icon.png"))); // NOI18N
+        mediumPanel.add(mediumLabel);
+
+        mediumButton.setText("Medium");
+        mediumButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mediumPanel.add(mediumButton);
+
+        add(mediumPanel);
+
+        highPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        highPanel.setLayout(new java.awt.GridLayout(2, 1));
+
+        highLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        highLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/high-fanspeed-icon.png"))); // NOI18N
+        highPanel.add(highLabel);
+
+        highButton.setText("High");
+        highButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        highButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                highButtonActionPerformed(evt);
+            }
+        });
+        highPanel.add(highButton);
+
+        add(highPanel);
+
+        autoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        autoPanel.setLayout(new java.awt.GridLayout(2, 1));
+
+        autoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/auto-icon.png"))); // NOI18N
+        autoPanel.add(autoLabel);
+
+        autoButton.setText("AUTO");
+        autoButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        autoPanel.add(autoButton);
+
+        add(autoPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void highButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_highButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox comboBox;
+    private javax.swing.JRadioButton autoButton;
+    private javax.swing.JLabel autoLabel;
+    private javax.swing.JPanel autoPanel;
+    private javax.swing.ButtonGroup buttonGroup;
+    private javax.swing.JRadioButton highButton;
+    private javax.swing.JLabel highLabel;
+    private javax.swing.JPanel highPanel;
+    private javax.swing.JRadioButton lowButton;
+    private javax.swing.JLabel lowLabel;
+    private javax.swing.JPanel lowPanel;
+    private javax.swing.JRadioButton mediumButton;
+    private javax.swing.JLabel mediumLabel;
+    private javax.swing.JPanel mediumPanel;
     // End of variables declaration//GEN-END:variables
 }

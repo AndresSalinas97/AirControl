@@ -91,9 +91,9 @@ public final class Controller {
             }
         });
 
-        view.homePanel.fanSpeedSelector.addActionListener(new ActionListener() {
+        view.homePanel.fanSpeedSelector.addChangeListener(new ChangeListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void stateChanged(ChangeEvent e) {
                 model.selectedDevice.setFanSpeed(view.homePanel.fanSpeedSelector.getSelectedFanSpeed());
             }
         });
