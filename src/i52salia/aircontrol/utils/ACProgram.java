@@ -3,7 +3,7 @@ package i52salia.aircontrol.utils;
 /**
  * Class to hold the configuration of an air conditioning device weekly program.
  *
- * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
+ * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class ACProgram {
 

@@ -3,7 +3,7 @@ package i52salia.aircontrol.utils;
 /**
  * A simple class to deal with time, both in 24-hour and 12-hour formats.
  *
- * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
+ * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class Time {
 
@@ -91,6 +91,7 @@ public final class Time {
 
         this.minute = minute;
 
+        // Convert hour to 24-hour format before storing it
         if (hour == 12) {
             if (period == DayPeriod.AM) {
                 this.hour = 0;
@@ -117,6 +118,7 @@ public final class Time {
      * @return the hour using 12-hour format
      */
     public int get12Hour() {
+        // Convert the stored hour to 12-hour format before returning it
         if (hour == 0 || hour == 12) {
             return 12;
         } else if (hour > 12) {

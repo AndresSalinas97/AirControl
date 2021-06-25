@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Class to hold the information, settings and current state of an air
  * conditioning device.
  *
- * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
+ * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class AirConditioner {
 

@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
  * A class with methods to convert and print temperature values.
  *
- * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
+ * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class TemperatureConverter {
 

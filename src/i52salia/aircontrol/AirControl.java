@@ -6,7 +6,7 @@ package i52salia.aircontrol;
  * Interface of a mobile app to control air conditioning systems implemented
  * with Java Swing.
  *
- * @author Andrés Salinas Lima {@literal <i52salia@uco.es>}
+ * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class AirControl {
 
