@@ -63,8 +63,8 @@ public final class AirConditioner {
     private boolean turnedOn;
     private Mode mode;
     private FanSpeed fanSpeed;
-    private float setpointCelsius;
-    private float currentCelsius;
+    private Temperature setpointTemp;
+    private Temperature currentTemp;
     private String givenName;
     private final String modelName;
     private final String modelNumber;
@@ -73,7 +73,7 @@ public final class AirConditioner {
     private final boolean hasHorizontalVanes;
     private boolean verticalVanesSwinging;
     private boolean horizontalVanesSwinging;
-    private ArrayList<ACProgram> programs;
+    private final ArrayList<ACProgram> programs;
 
     /**
      * Constructor of the AirConditioner class.
@@ -101,11 +101,12 @@ public final class AirConditioner {
         this.turnedOn = false;
         this.mode = Mode.AUTO;
         this.fanSpeed = FanSpeed.AUTO;
-        this.setpointCelsius = 21;
-        this.currentCelsius = getRandomCurrentCelsius();
+        this.setpointTemp = new Temperature(21, Temperature.TempUnit.CELSIUS);
+        this.currentTemp = new Temperature(
+                getRandomCurrentCelsius(), Temperature.TempUnit.CELSIUS);
         this.horizontalVanesSwinging = false;
         this.verticalVanesSwinging = false;
-        this.programs = new ArrayList<ACProgram>();
+        this.programs = new ArrayList<>();
     }
 
     /**
@@ -161,32 +162,31 @@ public final class AirConditioner {
     }
 
     /**
-     * @return currently selected setpoint temperature in Celsius
+     * @return currently selected setpoint temperature
      */
-    public float getSetpointCelsius() {
-        return setpointCelsius;
+    public Temperature getSetpointTemp() {
+        return setpointTemp;
     }
 
     /**
-     * @param setpointCelsius currently selected setpoint temperature in Celsius
+     * @param setpointTemp desired setpoint temperature
      */
-    public void setSetpointCelsius(float setpointCelsius) {
-        this.setpointCelsius = setpointCelsius;
+    public void setSetpointTemp(Temperature setpointTemp) {
+        this.setpointTemp = setpointTemp;
     }
 
     /**
      * @return current temperature in Celsius measured by the device
      */
-    public float getCurrentCelsius() {
-        return currentCelsius;
+    public Temperature getCurrentTemp() {
+        return currentTemp;
     }
 
     /**
-     * @param currentCelsius current temperature in Celsius measured by the
-     * device
+     * @param currentTemp current temperature in Celsius measured by the device
      */
-    public void setCurrentCelsius(float currentCelsius) {
-        this.currentCelsius = currentCelsius;
+    public void setCurrentTemp(Temperature currentTemp) {
+        this.currentTemp = currentTemp;
     }
 
     /**
@@ -278,5 +278,64 @@ public final class AirConditioner {
      */
     public ArrayList<ACProgram> getPrograms() {
         return programs;
+    }
+
+    /**
+     * @param mode desired AC mode
+     * @return a formatted and localized string with the introduced mode
+     *
+     * TODO: Localize
+     */
+    public final static String getModeString(Mode mode) {
+        switch (mode) {
+            case COOL:
+                return "Mode: Cool";
+            case FAN:
+                return "Mode: Fan";
+            case DRY:
+                return "Mode: Dry";
+            case HEAT:
+                return "Mode: Heat";
+            case AUTO:
+                return "Mode: Auto";
+            default:
+                throw new UnsupportedOperationException();
+        }
+    }
+
+    /**
+     * @param fanSpeed desired AC fan speed
+     * @return a formatted and localized string with the introduced fan speed
+     *
+     * TODO: Localize
+     */
+    public final static String getFanSpeedString(FanSpeed fanSpeed) {
+        switch (fanSpeed) {
+            case LOW:
+                return "Fan Speed: Low";
+            case MEDIUM:
+                return "Fan Speed: Medium";
+            case HIGH:
+                return "Fan Speed: High";
+            case AUTO:
+                return "Fan Speed: Auto";
+            default:
+                throw new UnsupportedOperationException();
+        }
+    }
+
+    /**
+     * @return a formatted and localized string with the currently selected mode
+     */
+    public String getModeString() {
+        return getModeString(mode);
+    }
+
+    /**
+     * @return a formatted and localized string with the currently selected fan
+     * speed
+     */
+    public String getFanSpeedString() {
+        return getFanSpeedString(fanSpeed);
     }
 }

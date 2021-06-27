@@ -13,12 +13,12 @@ import javax.swing.event.ChangeListener;
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
-public class ModeSelector extends javax.swing.JPanel {
+public final class ModeSelector extends javax.swing.JPanel {
 
     private boolean enabled = true;
 
     /**
-     * Creates new form ModeButtons
+     * Creates and initializes the JPanel.
      */
     public ModeSelector() {
         initComponents();
@@ -75,8 +75,8 @@ public class ModeSelector extends javax.swing.JPanel {
 
     /**
      * Selects the button that corresponds to the introduced mode.
-     *
-     * @param mode the mode to be selected
+     * 
+     * @param mode the mode
      */
     public void setSelectedMode(AirConditioner.Mode mode) {
         if (!enabled) {
@@ -122,7 +122,7 @@ public class ModeSelector extends javax.swing.JPanel {
     /**
      * Add a ChangeListener to all the buttons so the listener is notified when
      * any of them changes.
-     *
+     * 
      * @param l the ChangeListener
      */
     public void addChangeListener(ChangeListener l) {
@@ -135,9 +135,8 @@ public class ModeSelector extends javax.swing.JPanel {
 
     /**
      * Allows to enable/disable the buttons.
-     *
-     * @param b boolean indicating the buttons enability
      */
+    @Override
     public void setEnabled(boolean b) {
         enabled = b;
 
@@ -231,11 +230,6 @@ public class ModeSelector extends javax.swing.JPanel {
 
         heatButton.setText("Heat");
         heatButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        heatButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                heatButtonActionPerformed(evt);
-            }
-        });
         heatPanel.add(heatButton);
 
         add(heatPanel);
@@ -253,10 +247,6 @@ public class ModeSelector extends javax.swing.JPanel {
 
         add(autoPanel);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void heatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heatButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_heatButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton autoButton;

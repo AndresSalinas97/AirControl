@@ -13,12 +13,12 @@ import javax.swing.event.ChangeListener;
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
-public class FanSpeedSelector extends javax.swing.JPanel {
+public final class FanSpeedSelector extends javax.swing.JPanel {
 
     private boolean enabled = true;
 
     /**
-     * Creates new form ModeButtons
+     * Creates and initializes the JPanel.
      */
     public FanSpeedSelector() {
         initComponents();
@@ -66,6 +66,8 @@ public class FanSpeedSelector extends javax.swing.JPanel {
 
     /**
      * Selects the button that corresponds to the introduced fan speed.
+     * 
+     * @param fanSpeed the fan speed
      */
     public void setSelectedFanSpeed(AirConditioner.FanSpeed fanSpeed) {
         if (!enabled) {
@@ -104,8 +106,10 @@ public class FanSpeedSelector extends javax.swing.JPanel {
     }
 
     /**
-     * Add a ChangeListener to all the buttons so the listener is notified when
+     * Adds a ChangeListener to all the buttons so the listener is notified when
      * any of them changes.
+     * 
+     * @param l the ChangeListener
      */
     public void addChangeListener(ChangeListener l) {
         lowButton.addChangeListener(l);
@@ -117,6 +121,7 @@ public class FanSpeedSelector extends javax.swing.JPanel {
     /**
      * Allows to enable/disable the buttons and labels.
      */
+    @Override
     public void setEnabled(boolean b) {
         enabled = b;
 
@@ -192,11 +197,6 @@ public class FanSpeedSelector extends javax.swing.JPanel {
 
         highButton.setText("High");
         highButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        highButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                highButtonActionPerformed(evt);
-            }
-        });
         highPanel.add(highButton);
 
         add(highPanel);
@@ -214,10 +214,6 @@ public class FanSpeedSelector extends javax.swing.JPanel {
 
         add(autoPanel);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void highButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_highButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton autoButton;

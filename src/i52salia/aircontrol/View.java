@@ -6,21 +6,31 @@ import i52salia.aircontrol.panels.ProgrammingPanel;
 import java.awt.Dimension;
 
 /**
+ * The main View of the AirControl App.
  *
- * @author andres
+ * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class View extends javax.swing.JFrame {
 
+    /**
+     * Initial dimensions for the AirControl App main window.
+     */
     private final static Dimension INITIAL_SIZE = new Dimension(450, 650);
 
-    public ProgrammingPanel programmingPanel;
-    public HomePanel homePanel;
-    public SettingsPanel settingsPanel;
+    private ProgrammingPanel programmingPanel;
+    private HomePanel homePanel;
+    private SettingsPanel settingsPanel;
 
+    /**
+     * Creates and initializes the JPanel.
+     */
     public View() {
         initComponents();
         initSubcomponents();
-        customizeComponents();
+
+        // Set initial dimensions
+        this.setPreferredSize(INITIAL_SIZE);
+        this.setSize(INITIAL_SIZE);
     }
 
     private void initSubcomponents() {
@@ -37,9 +47,25 @@ public final class View extends javax.swing.JFrame {
         mainPanel.add(settingsPanel);
     }
 
-    private void customizeComponents() {
-        this.setPreferredSize(INITIAL_SIZE);
-        this.setSize(INITIAL_SIZE);
+    /**
+     * @return the programming tab panel
+     */
+    public ProgrammingPanel getProgrammingPanel() {
+        return programmingPanel;
+    }
+
+    /**
+     * @return the home tab panel
+     */
+    public HomePanel getHomePanel() {
+        return homePanel;
+    }
+
+    /**
+     * @return the settings tab panel
+     */
+    public SettingsPanel getSettingsPanel() {
+        return settingsPanel;
     }
 
     /**

@@ -8,10 +8,10 @@ package i52salia.aircontrol.components;
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
-public class ProgramListItem extends javax.swing.JPanel {
+public final class ProgramListItem extends javax.swing.JPanel {
 
     /**
-     * Constructor of the ProgramListItem class.
+     * Creates and initializes the JPanel.
      */
     public ProgramListItem() {
         initComponents();

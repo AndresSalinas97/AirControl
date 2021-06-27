@@ -8,34 +8,20 @@ package i52salia.aircontrol.utils;
 public final class ACProgram {
 
     private boolean enabled;
-    private boolean onMondays;
-    private boolean onTuesdays;
-    private boolean onWednesdays;
-    private boolean onThursdays;
-    private boolean onFridays;
-    private boolean onSaturdays;
-    private boolean onSundays;
-    private Time startTime;
-    private Time endTime;
-    private float setpointCelsius;
+    private DaysOfWeekSelection daysOfWeekSelection;
+    private TimeFrame timeFrame;
+    private Temperature setpointTemp;
     private AirConditioner.Mode mode;
     private AirConditioner.FanSpeed fanSpeed;
 
     /**
-     * Constructor for the ACProgram class.
+     * Constructor with all values set to their defaults.
      */
     public ACProgram() {
         this.enabled = false;
-        this.onMondays = false;
-        this.onTuesdays = false;
-        this.onWednesdays = false;
-        this.onThursdays = false;
-        this.onFridays = false;
-        this.onSaturdays = false;
-        this.onSundays = false;
-        this.startTime = new Time(0, 0);
-        this.endTime = new Time(0, 0);
-        this.setpointCelsius = (float) 21.0;
+        daysOfWeekSelection = new DaysOfWeekSelection();
+        this.timeFrame = new TimeFrame(new Time(0, 0), new Time(0, 0));
+        this.setpointTemp = new Temperature(21, Temperature.TempUnit.CELSIUS);
         this.mode = AirConditioner.Mode.AUTO;
         this.fanSpeed = AirConditioner.FanSpeed.AUTO;
     }
@@ -55,152 +41,48 @@ public final class ACProgram {
     }
 
     /**
-     * @return boolean that indicates if the program will run on Mondays
+     * @return selection of days of the week in which the program will be active
      */
-    public boolean isOnMondays() {
-        return onMondays;
+    public DaysOfWeekSelection getDaysOfWeekSelection() {
+        return daysOfWeekSelection;
     }
 
     /**
-     * @param onMondays boolean that indicates if the program will run on
-     * Mondays
+     * @param daysOfWeekSelection selection of days of the week in which the
+     * program will be active
      */
-    public void setOnMondays(boolean onMondays) {
-        this.onMondays = onMondays;
+    public void setDaysOfWeekSelection(DaysOfWeekSelection daysOfWeekSelection) {
+        this.daysOfWeekSelection = daysOfWeekSelection;
     }
 
     /**
-     * @return boolean that indicates if the program will run on Tuesdays
+     * @return time frame (start time + end time) in which the program will be
+     * active
      */
-    public boolean isOnTuesdays() {
-        return onTuesdays;
+    public TimeFrame getTimeFrame() {
+        return timeFrame;
     }
 
     /**
-     * @param onTuesdays boolean that indicates if the program will run on
-     * Tuesdays
+     * @param timeFrame time frame (start time + end time) in which the program
+     * will be active
      */
-    public void setOnTuesdays(boolean onTuesdays) {
-        this.onTuesdays = onTuesdays;
+    public void setTimeFrame(TimeFrame timeFrame) {
+        this.timeFrame = timeFrame;
     }
 
     /**
-     * @return boolean that indicates if the program will run on Wednesdays
+     * @return desired setpoint temperature for the program
      */
-    public boolean isOnWednesdays() {
-        return onWednesdays;
+    public Temperature getSetpointTemp() {
+        return setpointTemp;
     }
 
     /**
-     * @param onWednesdays boolean that indicates if the program will run on
-     * Wednesdays
+     * @param setpointTemp desired setpoint temperature for the program
      */
-    public void setOnWednesdays(boolean onWednesdays) {
-        this.onWednesdays = onWednesdays;
-    }
-
-    /**
-     * @return boolean that indicates if the program will run on Thursdays
-     */
-    public boolean isOnThursdays() {
-        return onThursdays;
-    }
-
-    /**
-     * @param onThursdays boolean that indicates if the program will run on
-     * Thursdays
-     */
-    public void setOnThursdays(boolean onThursdays) {
-        this.onThursdays = onThursdays;
-    }
-
-    /**
-     * @return boolean that indicates if the program will run on Fridays
-     */
-    public boolean isOnFridays() {
-        return onFridays;
-    }
-
-    /**
-     * @param onFridays boolean that indicates if the program will run on
-     * Fridays
-     */
-    public void setOnFridays(boolean onFridays) {
-        this.onFridays = onFridays;
-    }
-
-    /**
-     * @return boolean that indicates if the program will run on Saturdays
-     */
-    public boolean isOnSaturdays() {
-        return onSaturdays;
-    }
-
-    /**
-     * @param onSaturdays boolean that indicates if the program will run on
-     * Saturdays
-     */
-    public void setOnSaturdays(boolean onSaturdays) {
-        this.onSaturdays = onSaturdays;
-    }
-
-    /**
-     * @return boolean that indicates if the program will run on Sundays
-     */
-    public boolean isOnSundays() {
-        return onSundays;
-    }
-
-    /**
-     * @param onSundays boolean that indicates if the program will run on
-     * Sundays
-     */
-    public void setOnSundays(boolean onSundays) {
-        this.onSundays = onSundays;
-    }
-
-    /**
-     * @return Time in which the program will start running
-     */
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    /**
-     *
-     * @param startTime Time in which the program will start running
-     */
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    /**
-     * @return Time in which the program will stop running
-     */
-    public Time getEndTime() {
-        return endTime;
-    }
-
-    /**
-     * @param endTime Time in which the program will stop running
-     */
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
-
-    /**
-     * @return desired setpoint temperature in Celsius for the program
-     */
-    public float getSetpointCelsius() {
-        return setpointCelsius;
-    }
-
-    /**
-     * @param setpointCelsius desired setpoint temperature in Celsius for the
-     * program
-     */
-    public void setSetpointCelsius(float setpointCelsius) {
-        this.setpointCelsius = setpointCelsius;
+    public void setSetpointTemp(Temperature setpointTemp) {
+        this.setpointTemp = setpointTemp;
     }
 
     /**
@@ -229,5 +111,20 @@ public final class ACProgram {
      */
     public void setFanSpeed(AirConditioner.FanSpeed fanSpeed) {
         this.fanSpeed = fanSpeed;
+    }
+
+    /**
+     * @return a formatted and localized string with the currently selected mode
+     */
+    public String getModeString() {
+        return AirConditioner.getModeString(mode);
+    }
+
+    /**
+     * @return a formatted and localized string with the currently selected fan
+     * speed
+     */
+    public String getFanSpeedString() {
+        return AirConditioner.getFanSpeedString(fanSpeed);
     }
 }

@@ -9,12 +9,12 @@ import java.awt.event.ActionListener;
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
-public class ToggleButton extends javax.swing.JPanel {
+public final class ToggleButton extends javax.swing.JPanel {
 
     private boolean toggledOn;
 
     /**
-     * Constructor for the ToggleButton class.
+     * Creates and initializes the JPanel.
      */
     public ToggleButton() {
         initComponents();
@@ -24,14 +24,14 @@ public class ToggleButton extends javax.swing.JPanel {
     }
 
     /**
-     * @return boolean indicating if the button is toggled On or Off
+     * @return boolean indicating if the button is toggled on
      */
     public boolean isToggledOn() {
         return toggledOn;
     }
 
     /**
-     * @param turnedOn boolean indicating if the button is toggled On or Off
+     * @param turnedOn boolean indicating if the button is toggled on
      */
     public void setToggledOn(boolean turnedOn) {
         if (turnedOn) {
@@ -51,8 +51,8 @@ public class ToggleButton extends javax.swing.JPanel {
 
     /**
      * Allows to add an ActionListener to the button.
-     *
-     * @param l ActionListener
+     * 
+     * @param l the ActionListener
      */
     public void addActionListener(ActionListener l) {
         button.addActionListener(l);
@@ -60,9 +60,8 @@ public class ToggleButton extends javax.swing.JPanel {
 
     /**
      * Allows to enable/disable the button.
-     *
-     * @param b boolean indicating the button's enability
      */
+    @Override
     public void setEnabled(boolean b) {
         button.setEnabled(b);
     }
@@ -101,17 +100,8 @@ public class ToggleButton extends javax.swing.JPanel {
         button.setFont(new java.awt.Font("Ubuntu", 2, 12)); // NOI18N
         button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/toggle-off-icon.png"))); // NOI18N
         button.setText("(OFF)");
-        button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonActionPerformed(evt);
-            }
-        });
         add(button);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button;

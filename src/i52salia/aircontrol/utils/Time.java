@@ -1,11 +1,26 @@
 package i52salia.aircontrol.utils;
 
 /**
- * A simple class to deal with time, both in 24-hour and 12-hour formats.
+ * A class to deal with time, both in 24-hour and 12-hour formats.
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class Time {
+
+    /**
+     * Available time formats.
+     */
+    public enum TimeFormat {
+
+        /**
+         * 12-hour clock format.
+         */
+        TF12HOUR,
+        /**
+         * 24-hour clock format.
+         */
+        TF24HOUR
+    }
 
     /**
      * Indicates the day period (AM or PM) when using 12-hour clock.
@@ -22,11 +37,10 @@ public final class Time {
         PM
     }
 
-    private int hour;
-    private int minute;
+    private int hour, minute; // The time is internally stored in 24-hour format
 
     /**
-     * Constructor for the Time class using 24-hour format.
+     * Constructor using 24-hour format.
      *
      * @param hour hour (integer from 0 to 23)
      * @param minute minute (integer from 0 to 59)
@@ -36,7 +50,7 @@ public final class Time {
     }
 
     /**
-     * Constructor for the Time class using 12-hour format.
+     * Constructor using 12-hour format.
      *
      * @param hour hour (integer from 1 to 12)
      * @param minute minute (integer from 0 to 59)
@@ -147,38 +161,38 @@ public final class Time {
     }
 
     /**
-     * @return a string with the time in 24-hour format
+     * @param tf desired time format
+     * @return a formatted string with the time in the desired format
      */
-    public String get24HourString() {
+    public String getString(TimeFormat tf) {
         String str = "";
 
-        str += get24Hour();
-        str += ":";
-        if (getMinute() == 0) {
-            str += "00";
-        } else {
-            str += getMinute();
+        switch (tf) {
+            case TF24HOUR:
+
+                str += get24Hour();
+                str += ":";
+                if (getMinute() == 0) {
+                    str += "00";
+                } else {
+                    str += getMinute();
+                }
+
+                return str;
+            case TF12HOUR:
+                str += get12Hour();
+                str += ":";
+                if (getMinute() == 0) {
+                    str += "00";
+                } else {
+                    str += getMinute();
+                }
+                str += " ";
+                str += getDayPeriod();
+
+                return str;
+            default:
+                throw new UnsupportedOperationException();
         }
-
-        return str;
-    }
-
-    /**
-     * @return a string with the time in 12-hour format
-     */
-    public String get12HourString() {
-        String str = "";
-
-        str += get12Hour();
-        str += ":";
-        if (getMinute() == 0) {
-            str += "00";
-        } else {
-            str += getMinute();
-        }
-        str += " ";
-        str += getDayPeriod();
-
-        return str;
     }
 }

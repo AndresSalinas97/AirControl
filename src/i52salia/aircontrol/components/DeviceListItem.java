@@ -8,10 +8,10 @@ package i52salia.aircontrol.components;
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
-public class DeviceListItem extends javax.swing.JPanel {
+public final class DeviceListItem extends javax.swing.JPanel {
 
     /**
-     * Constructor for the DeviceListComponent class.
+     * Creates and initializes the JPanel.
      */
     public DeviceListItem() {
         initComponents();
