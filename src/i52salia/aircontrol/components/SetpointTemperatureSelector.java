@@ -26,12 +26,8 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
         temperature = new Temperature(21, Temperature.TempUnit.CELSIUS);
         tempUnit = Temperature.TempUnit.CELSIUS;
 
-        celsiusSpinner.addChangeListener((ChangeEvent e) -> {
-            saveTemperature();
-        });
-
-        fahrenheitSpinner.addChangeListener((ChangeEvent e) -> {
-            saveTemperature();
+        addChangeListener((ChangeEvent e) -> {
+            updateTemperatureMember();
         });
     }
 
@@ -107,7 +103,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
         fahrenheitLabel.setEnabled(b);
     }
 
-    private void saveTemperature() {
+    private void updateTemperatureMember() {
         switch (tempUnit) {
             case CELSIUS:
                 temperature.setTemperature(

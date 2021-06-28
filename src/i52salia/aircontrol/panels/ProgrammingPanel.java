@@ -48,7 +48,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         setPointTempPanel = new javax.swing.JPanel();
         setpointTemperatureSelector = new i52salia.aircontrol.components.SetpointTemperatureSelector();
         modePanel = new javax.swing.JPanel();
-        modeButtons = new i52salia.aircontrol.components.ModeSelector();
+        modeSelector = new i52salia.aircontrol.components.ModeSelector();
         fanSpeedPanel = new javax.swing.JPanel();
         fanSpeedSelector = new i52salia.aircontrol.components.FanSpeedSelector();
         programSettingsButtonsPanel = new javax.swing.JPanel();
@@ -99,68 +99,36 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         StatusPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Status"));
         StatusPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        toggleButton.setEnabled(false);
         StatusPanel.add(toggleButton);
 
         programSettingsListPanel.add(StatusPanel);
 
         daysOfWeekPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Days of the Week"));
         daysOfWeekPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        javax.swing.GroupLayout daysOfWeekSelectorLayout = new javax.swing.GroupLayout(daysOfWeekSelector);
-        daysOfWeekSelector.setLayout(daysOfWeekSelectorLayout);
-        daysOfWeekSelectorLayout.setHorizontalGroup(
-            daysOfWeekSelectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        daysOfWeekSelectorLayout.setVerticalGroup(
-            daysOfWeekSelectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         daysOfWeekPanel.add(daysOfWeekSelector);
 
         programSettingsListPanel.add(daysOfWeekPanel);
 
-        timeFramePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Time"));
+        timeFramePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Time Frame"));
         timeFramePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        javax.swing.GroupLayout timeFrameSelectorLayout = new javax.swing.GroupLayout(timeFrameSelector);
-        timeFrameSelector.setLayout(timeFrameSelectorLayout);
-        timeFrameSelectorLayout.setHorizontalGroup(
-            timeFrameSelectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        timeFrameSelectorLayout.setVerticalGroup(
-            timeFrameSelectorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         timeFramePanel.add(timeFrameSelector);
 
         programSettingsListPanel.add(timeFramePanel);
 
         setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
         setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        setpointTemperatureSelector.setEnabled(false);
         setPointTempPanel.add(setpointTemperatureSelector);
 
         programSettingsListPanel.add(setPointTempPanel);
 
         modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        modeButtons.setEnabled(false);
-        modePanel.add(modeButtons);
+        modePanel.add(modeSelector);
 
         programSettingsListPanel.add(modePanel);
 
         fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        fanSpeedSelector.setEnabled(false);
         fanSpeedPanel.add(fanSpeedSelector);
 
         programSettingsListPanel.add(fanSpeedPanel);
@@ -215,8 +183,8 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private javax.swing.JPanel fanSpeedPanel;
     public i52salia.aircontrol.components.FanSpeedSelector fanSpeedSelector;
     private javax.swing.JSeparator invisibleSeparator;
-    public i52salia.aircontrol.components.ModeSelector modeButtons;
     private javax.swing.JPanel modePanel;
+    public i52salia.aircontrol.components.ModeSelector modeSelector;
     private javax.swing.JPanel programListButtonsPanel;
     public javax.swing.JPanel programListMainPanel;
     public javax.swing.JPanel programListPanel;
@@ -231,7 +199,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private javax.swing.JPanel setPointTempPanel;
     public i52salia.aircontrol.components.SetpointTemperatureSelector setpointTemperatureSelector;
     private javax.swing.JPanel timeFramePanel;
-    public i52salia.aircontrol.components.TimeFrameSelector timeFrameSelector;
+    private i52salia.aircontrol.components.TimeFrameSelector timeFrameSelector;
     public i52salia.aircontrol.components.ToggleButton toggleButton;
     // End of variables declaration//GEN-END:variables
 }

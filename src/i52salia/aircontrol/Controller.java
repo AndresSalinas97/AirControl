@@ -85,11 +85,6 @@ public final class Controller {
             selectedDevice.setTurnedOn(!selectedDevice.isTurnedOn());
         });
 
-        hp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
-            selectedDevice.setSetpointTemp(
-                    hp.setpointTemperatureSelector.getTemperature());
-        });
-
         hp.modeButtons.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setMode(hp.modeButtons.getSelectedMode());
         });
@@ -103,9 +98,20 @@ public final class Controller {
         });
     }
 
-    // TODO
     private void initProgrammingPanelController() {
         ProgrammingPanel pp = view.getProgrammingPanel();
+
+        pp.toggleButton.addActionListener((ActionEvent e) -> {
+            selectedProgram.setEnabled(!selectedProgram.isEnabled());
+        });
+
+        pp.modeSelector.addChangeListener((ChangeEvent e) -> {
+            selectedProgram.setMode(pp.modeSelector.getSelectedMode());
+        });
+
+        pp.fanSpeedSelector.addChangeListener((ChangeEvent e) -> {
+            selectedProgram.setFanSpeed(pp.fanSpeedSelector.getSelectedFanSpeed());
+        });
 
         pp.cancelButton.addActionListener((ActionEvent e) -> {
             switchToProgrammingTab();
@@ -231,7 +237,7 @@ public final class Controller {
         model.getDevices().stream().forEach((device) -> {
             device.getPrograms().stream().map((program) -> {
                 ProgramListItem newDeviceComponent = new ProgramListItem();
-                
+
                 newDeviceComponent.nameLabel.setText(device.getGivenName());
                 newDeviceComponent.toggleButton.setToggledOn(program.isEnabled());
                 newDeviceComponent.daysLabel.setText(
@@ -242,7 +248,7 @@ public final class Controller {
                         program.getSetpointTemp().getString(model.getTempUnit()));
                 newDeviceComponent.modeLabel.setText(program.getModeString());
                 newDeviceComponent.fanSpeedLabel.setText(program.getFanSpeedString());
-                
+
                 newDeviceComponent.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
@@ -254,7 +260,7 @@ public final class Controller {
                 newDeviceComponent.toggleButton.addActionListener((ActionEvent e) -> {
                     program.setEnabled(!program.isEnabled());
                 });
-                
+
                 return newDeviceComponent;
             }).forEach((newDeviceComponent) -> {
                 listPanel.add(newDeviceComponent);
@@ -265,7 +271,6 @@ public final class Controller {
         listPanel.repaint();
     }
 
-    // TODO
     private void openSelectedProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
@@ -277,6 +282,17 @@ public final class Controller {
         pp.deviceLabel.setText(selectedDevice.getGivenName());
 
         pp.toggleButton.setToggledOn(selectedProgram.isEnabled());
+
+        pp.daysOfWeekSelector.setSelection(selectedProgram.getDaysOfWeekSelection());
+
+        pp.setpointTemperatureSelector.setTemperature(selectedProgram.getSetpointTemp());
+
+        // TODO
+        //pp.timeFrameSelector.setTimeFrame(selectedProgram.getTimeFrame());
+        
+        pp.modeSelector.setSelectedMode(selectedProgram.getMode());
+
+        pp.fanSpeedSelector.setSelectedFanSpeed(selectedProgram.getFanSpeed());
     }
 
     // TODO
