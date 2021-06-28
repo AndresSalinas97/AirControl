@@ -42,8 +42,7 @@ public final class HomePanel extends javax.swing.JPanel {
         currentTempPanel = new javax.swing.JPanel();
         currentTempLabel = new javax.swing.JLabel();
         setPointTempPanel = new javax.swing.JPanel();
-        setpointTempSpinner = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
+        setpointTemperatureSelector = new i52salia.aircontrol.components.SetpointTemperatureSelector();
         modePanel = new javax.swing.JPanel();
         modeButtons = new i52salia.aircontrol.components.ModeSelector();
         fanSpeedPanel = new javax.swing.JPanel();
@@ -99,15 +98,7 @@ public final class HomePanel extends javax.swing.JPanel {
 
         setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
         setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        setpointTempSpinner.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        setpointTempSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(30.0f), Float.valueOf(0.5f)));
-        setpointTempSpinner.setPreferredSize(new java.awt.Dimension(70, 28));
-        setPointTempPanel.add(setpointTempSpinner);
-
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel1.setText("ºC");
-        setPointTempPanel.add(jLabel1);
+        setPointTempPanel.add(setpointTemperatureSelector);
 
         deviceSettingsListPanel.add(setPointTempPanel);
 
@@ -164,13 +155,12 @@ public final class HomePanel extends javax.swing.JPanel {
     private javax.swing.JPanel fanSpeedPanel;
     public i52salia.aircontrol.components.FanSpeedSelector fanSpeedSelector;
     private javax.swing.JSeparator invisibleSeparator;
-    private javax.swing.JLabel jLabel1;
     public i52salia.aircontrol.components.ModeSelector modeButtons;
     private javax.swing.JPanel modePanel;
     private javax.swing.JButton moreSettingsButton;
     public i52salia.aircontrol.components.OnOffButton onOffButton;
     private javax.swing.JPanel powerPanel;
     private javax.swing.JPanel setPointTempPanel;
-    public javax.swing.JSpinner setpointTempSpinner;
+    public i52salia.aircontrol.components.SetpointTemperatureSelector setpointTemperatureSelector;
     // End of variables declaration//GEN-END:variables
 }

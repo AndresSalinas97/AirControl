@@ -99,6 +99,8 @@ public final class ModeSelector extends javax.swing.JPanel {
             case AUTO:
                 autoButton.setSelected(true);
                 break;
+            default:
+                throw new UnsupportedOperationException();
         }
     }
 
@@ -120,7 +122,7 @@ public final class ModeSelector extends javax.swing.JPanel {
     }
 
     /**
-     * Add a ChangeListener to all the buttons so the listener is notified when
+     * Adds a ChangeListener to all the buttons so the listener is notified when
      * any of them changes.
      * 
      * @param l the ChangeListener
@@ -132,9 +134,11 @@ public final class ModeSelector extends javax.swing.JPanel {
         heatButton.addChangeListener(l);
         autoButton.addChangeListener(l);
     }
-
+    
     /**
      * Allows to enable/disable the buttons.
+     * 
+     * @param b 
      */
     @Override
     public void setEnabled(boolean b) {

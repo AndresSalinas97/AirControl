@@ -82,10 +82,7 @@ public final class Temperature {
 
                 return (oneDecimalFormat.format(c_value) + " ºC");
             case FAHRENHEIT:
-                DecimalFormat noDecimalFormat = new DecimalFormat("#");
-                double f_value = getTemperature(TempUnit.FAHRENHEIT);
-
-                return (noDecimalFormat.format(f_value) + " ºF");
+                return ((int)getTemperature(TempUnit.FAHRENHEIT) + " ºF");
             default:
                 throw new UnsupportedOperationException();
         }

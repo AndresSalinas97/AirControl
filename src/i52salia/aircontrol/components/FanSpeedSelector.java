@@ -87,6 +87,8 @@ public final class FanSpeedSelector extends javax.swing.JPanel {
             case AUTO:
                 autoButton.setSelected(true);
                 break;
+            default:
+                throw new UnsupportedOperationException();
         }
     }
 

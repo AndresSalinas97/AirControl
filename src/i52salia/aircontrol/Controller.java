@@ -10,6 +10,7 @@ import i52salia.aircontrol.utils.AirConditioner;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 
 /**
@@ -84,7 +85,11 @@ public final class Controller {
             selectedDevice.setTurnedOn(!selectedDevice.isTurnedOn());
         });
 
-        // TODO: Add listener to setpointTemperatureSelector
+        hp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
+            selectedDevice.setSetpointTemp(
+                    hp.setpointTemperatureSelector.getTemperature());
+        });
+
         hp.modeButtons.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setMode(hp.modeButtons.getSelectedMode());
         });
@@ -199,31 +204,34 @@ public final class Controller {
     }
 
     private void openSelectedDevice() {
-        AirConditioner device = selectedDevice;
         HomePanel hp = view.getHomePanel();
 
         hp.deviceListMainPanel.setVisible(false);
         hp.deviceSettingsMainPanel.setVisible(true);
 
-        hp.onOffButton.setTurnedOn(device.isTurnedOn());
+        hp.onOffButton.setTurnedOn(selectedDevice.isTurnedOn());
 
         hp.currentTempLabel.setText(
-                device.getCurrentTemp().getString(model.getTempUnit()));
+                selectedDevice.getCurrentTemp().getString(model.getTempUnit()));
 
-        // TODO: Fill setpointTemperatureSelector
-        hp.modeButtons.setSelectedMode(device.getMode());
+        hp.setpointTemperatureSelector.setTemperature(selectedDevice.getSetpointTemp());
 
-        hp.fanSpeedSelector.setSelectedFanSpeed(device.getFanSpeed());
+        hp.modeButtons.setSelectedMode(selectedDevice.getMode());
 
-        view.titleLabel.setText(device.getGivenName());
+        hp.fanSpeedSelector.setSelectedFanSpeed(selectedDevice.getFanSpeed());
+
+        view.titleLabel.setText(selectedDevice.getGivenName());
     }
 
     private void reloadProgramList() {
-        view.getProgrammingPanel().programListPanel.removeAll();
+        JPanel listPanel = view.getProgrammingPanel().programListPanel;
+
+        listPanel.removeAll();
 
         model.getDevices().stream().forEach((device) -> {
             device.getPrograms().stream().map((program) -> {
                 ProgramListItem newDeviceComponent = new ProgramListItem();
+                
                 newDeviceComponent.nameLabel.setText(device.getGivenName());
                 newDeviceComponent.toggleButton.setToggledOn(program.isEnabled());
                 newDeviceComponent.daysLabel.setText(
@@ -234,6 +242,7 @@ public final class Controller {
                         program.getSetpointTemp().getString(model.getTempUnit()));
                 newDeviceComponent.modeLabel.setText(program.getModeString());
                 newDeviceComponent.fanSpeedLabel.setText(program.getFanSpeedString());
+                
                 newDeviceComponent.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
@@ -245,29 +254,29 @@ public final class Controller {
                 newDeviceComponent.toggleButton.addActionListener((ActionEvent e) -> {
                     program.setEnabled(!program.isEnabled());
                 });
+                
                 return newDeviceComponent;
             }).forEach((newDeviceComponent) -> {
-                view.getProgrammingPanel().programListPanel.add(newDeviceComponent);
+                listPanel.add(newDeviceComponent);
             });
         });
 
-        view.getProgrammingPanel().programListPanel.revalidate();
-        view.getProgrammingPanel().programListPanel.repaint();
+        listPanel.revalidate();
+        listPanel.repaint();
     }
 
     // TODO
     private void openSelectedProgram() {
-        AirConditioner device = selectedDevice;
-        ACProgram program = selectedProgram;
+        ProgrammingPanel pp = view.getProgrammingPanel();
 
-        view.titleLabel.setText(device.getGivenName() + " Program");
+        view.titleLabel.setText(selectedDevice.getGivenName() + " Program");
 
-        view.getProgrammingPanel().programListMainPanel.setVisible(false);
-        view.getProgrammingPanel().programSettingsMainPanel.setVisible(true);
+        pp.programListMainPanel.setVisible(false);
+        pp.programSettingsMainPanel.setVisible(true);
 
-        view.getProgrammingPanel().deviceLabel.setText(device.getGivenName());
+        pp.deviceLabel.setText(selectedDevice.getGivenName());
 
-        view.getProgrammingPanel().toggleButton.setToggledOn(program.isEnabled());
+        pp.toggleButton.setToggledOn(selectedProgram.isEnabled());
     }
 
     // TODO
@@ -275,9 +284,11 @@ public final class Controller {
 
     }
 
-    // TODO
     private void switchTemperatureUnit() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
 
+        view.getHomePanel().setpointTemperatureSelector.setUnit(model.getTempUnit());
+        pp.setpointTemperatureSelector.setUnit(model.getTempUnit());
     }
 
     // TODO

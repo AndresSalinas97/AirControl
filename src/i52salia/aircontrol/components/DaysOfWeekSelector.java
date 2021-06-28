@@ -10,12 +10,12 @@ package i52salia.aircontrol.components;
  *
  * TODO
  */
-public final class DayOfWeekSelector extends javax.swing.JPanel {
+public final class DaysOfWeekSelector extends javax.swing.JPanel {
 
     /**
      * Creates and initializes the JPanel.
      */
-    public DayOfWeekSelector() {
+    public DaysOfWeekSelector() {
         initComponents();
     }
 
