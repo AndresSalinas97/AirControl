@@ -26,7 +26,7 @@ public final class Model {
         devices = new ArrayList<>();
 
         tempUnit = Temperature.TempUnit.CELSIUS;
-        timeFormat = Time.TimeFormat.TF24HOUR;
+        timeFormat = Time.TimeFormat.TF12HOUR;
 
         addExampleDevices();
         addExamplePrograms();

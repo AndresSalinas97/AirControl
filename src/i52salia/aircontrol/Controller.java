@@ -84,6 +84,8 @@ public final class Controller {
         hp.onOffButton.addActionListener((ActionEvent e) -> {
             selectedDevice.setTurnedOn(!selectedDevice.isTurnedOn());
         });
+        
+        // TODO: Add listener to setpointTemperatureSelector
 
         hp.modeButtons.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setMode(hp.modeButtons.getSelectedMode());
@@ -104,6 +106,15 @@ public final class Controller {
         pp.toggleButton.addActionListener((ActionEvent e) -> {
             selectedProgram.setEnabled(!selectedProgram.isEnabled());
         });
+
+        pp.timeFrameSelector.addChangeListener((ChangeEvent e) -> {
+            selectedProgram.setTimeFrame(pp.timeFrameSelector.getTimeFrame());
+        });
+        pp.timeFrameSelector.addActionListener((ActionEvent e) -> {
+            selectedProgram.setTimeFrame(pp.timeFrameSelector.getTimeFrame());
+        });
+        
+        // TODO: Add listener to setpointTemperatureSelector
 
         pp.modeSelector.addChangeListener((ChangeEvent e) -> {
             selectedProgram.setMode(pp.modeSelector.getSelectedMode());
@@ -287,9 +298,8 @@ public final class Controller {
 
         pp.setpointTemperatureSelector.setTemperature(selectedProgram.getSetpointTemp());
 
-        // TODO
-        //pp.timeFrameSelector.setTimeFrame(selectedProgram.getTimeFrame());
-        
+        pp.timeFrameSelector.setTimeFrame(selectedProgram.getTimeFrame());
+
         pp.modeSelector.setSelectedMode(selectedProgram.getMode());
 
         pp.fanSpeedSelector.setSelectedFanSpeed(selectedProgram.getFanSpeed());
@@ -301,14 +311,11 @@ public final class Controller {
     }
 
     private void switchTemperatureUnit() {
-        ProgrammingPanel pp = view.getProgrammingPanel();
-
         view.getHomePanel().setpointTemperatureSelector.setUnit(model.getTempUnit());
-        pp.setpointTemperatureSelector.setUnit(model.getTempUnit());
+        view.getProgrammingPanel().setpointTemperatureSelector.setUnit(model.getTempUnit());
     }
 
-    // TODO
     private void switchTimeFormat() {
-
+        view.getProgrammingPanel().timeFrameSelector.setTimeFormat(model.getTimeFormat());
     }
 }

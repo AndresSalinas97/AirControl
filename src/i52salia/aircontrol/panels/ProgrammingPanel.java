@@ -199,7 +199,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private javax.swing.JPanel setPointTempPanel;
     public i52salia.aircontrol.components.SetpointTemperatureSelector setpointTemperatureSelector;
     private javax.swing.JPanel timeFramePanel;
-    private i52salia.aircontrol.components.TimeFrameSelector timeFrameSelector;
+    public i52salia.aircontrol.components.TimeFrameSelector timeFrameSelector;
     public i52salia.aircontrol.components.ToggleButton toggleButton;
     // End of variables declaration//GEN-END:variables
 }

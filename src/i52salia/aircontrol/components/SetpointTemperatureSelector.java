@@ -33,7 +33,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
 
     /**
      * Sets the temperature shown by the spinner.
-     * 
+     *
      * @param temperature
      */
     public void setTemperature(Temperature temperature) {
@@ -53,7 +53,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
 
     /**
      * Adapts the spinners to the desired temperature unit.
-     * 
+     *
      * @param tempUnit
      */
     public void setUnit(Temperature.TempUnit tempUnit) {
@@ -82,7 +82,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
 
     /**
      * Adds a changeListener to all the spinners.
-     * 
+     *
      * @param l
      */
     public void addChangeListener(ChangeListener l) {
@@ -92,8 +92,8 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
 
     /**
      * Allows to enable/disable the spinners.
-     * 
-     * @param b 
+     *
+     * @param b
      */
     @Override
     public void setEnabled(boolean b) {
