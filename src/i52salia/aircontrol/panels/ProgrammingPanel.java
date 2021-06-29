@@ -32,7 +32,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         programListMainPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        programListScrollPane = new javax.swing.JScrollPane();
         programListPanel = new javax.swing.JPanel();
         programListButtonsPanel = new javax.swing.JPanel();
         addProgramButton = new javax.swing.JButton();
@@ -44,20 +44,20 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         deleteProgramButton = new javax.swing.JButton();
         programSettingsButtonsPanel3 = new javax.swing.JPanel();
         cancelChangesButton = new javax.swing.JButton();
-        invisibleSeparator = new javax.swing.JSeparator();
+        invisibleSeparator3 = new javax.swing.JSeparator();
         saveChangesButton = new javax.swing.JButton();
         newProgramStep1MainPanel = new javax.swing.JPanel();
         newProgramStep1Panel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        selectDeviceLabel = new javax.swing.JLabel();
+        newProgramStep1ScrollPane = new javax.swing.JScrollPane();
+        devicesList = new javax.swing.JList();
         newProgramStep1ButtonsPanel = new javax.swing.JPanel();
         programSettingsButtonsPanel6 = new javax.swing.JPanel();
         cancelStep1Button = new javax.swing.JButton();
         invisibleSeparator2 = new javax.swing.JSeparator();
         nextStepButton = new javax.swing.JButton();
         newProgramStep2MainPanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        newProgramStep2ScrollPane = new javax.swing.JScrollPane();
         newProgramComponent = new i52salia.aircontrol.components.ProgramSettingsComponent();
         newProgramStep2ButtonsPanel = new javax.swing.JPanel();
         programSettingsButtonsPanel5 = new javax.swing.JPanel();
@@ -69,12 +69,12 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         programListMainPanel.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setBorder(null);
+        programListScrollPane.setBorder(null);
 
         programListPanel.setLayout(new javax.swing.BoxLayout(programListPanel, javax.swing.BoxLayout.Y_AXIS));
-        jScrollPane1.setViewportView(programListPanel);
+        programListScrollPane.setViewportView(programListPanel);
 
-        programListMainPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        programListMainPanel.add(programListScrollPane, java.awt.BorderLayout.CENTER);
 
         programListButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -110,10 +110,10 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         cancelChangesButton.setText("Cancel");
         programSettingsButtonsPanel3.add(cancelChangesButton);
 
-        invisibleSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        invisibleSeparator.setBorder(null);
-        invisibleSeparator.setPreferredSize(new java.awt.Dimension(25, 0));
-        programSettingsButtonsPanel3.add(invisibleSeparator);
+        invisibleSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        invisibleSeparator3.setBorder(null);
+        invisibleSeparator3.setPreferredSize(new java.awt.Dimension(25, 0));
+        programSettingsButtonsPanel3.add(invisibleSeparator3);
 
         saveChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
         saveChangesButton.setText("Save");
@@ -127,19 +127,15 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
 
         newProgramStep1MainPanel.setLayout(new java.awt.BorderLayout());
 
-        newProgramStep1Panel.setLayout(new java.awt.BorderLayout());
+        newProgramStep1Panel.setLayout(new java.awt.BorderLayout(0, 5));
 
-        jLabel1.setText("Choose a device:");
-        newProgramStep1Panel.add(jLabel1, java.awt.BorderLayout.NORTH);
+        selectDeviceLabel.setText("Choose a device:");
+        newProgramStep1Panel.add(selectDeviceLabel, java.awt.BorderLayout.NORTH);
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList1);
+        devicesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        newProgramStep1ScrollPane.setViewportView(devicesList);
 
-        newProgramStep1Panel.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+        newProgramStep1Panel.add(newProgramStep1ScrollPane, java.awt.BorderLayout.CENTER);
 
         newProgramStep1MainPanel.add(newProgramStep1Panel, java.awt.BorderLayout.CENTER);
 
@@ -170,10 +166,10 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         newProgramStep2MainPanel.setEnabled(false);
         newProgramStep2MainPanel.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane3.setBorder(null);
-        jScrollPane3.setViewportView(newProgramComponent);
+        newProgramStep2ScrollPane.setBorder(null);
+        newProgramStep2ScrollPane.setViewportView(newProgramComponent);
 
-        newProgramStep2MainPanel.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+        newProgramStep2MainPanel.add(newProgramStep2ScrollPane, java.awt.BorderLayout.CENTER);
 
         newProgramStep2ButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         newProgramStep2ButtonsPanel.setLayout(new javax.swing.BoxLayout(newProgramStep2ButtonsPanel, javax.swing.BoxLayout.Y_AXIS));
@@ -206,24 +202,23 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     public javax.swing.JButton cancelChangesButton;
     public javax.swing.JButton cancelStep1Button;
     public javax.swing.JButton deleteProgramButton;
-    private javax.swing.JSeparator invisibleSeparator;
+    public javax.swing.JList devicesList;
     private javax.swing.JSeparator invisibleSeparator1;
     private javax.swing.JSeparator invisibleSeparator2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator invisibleSeparator3;
     public i52salia.aircontrol.components.ProgramSettingsComponent newProgramComponent;
     private javax.swing.JPanel newProgramStep1ButtonsPanel;
     public javax.swing.JPanel newProgramStep1MainPanel;
     private javax.swing.JPanel newProgramStep1Panel;
+    private javax.swing.JScrollPane newProgramStep1ScrollPane;
     private javax.swing.JPanel newProgramStep2ButtonsPanel;
     public javax.swing.JPanel newProgramStep2MainPanel;
+    private javax.swing.JScrollPane newProgramStep2ScrollPane;
     public javax.swing.JButton nextStepButton;
     private javax.swing.JPanel programListButtonsPanel;
     public javax.swing.JPanel programListMainPanel;
     public javax.swing.JPanel programListPanel;
+    private javax.swing.JScrollPane programListScrollPane;
     private javax.swing.JPanel programSettingsButtonsPanel;
     private javax.swing.JPanel programSettingsButtonsPanel2;
     private javax.swing.JPanel programSettingsButtonsPanel3;
@@ -234,5 +229,6 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane programSettingsScrollPane;
     public javax.swing.JButton saveChangesButton;
     public javax.swing.JButton saveNewProgramButton;
+    private javax.swing.JLabel selectDeviceLabel;
     // End of variables declaration//GEN-END:variables
 }

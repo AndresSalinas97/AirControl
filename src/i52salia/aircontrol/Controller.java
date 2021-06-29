@@ -10,6 +10,7 @@ import i52salia.aircontrol.utils.AirConditioner;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 
@@ -107,7 +108,7 @@ public final class Controller {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
         pp.addProgramButton.addActionListener((ActionEvent e) -> {
-            switchToNewProgramStep1();
+            addNewProgramStep1();
         });
 
         pp.cancelChangesButton.addActionListener((ActionEvent e) -> {
@@ -122,10 +123,10 @@ public final class Controller {
             selectedProgram.setSetpointTemp(modifiedProgram.getSetpointTemp());
             selectedProgram.setMode(modifiedProgram.getMode());
             selectedProgram.setFanSpeed(modifiedProgram.getFanSpeed());
-            
+
             switchToProgrammingTab();
         });
-        
+
         pp.deleteProgramButton.addActionListener((ActionEvent e) -> {
             confirmSelectedProgramDeletion();
         });
@@ -135,11 +136,15 @@ public final class Controller {
         });
 
         pp.nextStepButton.addActionListener((ActionEvent e) -> {
-            switchToNewProgramStep2();
+            addNewProgramStep2();
         });
 
         pp.backToStep1Button.addActionListener((ActionEvent e) -> {
-            switchToNewProgramStep1();
+            addNewProgramStep1();
+        });
+
+        pp.saveNewProgramButton.addActionListener((ActionEvent e) -> {
+            addNewProgramStep3();
         });
     }
 
@@ -158,8 +163,7 @@ public final class Controller {
         view.getProgrammingPanel().setVisible(false);
         view.getHomePanel().setVisible(true);
         view.getSettingsPanel().setVisible(false);
-        
-        
+
         // Set tab title
         view.titleLabel.setText("Home");
     }
@@ -176,41 +180,72 @@ public final class Controller {
         view.getProgrammingPanel().setVisible(true);
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(false);
-        
+
         // Set tab title
         view.titleLabel.setText("Programming");
     }
 
-    private void switchToNewProgramStep1() {
-        // Prepare programming tab
-        view.getProgrammingPanel().programListMainPanel.setVisible(false);
-        view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
-        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(true);
-        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(false);
+    private void addNewProgramStep1() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
 
-        // Switch to programming tab
-        view.getProgrammingPanel().setVisible(true);
+        // Fill the devices list
+        DefaultListModel devicesListModel = new DefaultListModel();
+        model.getDevices().stream().forEach((device) -> {
+            devicesListModel.addElement(device.getGivenName());
+        });
+        pp.devicesList.setModel(devicesListModel);
+
+        // Show the right panel
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(false);
-        
+        pp.setVisible(true);
+        pp.programListMainPanel.setVisible(false);
+        pp.programSettingsMainPanel.setVisible(false);
+        pp.newProgramStep1MainPanel.setVisible(true);
+        pp.newProgramStep2MainPanel.setVisible(false);
+
         // Set tab title
         view.titleLabel.setText("New Program");
     }
 
-    private void switchToNewProgramStep2() {
-        // Prepare programming tab
-        view.getProgrammingPanel().programListMainPanel.setVisible(false);
-        view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
-        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(false);
-        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(true);
+    private void addNewProgramStep2() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
 
-        // Switch to programming tab
-        view.getProgrammingPanel().setVisible(true);
+        // Check if a device has been selected
+        int selectedDeviceIndex = pp.devicesList.getSelectedIndex();
+        if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
+            // TODO: Show warning window
+            return;
+        }
+
+        // Get the selected device
+        selectedDevice = model.getDevices().get(selectedDeviceIndex);
+
+        // Fill the newProgramComponent
+        pp.newProgramComponent.setSelectedDeviceName(selectedDevice.getGivenName());
+        pp.newProgramComponent.setSelectedProgram(new ACProgram());
+
+        // Show the right panel
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(false);
-        
+        pp.setVisible(true);
+        pp.programListMainPanel.setVisible(false);
+        pp.programSettingsMainPanel.setVisible(false);
+        pp.newProgramStep1MainPanel.setVisible(false);
+        pp.newProgramStep2MainPanel.setVisible(true);
+
         // Set tab title
         view.titleLabel.setText("New Program");
+    }
+
+    private void addNewProgramStep3() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
+
+        ACProgram newProgram = pp.newProgramComponent.getSelectedProgram();
+        
+        selectedDevice.getPrograms().add(newProgram);
+        
+        switchToProgrammingTab();
     }
 
     private void switchToSettingsTab() {
@@ -218,8 +253,7 @@ public final class Controller {
         view.getProgrammingPanel().setVisible(false);
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(true);
-        
-        
+
         // Set tab title
         view.titleLabel.setText("Settings");
     }
@@ -341,7 +375,7 @@ public final class Controller {
     private void openSelectedProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
-        view.titleLabel.setText(selectedDevice.getGivenName() + " Program");
+        view.titleLabel.setText("Program");
 
         pp.programListMainPanel.setVisible(false);
         pp.programSettingsMainPanel.setVisible(true);
@@ -349,15 +383,15 @@ public final class Controller {
         pp.programSettingsComponent.setSelectedDeviceName(selectedDevice.getGivenName());
         pp.programSettingsComponent.setSelectedProgram(selectedProgram);
     }
-    
+
     private void confirmSelectedProgramDeletion() {
         // TODO: Ask user to confirm
         deleteSelectedProgram();
     }
-    
+
     private void deleteSelectedProgram() {
         selectedDevice.getPrograms().remove(selectedProgram);
-        
+
         switchToProgrammingTab();
     }
 
@@ -373,7 +407,7 @@ public final class Controller {
                 model.getTempUnit());
         view.getProgrammingPanel().newProgramComponent.setTemperatureUnit(
                 model.getTempUnit());
-        
+
         reloadDeviceList();
         reloadProgramList();
     }
@@ -383,7 +417,7 @@ public final class Controller {
                 model.getTimeFormat());
         view.getProgrammingPanel().newProgramComponent.setTimeFormat(
                 model.getTimeFormat());
-        
+
         reloadDeviceList();
         reloadProgramList();
     }
