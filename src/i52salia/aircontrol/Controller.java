@@ -1,7 +1,7 @@
 package i52salia.aircontrol;
 
-import i52salia.aircontrol.components.DeviceListItem;
-import i52salia.aircontrol.components.ProgramListItem;
+import i52salia.aircontrol.components.DeviceListItemComponent;
+import i52salia.aircontrol.components.ProgramListItemComponent;
 import i52salia.aircontrol.panels.HomePanel;
 import i52salia.aircontrol.panels.ProgrammingPanel;
 import i52salia.aircontrol.panels.SettingsPanel;
@@ -141,36 +141,36 @@ public final class Controller {
     }
 
     private void switchToHomeTab() {
+        // Prepare home tab
         reloadDeviceList();
-
-        view.getProgrammingPanel().setVisible(false);
-        view.getHomePanel().setVisible(true);
-        view.getSettingsPanel().setVisible(false);
-
         view.getHomePanel().deviceListMainPanel.setVisible(true);
         view.getHomePanel().deviceSettingsMainPanel.setVisible(false);
 
+        // Switch to home tab
+        view.getProgrammingPanel().setVisible(false);
+        view.getHomePanel().setVisible(true);
+        view.getSettingsPanel().setVisible(false);
         view.titleLabel.setText("Home");
     }
 
     private void switchToProgrammingTab() {
+        // Prepare programming tab
         reloadProgramList();
-
-        view.getProgrammingPanel().setVisible(true);
-        view.getHomePanel().setVisible(false);
-        view.getSettingsPanel().setVisible(false);
-
         view.getProgrammingPanel().programListMainPanel.setVisible(true);
         view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
 
+        // Switch to programming tab
+        view.getProgrammingPanel().setVisible(true);
+        view.getHomePanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
         view.titleLabel.setText("Programming");
     }
 
     private void switchToSettingsTab() {
+        // Switch to settings tab
         view.getProgrammingPanel().setVisible(false);
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(true);
-
         view.titleLabel.setText("Settings");
     }
 
@@ -180,7 +180,7 @@ public final class Controller {
         listPanel.removeAll();
 
         model.getDevices().stream().map((device) -> {
-            DeviceListItem newDeviceComponent = new DeviceListItem();
+            DeviceListItemComponent newDeviceComponent = new DeviceListItemComponent();
             newDeviceComponent.nameLabel.setText(device.getGivenName());
             if (device.isTurnedOn()) {
                 // Make ON panel visible
@@ -253,7 +253,7 @@ public final class Controller {
 
         model.getDevices().stream().forEach((device) -> {
             device.getPrograms().stream().map((program) -> {
-                ProgramListItem newDeviceComponent = new ProgramListItem();
+                ProgramListItemComponent newDeviceComponent = new ProgramListItemComponent();
 
                 newDeviceComponent.nameLabel.setText(device.getGivenName());
                 newDeviceComponent.toggleButton.setToggledOn(program.isEnabled());
