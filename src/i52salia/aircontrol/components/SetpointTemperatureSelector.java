@@ -20,7 +20,9 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
     public SetpointTemperatureSelector() {
         initComponents();
 
-        tempUnit = Temperature.TempUnit.CELSIUS; // To avoid null pointer exceptions
+        // To avoid null pointer exceptions
+        tempUnit = Temperature.TempUnit.CELSIUS; 
+        setTemperatureUnit(tempUnit);
     }
 
     /**
@@ -46,7 +48,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
      *
      * @param tempUnit
      */
-    public void setUnit(Temperature.TempUnit tempUnit) {
+    public void setTemperatureUnit(Temperature.TempUnit tempUnit) {
         this.tempUnit = tempUnit;
 
         switch (tempUnit) {

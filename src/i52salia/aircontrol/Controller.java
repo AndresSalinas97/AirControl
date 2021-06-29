@@ -317,9 +317,9 @@ public final class Controller {
     }
 
     private void switchTemperatureUnit() {
-        view.getHomePanel().setpointTemperatureSelector.setUnit(
+        view.getHomePanel().setpointTemperatureSelector.setTemperatureUnit(
                 model.getTempUnit());
-        view.getProgrammingPanel().setpointTemperatureSelector.setUnit(
+        view.getProgrammingPanel().setpointTemperatureSelector.setTemperatureUnit(
                 model.getTempUnit());
     }
 

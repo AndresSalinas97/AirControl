@@ -21,8 +21,10 @@ public final class TimeFrameSelector extends javax.swing.JPanel {
      */
     public TimeFrameSelector() {
         initComponents();
-        
-        timeFormat = Time.TimeFormat.TF24HOUR; // To avoid null pointer exceptions
+       
+        // To avoid null pointer exceptions
+        timeFormat = Time.TimeFormat.TF24HOUR;
+        setTimeFormat(timeFormat);
     }
 
     /**
