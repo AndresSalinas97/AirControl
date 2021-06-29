@@ -169,24 +169,15 @@ public final class Time {
 
         switch (tf) {
             case TF24HOUR:
-
                 str += get24Hour();
                 str += ":";
-                if (getMinute() == 0) {
-                    str += "00";
-                } else {
-                    str += getMinute();
-                }
+                str += String.format("%02d", getMinute()); // Always two digits
 
                 return str;
             case TF12HOUR:
                 str += get12Hour();
                 str += ":";
-                if (getMinute() == 0) {
-                    str += "00";
-                } else {
-                    str += getMinute();
-                }
+                str += String.format("%02d", getMinute()); // Always two digits
                 str += " ";
                 str += getDayPeriod();
 
