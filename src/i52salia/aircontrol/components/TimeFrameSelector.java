@@ -30,7 +30,7 @@ public final class TimeFrameSelector extends javax.swing.JPanel {
     /**
      * @return the time frame selected by the user.
      */
-    public TimeFrame getTimeFrame() {
+    public TimeFrame getSelectedTimeFrame() {
         int startHour, startMinute, endHour, endMinute;
         Time.DayPeriod startDayPeriod, endDayPeriod;
         Time startTime, endTime;

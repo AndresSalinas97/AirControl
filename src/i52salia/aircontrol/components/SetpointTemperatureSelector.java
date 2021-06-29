@@ -68,7 +68,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
     /**
      * @return the temperature selected on the spinners
      */
-    public Temperature getTemperature() {
+    public Temperature getSelectedTemperature() {
         switch (tempUnit) {
             case CELSIUS:
                 return new Temperature(

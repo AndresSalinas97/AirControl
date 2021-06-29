@@ -87,7 +87,7 @@ public final class Controller {
 
         hp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setSetpointTemp(
-                    hp.setpointTemperatureSelector.getTemperature());
+                    hp.setpointTemperatureSelector.getSelectedTemperature());
         });
 
         hp.modeButtons.addChangeListener((ChangeEvent e) -> {
@@ -111,15 +111,15 @@ public final class Controller {
         });
 
         pp.timeFrameSelector.addChangeListener((ChangeEvent e) -> {
-            selectedProgram.setTimeFrame(pp.timeFrameSelector.getTimeFrame());
+            selectedProgram.setTimeFrame(pp.timeFrameSelector.getSelectedTimeFrame());
         });
         pp.timeFrameSelector.addActionListener((ActionEvent e) -> {
-            selectedProgram.setTimeFrame(pp.timeFrameSelector.getTimeFrame());
+            selectedProgram.setTimeFrame(pp.timeFrameSelector.getSelectedTimeFrame());
         });
 
         pp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
             selectedProgram.setSetpointTemp(
-                    pp.setpointTemperatureSelector.getTemperature());
+                    pp.setpointTemperatureSelector.getSelectedTemperature());
         });
 
         pp.modeSelector.addChangeListener((ChangeEvent e) -> {
