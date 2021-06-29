@@ -84,8 +84,11 @@ public final class Controller {
         hp.onOffButton.addActionListener((ActionEvent e) -> {
             selectedDevice.setTurnedOn(!selectedDevice.isTurnedOn());
         });
-        
-        // TODO: Add listener to setpointTemperatureSelector
+
+        hp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
+            selectedDevice.setSetpointTemp(
+                    hp.setpointTemperatureSelector.getTemperature());
+        });
 
         hp.modeButtons.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setMode(hp.modeButtons.getSelectedMode());
@@ -113,8 +116,11 @@ public final class Controller {
         pp.timeFrameSelector.addActionListener((ActionEvent e) -> {
             selectedProgram.setTimeFrame(pp.timeFrameSelector.getTimeFrame());
         });
-        
-        // TODO: Add listener to setpointTemperatureSelector
+
+        pp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
+            selectedProgram.setSetpointTemp(
+                    pp.setpointTemperatureSelector.getTemperature());
+        });
 
         pp.modeSelector.addChangeListener((ChangeEvent e) -> {
             selectedProgram.setMode(pp.modeSelector.getSelectedMode());
@@ -311,11 +317,14 @@ public final class Controller {
     }
 
     private void switchTemperatureUnit() {
-        view.getHomePanel().setpointTemperatureSelector.setUnit(model.getTempUnit());
-        view.getProgrammingPanel().setpointTemperatureSelector.setUnit(model.getTempUnit());
+        view.getHomePanel().setpointTemperatureSelector.setUnit(
+                model.getTempUnit());
+        view.getProgrammingPanel().setpointTemperatureSelector.setUnit(
+                model.getTempUnit());
     }
 
     private void switchTimeFormat() {
-        view.getProgrammingPanel().timeFrameSelector.setTimeFormat(model.getTimeFormat());
+        view.getProgrammingPanel().timeFrameSelector.setTimeFormat(
+                model.getTimeFormat());
     }
 }

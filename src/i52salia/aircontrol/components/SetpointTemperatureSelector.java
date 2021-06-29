@@ -1,7 +1,6 @@
 package i52salia.aircontrol.components;
 
 import i52salia.aircontrol.utils.Temperature;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
@@ -13,7 +12,6 @@ import javax.swing.event.ChangeListener;
  */
 public final class SetpointTemperatureSelector extends javax.swing.JPanel {
 
-    private Temperature temperature;
     private Temperature.TempUnit tempUnit;
 
     /**
@@ -22,13 +20,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
     public SetpointTemperatureSelector() {
         initComponents();
 
-        // Initialize members randomly to avoid null pointer exceptions
-        temperature = new Temperature(21, Temperature.TempUnit.CELSIUS);
-        tempUnit = Temperature.TempUnit.CELSIUS;
-
-        addChangeListener((ChangeEvent e) -> {
-            updateTemperatureMember();
-        });
+        tempUnit = Temperature.TempUnit.CELSIUS; // To avoid null pointer exceptions
     }
 
     /**
@@ -37,8 +29,6 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
      * @param temperature
      */
     public void setTemperature(Temperature temperature) {
-        this.temperature = temperature;
-
         switch (tempUnit) {
             case CELSIUS:
                 celsiusSpinner.setValue(temperature.getTemperature(tempUnit));
@@ -77,7 +67,16 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
      * @return the temperature selected on the spinners
      */
     public Temperature getTemperature() {
-        return temperature;
+        switch (tempUnit) {
+            case CELSIUS:
+                return new Temperature(
+                        (double) celsiusSpinner.getValue(), tempUnit);
+            case FAHRENHEIT:
+                return new Temperature(
+                        (double) (int) fahrenheitSpinner.getValue(), tempUnit);
+            default:
+                throw new UnsupportedOperationException();
+        }
     }
 
     /**
@@ -101,21 +100,6 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
         fahrenheitSpinner.setEnabled(b);
         celsiusLabel.setEnabled(b);
         fahrenheitLabel.setEnabled(b);
-    }
-
-    private void updateTemperatureMember() {
-        switch (tempUnit) {
-            case CELSIUS:
-                temperature.setTemperature(
-                        (double) celsiusSpinner.getValue(), tempUnit);
-                break;
-            case FAHRENHEIT:
-                temperature.setTemperature(
-                        (double) (int) fahrenheitSpinner.getValue(), tempUnit);
-                break;
-            default:
-                throw new UnsupportedOperationException();
-        }
     }
 
     /**
