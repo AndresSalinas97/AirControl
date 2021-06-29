@@ -24,19 +24,121 @@ public final class SettingsPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
+        appSettingsLabel = new javax.swing.JLabel();
+        LanguageLabel = new javax.swing.JLabel();
+        languageComboBox = new javax.swing.JComboBox();
+        tempUnitLabel = new javax.swing.JLabel();
+        tempUnitComboBox = new javax.swing.JComboBox();
+        timeFormatLabel = new javax.swing.JLabel();
+        timeFormatComboBox = new javax.swing.JComboBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        devicesLabel = new javax.swing.JLabel();
+        devicesScrollPane = new javax.swing.JScrollPane();
+        devicesList = new javax.swing.JList();
+
+        java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
+        jPanel1Layout.columnWidths = new int[] {200, 200};
+        jPanel1Layout.rowHeights = new int[] {50, 50, 50, 50, 20, 50, 50};
+        jPanel1Layout.columnWeights = new double[] {1.0, 1.0};
+        jPanel1.setLayout(jPanel1Layout);
+
+        appSettingsLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        appSettingsLabel.setText("App Settings");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(appSettingsLabel, gridBagConstraints);
+
+        LanguageLabel.setText("Language");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(LanguageLabel, gridBagConstraints);
+
+        languageComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Spanish" }));
+        languageComboBox.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(languageComboBox, gridBagConstraints);
+
+        tempUnitLabel.setText("Temperature Unit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(tempUnitLabel, gridBagConstraints);
+
+        tempUnitComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Celsius", "Fahrenheit" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(tempUnitComboBox, gridBagConstraints);
+
+        timeFormatLabel.setText("Time Format");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(timeFormatLabel, gridBagConstraints);
+
+        timeFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-hour clock", "12-hour clock" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(timeFormatComboBox, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jSeparator1, gridBagConstraints);
+
+        devicesLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        devicesLabel.setText("Devices");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        jPanel1.add(devicesLabel, gridBagConstraints);
+
+        devicesList.setEnabled(false);
+        devicesScrollPane.setViewportView(devicesList);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(devicesScrollPane, gridBagConstraints);
+
+        add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LanguageLabel;
+    private javax.swing.JLabel appSettingsLabel;
+    private javax.swing.JLabel devicesLabel;
+    public javax.swing.JList devicesList;
+    private javax.swing.JScrollPane devicesScrollPane;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    public javax.swing.JComboBox languageComboBox;
+    public javax.swing.JComboBox tempUnitComboBox;
+    private javax.swing.JLabel tempUnitLabel;
+    public javax.swing.JComboBox timeFormatComboBox;
+    private javax.swing.JLabel timeFormatLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,8 @@ import i52salia.aircontrol.panels.ProgrammingPanel;
 import i52salia.aircontrol.panels.SettingsPanel;
 import i52salia.aircontrol.utils.ACProgram;
 import i52salia.aircontrol.utils.AirConditioner;
+import i52salia.aircontrol.utils.Temperature;
+import i52salia.aircontrol.utils.Time;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -148,9 +150,28 @@ public final class Controller {
         });
     }
 
-    // TODO
     private void initSettingsPanelController() {
         SettingsPanel sp = view.getSettingsPanel();
+
+        sp.tempUnitComboBox.addActionListener((ActionEvent e) -> {
+            if (sp.tempUnitComboBox.getSelectedIndex() == 0) {
+                model.setTempUnit(Temperature.TempUnit.CELSIUS);
+            } else if (sp.tempUnitComboBox.getSelectedIndex() == 1) {
+                model.setTempUnit(Temperature.TempUnit.FAHRENHEIT);
+            }
+
+            switchTemperatureUnit();
+        });
+
+        sp.timeFormatComboBox.addActionListener((ActionEvent e) -> {
+            if (sp.timeFormatComboBox.getSelectedIndex() == 0) {
+                model.setTimeFormat(Time.TimeFormat.TF24HOUR);
+            } else if (sp.timeFormatComboBox.getSelectedIndex() == 1) {
+                model.setTimeFormat(Time.TimeFormat.TF12HOUR);
+            }
+
+            switchTimeFormat();
+        });
     }
 
     private void switchToHomeTab() {
@@ -242,13 +263,22 @@ public final class Controller {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
         ACProgram newProgram = pp.newProgramComponent.getSelectedProgram();
-        
+
         selectedDevice.getPrograms().add(newProgram);
-        
+
         switchToProgrammingTab();
     }
 
     private void switchToSettingsTab() {
+        SettingsPanel sp = view.getSettingsPanel();
+
+        // Fill the devices list
+        DefaultListModel devicesListModel = new DefaultListModel();
+        model.getDevices().stream().forEach((device) -> {
+            devicesListModel.addElement(device.getGivenName());
+        });
+        sp.devicesList.setModel(devicesListModel);
+
         // Switch to settings tab
         view.getProgrammingPanel().setVisible(false);
         view.getHomePanel().setVisible(false);
