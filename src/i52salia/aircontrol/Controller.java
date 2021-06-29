@@ -106,7 +106,11 @@ public final class Controller {
     private void initProgrammingPanelController() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
-        pp.cancelButton.addActionListener((ActionEvent e) -> {
+        pp.addProgramButton.addActionListener((ActionEvent e) -> {
+            switchToNewProgramStep1();
+        });
+
+        pp.cancelChangesButton.addActionListener((ActionEvent e) -> {
             switchToProgrammingTab();
         });
 
@@ -125,6 +129,18 @@ public final class Controller {
         pp.deleteProgramButton.addActionListener((ActionEvent e) -> {
             confirmSelectedProgramDeletion();
         });
+
+        pp.cancelStep1Button.addActionListener((ActionEvent e) -> {
+            switchToProgrammingTab();
+        });
+
+        pp.nextStepButton.addActionListener((ActionEvent e) -> {
+            switchToNewProgramStep2();
+        });
+
+        pp.backToStep1Button.addActionListener((ActionEvent e) -> {
+            switchToNewProgramStep1();
+        });
     }
 
     // TODO
@@ -142,6 +158,9 @@ public final class Controller {
         view.getProgrammingPanel().setVisible(false);
         view.getHomePanel().setVisible(true);
         view.getSettingsPanel().setVisible(false);
+        
+        
+        // Set tab title
         view.titleLabel.setText("Home");
     }
 
@@ -150,12 +169,48 @@ public final class Controller {
         reloadProgramList();
         view.getProgrammingPanel().programListMainPanel.setVisible(true);
         view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(false);
 
         // Switch to programming tab
         view.getProgrammingPanel().setVisible(true);
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(false);
+        
+        // Set tab title
         view.titleLabel.setText("Programming");
+    }
+
+    private void switchToNewProgramStep1() {
+        // Prepare programming tab
+        view.getProgrammingPanel().programListMainPanel.setVisible(false);
+        view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(true);
+        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(false);
+
+        // Switch to programming tab
+        view.getProgrammingPanel().setVisible(true);
+        view.getHomePanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
+        
+        // Set tab title
+        view.titleLabel.setText("New Program");
+    }
+
+    private void switchToNewProgramStep2() {
+        // Prepare programming tab
+        view.getProgrammingPanel().programListMainPanel.setVisible(false);
+        view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(true);
+
+        // Switch to programming tab
+        view.getProgrammingPanel().setVisible(true);
+        view.getHomePanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
+        
+        // Set tab title
+        view.titleLabel.setText("New Program");
     }
 
     private void switchToSettingsTab() {
@@ -163,6 +218,9 @@ public final class Controller {
         view.getProgrammingPanel().setVisible(false);
         view.getHomePanel().setVisible(false);
         view.getSettingsPanel().setVisible(true);
+        
+        
+        // Set tab title
         view.titleLabel.setText("Settings");
     }
 
