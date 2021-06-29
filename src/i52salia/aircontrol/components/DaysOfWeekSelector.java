@@ -1,7 +1,6 @@
 package i52salia.aircontrol.components;
 
 import i52salia.aircontrol.utils.DaysOfWeekSelection;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -14,37 +13,33 @@ import java.awt.event.ActionListener;
  */
 public final class DaysOfWeekSelector extends javax.swing.JPanel {
 
-    private DaysOfWeekSelection daysOfWeekSelection;
-
     /**
      * Creates and initializes the JPanel.
      */
     public DaysOfWeekSelector() {
         initComponents();
-        
-        // Initialize member to avoid null pointer exceptions
-        daysOfWeekSelection = new DaysOfWeekSelection();
-        
-        addActionListener((ActionEvent e) -> {
-            updateSelectionMember();
-        });
     }
 
     /**
      * @return the selection represented by the current state of the buttons
      */
     public DaysOfWeekSelection getSelection() {
-        return daysOfWeekSelection;
+        return new DaysOfWeekSelection(
+                monButton.isSelected(),
+                tueButton.isSelected(),
+                wedButton.isSelected(),
+                thuButton.isSelected(),
+                friButton.isSelected(),
+                satButton.isSelected(),
+                sunButton.isSelected());
     }
 
     /**
      * Sets the selection that will be represented by the buttons.
-     * 
+     *
      * @param daysOfWeekSelection
      */
     public void setSelection(DaysOfWeekSelection daysOfWeekSelection) {
-        this.daysOfWeekSelection = daysOfWeekSelection;
-        
         monButton.setSelected(daysOfWeekSelection.isOnMondays());
         tueButton.setSelected(daysOfWeekSelection.isOnTuesdays());
         wedButton.setSelected(daysOfWeekSelection.isOnWednesdays());
@@ -56,7 +51,7 @@ public final class DaysOfWeekSelector extends javax.swing.JPanel {
 
     /**
      * Allows to add an ActionListener to all the buttons.
-     * 
+     *
      * @param l
      */
     public void addActionListener(ActionListener l) {
@@ -71,8 +66,8 @@ public final class DaysOfWeekSelector extends javax.swing.JPanel {
 
     /**
      * Allows to enable/disable all the buttons.
-     * 
-     * @param b 
+     *
+     * @param b
      */
     @Override
     public void setEnabled(boolean b) {
@@ -83,16 +78,6 @@ public final class DaysOfWeekSelector extends javax.swing.JPanel {
         friButton.setEnabled(b);
         satButton.setEnabled(b);
         sunButton.setEnabled(b);
-    }
-
-    private void updateSelectionMember() {
-        daysOfWeekSelection.setOnMondays(monButton.isSelected());
-        daysOfWeekSelection.setOnTuesdays(tueButton.isSelected());
-        daysOfWeekSelection.setOnWednesdays(wedButton.isSelected());
-        daysOfWeekSelection.setOnThursdays(thuButton.isSelected());
-        daysOfWeekSelection.setOnFridays(friButton.isSelected());
-        daysOfWeekSelection.setOnSaturdays(satButton.isSelected());
-        daysOfWeekSelection.setOnSundays(sunButton.isSelected());
     }
 
     /**
