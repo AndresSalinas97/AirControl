@@ -18,6 +18,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         // Hide subpanels
         programListMainPanel.setVisible(true);
         programSettingsMainPanel.setVisible(false);
+        newProgramStep2MainPanel.setVisible(false);
     }
 
     /**
@@ -30,45 +31,45 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         programListMainPanel = new javax.swing.JPanel();
-        programListScrollPane = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         programListPanel = new javax.swing.JPanel();
         programListButtonsPanel = new javax.swing.JPanel();
         addProgramButton = new javax.swing.JButton();
         programSettingsMainPanel = new javax.swing.JPanel();
-        programSettingsScrollPane = new javax.swing.JScrollPane();
-        programSettingsListPanel = new javax.swing.JPanel();
-        devicePanel = new javax.swing.JPanel();
-        deviceLabel = new javax.swing.JLabel();
-        StatusPanel = new javax.swing.JPanel();
-        toggleButton = new i52salia.aircontrol.components.ToggleButton();
-        daysOfWeekPanel = new javax.swing.JPanel();
-        daysOfWeekSelector = new i52salia.aircontrol.components.DaysOfWeekSelector();
-        timeFramePanel = new javax.swing.JPanel();
-        timeFrameSelector = new i52salia.aircontrol.components.TimeFrameSelector();
-        setPointTempPanel = new javax.swing.JPanel();
-        setpointTemperatureSelector = new i52salia.aircontrol.components.SetpointTemperatureSelector();
-        modePanel = new javax.swing.JPanel();
-        modeSelector = new i52salia.aircontrol.components.ModeSelector();
-        fanSpeedPanel = new javax.swing.JPanel();
-        fanSpeedSelector = new i52salia.aircontrol.components.FanSpeedSelector();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        programSettingsComponent = new i52salia.aircontrol.components.ProgramSettingsComponent();
         programSettingsButtonsPanel = new javax.swing.JPanel();
         programSettingsButtonsPanel2 = new javax.swing.JPanel();
-        deletteButton = new javax.swing.JButton();
+        deleteProgramButton = new javax.swing.JButton();
         programSettingsButtonsPanel3 = new javax.swing.JPanel();
         cancelButton = new javax.swing.JButton();
         invisibleSeparator = new javax.swing.JSeparator();
-        saveButton = new javax.swing.JButton();
+        saveChangesButton = new javax.swing.JButton();
+        newProgramStep1MainPanel = new javax.swing.JPanel();
+        newProgramStep1ButtonsPanel = new javax.swing.JPanel();
+        programSettingsButtonsPanel6 = new javax.swing.JPanel();
+        cancelButton2 = new javax.swing.JButton();
+        invisibleSeparator2 = new javax.swing.JSeparator();
+        saveNewProgramButton1 = new javax.swing.JButton();
+        newProgramStep2MainPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        newProgramComponent = new i52salia.aircontrol.components.ProgramSettingsComponent();
+        newProgramStep2ButtonsPanel = new javax.swing.JPanel();
+        programSettingsButtonsPanel5 = new javax.swing.JPanel();
+        backButton = new javax.swing.JButton();
+        invisibleSeparator1 = new javax.swing.JSeparator();
+        saveNewProgramButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.OverlayLayout(this));
 
         programListMainPanel.setLayout(new java.awt.BorderLayout());
 
-        programListScrollPane.setBorder(null);
+        jScrollPane1.setBorder(null);
 
         programListPanel.setLayout(new javax.swing.BoxLayout(programListPanel, javax.swing.BoxLayout.Y_AXIS));
-        programListScrollPane.setViewportView(programListPanel);
+        jScrollPane1.setViewportView(programListPanel);
 
-        programListMainPanel.add(programListScrollPane, java.awt.BorderLayout.CENTER);
+        programListMainPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         programListButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -84,67 +85,18 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsMainPanel.setEnabled(false);
         programSettingsMainPanel.setLayout(new java.awt.BorderLayout());
 
-        programSettingsScrollPane.setBorder(null);
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setViewportView(programSettingsComponent);
 
-        programSettingsListPanel.setLayout(new javax.swing.BoxLayout(programSettingsListPanel, javax.swing.BoxLayout.Y_AXIS));
-
-        devicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Device"));
-        devicePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-
-        deviceLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        deviceLabel.setText("jLabel2");
-        devicePanel.add(deviceLabel);
-
-        programSettingsListPanel.add(devicePanel);
-
-        StatusPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Status"));
-        StatusPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        StatusPanel.add(toggleButton);
-
-        programSettingsListPanel.add(StatusPanel);
-
-        daysOfWeekPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Days of the Week"));
-        daysOfWeekPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        daysOfWeekPanel.add(daysOfWeekSelector);
-
-        programSettingsListPanel.add(daysOfWeekPanel);
-
-        timeFramePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Time Frame"));
-        timeFramePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        timeFramePanel.add(timeFrameSelector);
-
-        programSettingsListPanel.add(timeFramePanel);
-
-        setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
-        setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        setPointTempPanel.add(setpointTemperatureSelector);
-
-        programSettingsListPanel.add(setPointTempPanel);
-
-        modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
-        modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        modePanel.add(modeSelector);
-
-        programSettingsListPanel.add(modePanel);
-
-        fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
-        fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
-        fanSpeedPanel.add(fanSpeedSelector);
-
-        programSettingsListPanel.add(fanSpeedPanel);
-
-        programSettingsScrollPane.setViewportView(programSettingsListPanel);
-
-        programSettingsMainPanel.add(programSettingsScrollPane, java.awt.BorderLayout.CENTER);
+        programSettingsMainPanel.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         programSettingsButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         programSettingsButtonsPanel.setLayout(new javax.swing.BoxLayout(programSettingsButtonsPanel, javax.swing.BoxLayout.Y_AXIS));
 
-        deletteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/delete-program-icon.png"))); // NOI18N
-        deletteButton.setText("Delete Program");
-        deletteButton.setEnabled(false);
-        deletteButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        programSettingsButtonsPanel2.add(deletteButton);
+        deleteProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/delete-program-icon.png"))); // NOI18N
+        deleteProgramButton.setText("Delete Program");
+        deleteProgramButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        programSettingsButtonsPanel2.add(deleteProgramButton);
 
         programSettingsButtonsPanel.add(programSettingsButtonsPanel2);
 
@@ -159,47 +111,104 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         invisibleSeparator.setPreferredSize(new java.awt.Dimension(25, 0));
         programSettingsButtonsPanel3.add(invisibleSeparator);
 
-        saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
-        saveButton.setText("Save");
-        saveButton.setEnabled(false);
-        programSettingsButtonsPanel3.add(saveButton);
+        saveChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
+        saveChangesButton.setText("Save");
+        programSettingsButtonsPanel3.add(saveChangesButton);
 
         programSettingsButtonsPanel.add(programSettingsButtonsPanel3);
 
         programSettingsMainPanel.add(programSettingsButtonsPanel, java.awt.BorderLayout.SOUTH);
 
         add(programSettingsMainPanel);
+
+        newProgramStep1ButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        newProgramStep1ButtonsPanel.setLayout(new javax.swing.BoxLayout(newProgramStep1ButtonsPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        programSettingsButtonsPanel6.setBorder(null);
+
+        cancelButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
+        cancelButton2.setText("Cancel");
+        programSettingsButtonsPanel6.add(cancelButton2);
+
+        invisibleSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        invisibleSeparator2.setBorder(null);
+        invisibleSeparator2.setPreferredSize(new java.awt.Dimension(25, 0));
+        programSettingsButtonsPanel6.add(invisibleSeparator2);
+
+        saveNewProgramButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
+        saveNewProgramButton1.setText("Save");
+        saveNewProgramButton1.setEnabled(false);
+        programSettingsButtonsPanel6.add(saveNewProgramButton1);
+
+        newProgramStep1ButtonsPanel.add(programSettingsButtonsPanel6);
+
+        newProgramStep1MainPanel.add(newProgramStep1ButtonsPanel);
+
+        add(newProgramStep1MainPanel);
+
+        newProgramStep2MainPanel.setEnabled(false);
+        newProgramStep2MainPanel.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setViewportView(newProgramComponent);
+
+        newProgramStep2MainPanel.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        newProgramStep2ButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        newProgramStep2ButtonsPanel.setLayout(new javax.swing.BoxLayout(newProgramStep2ButtonsPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        programSettingsButtonsPanel5.setBorder(null);
+
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
+        backButton.setText("Go Back");
+        programSettingsButtonsPanel5.add(backButton);
+
+        invisibleSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        invisibleSeparator1.setBorder(null);
+        invisibleSeparator1.setPreferredSize(new java.awt.Dimension(25, 0));
+        programSettingsButtonsPanel5.add(invisibleSeparator1);
+
+        saveNewProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
+        saveNewProgramButton.setText("Save");
+        saveNewProgramButton.setEnabled(false);
+        programSettingsButtonsPanel5.add(saveNewProgramButton);
+
+        newProgramStep2ButtonsPanel.add(programSettingsButtonsPanel5);
+
+        newProgramStep2MainPanel.add(newProgramStep2ButtonsPanel, java.awt.BorderLayout.SOUTH);
+
+        add(newProgramStep2MainPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel StatusPanel;
-    private javax.swing.JButton addProgramButton;
+    public javax.swing.JButton addProgramButton;
+    public javax.swing.JButton backButton;
     public javax.swing.JButton cancelButton;
-    private javax.swing.JPanel daysOfWeekPanel;
-    public i52salia.aircontrol.components.DaysOfWeekSelector daysOfWeekSelector;
-    private javax.swing.JButton deletteButton;
-    public javax.swing.JLabel deviceLabel;
-    private javax.swing.JPanel devicePanel;
-    private javax.swing.JPanel fanSpeedPanel;
-    public i52salia.aircontrol.components.FanSpeedSelector fanSpeedSelector;
+    public javax.swing.JButton cancelButton2;
+    public javax.swing.JButton deleteProgramButton;
     private javax.swing.JSeparator invisibleSeparator;
-    private javax.swing.JPanel modePanel;
-    public i52salia.aircontrol.components.ModeSelector modeSelector;
+    private javax.swing.JSeparator invisibleSeparator1;
+    private javax.swing.JSeparator invisibleSeparator2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    public i52salia.aircontrol.components.ProgramSettingsComponent newProgramComponent;
+    private javax.swing.JPanel newProgramStep1ButtonsPanel;
+    private javax.swing.JPanel newProgramStep1MainPanel;
+    private javax.swing.JPanel newProgramStep2ButtonsPanel;
+    public javax.swing.JPanel newProgramStep2MainPanel;
     private javax.swing.JPanel programListButtonsPanel;
     public javax.swing.JPanel programListMainPanel;
     public javax.swing.JPanel programListPanel;
-    private javax.swing.JScrollPane programListScrollPane;
     private javax.swing.JPanel programSettingsButtonsPanel;
     private javax.swing.JPanel programSettingsButtonsPanel2;
     private javax.swing.JPanel programSettingsButtonsPanel3;
-    public javax.swing.JPanel programSettingsListPanel;
+    private javax.swing.JPanel programSettingsButtonsPanel5;
+    private javax.swing.JPanel programSettingsButtonsPanel6;
+    public i52salia.aircontrol.components.ProgramSettingsComponent programSettingsComponent;
     public javax.swing.JPanel programSettingsMainPanel;
-    private javax.swing.JScrollPane programSettingsScrollPane;
-    private javax.swing.JButton saveButton;
-    private javax.swing.JPanel setPointTempPanel;
-    public i52salia.aircontrol.components.SetpointTemperatureSelector setpointTemperatureSelector;
-    private javax.swing.JPanel timeFramePanel;
-    public i52salia.aircontrol.components.TimeFrameSelector timeFrameSelector;
-    public i52salia.aircontrol.components.ToggleButton toggleButton;
+    public javax.swing.JButton saveChangesButton;
+    private javax.swing.JButton saveNewProgramButton;
+    private javax.swing.JButton saveNewProgramButton1;
     // End of variables declaration//GEN-END:variables
 }

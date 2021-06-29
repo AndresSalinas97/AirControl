@@ -106,32 +106,24 @@ public final class Controller {
     private void initProgrammingPanelController() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
-        pp.toggleButton.addActionListener((ActionEvent e) -> {
-            selectedProgram.setEnabled(!selectedProgram.isEnabled());
-        });
-
-        pp.timeFrameSelector.addChangeListener((ChangeEvent e) -> {
-            selectedProgram.setTimeFrame(pp.timeFrameSelector.getSelectedTimeFrame());
-        });
-        pp.timeFrameSelector.addActionListener((ActionEvent e) -> {
-            selectedProgram.setTimeFrame(pp.timeFrameSelector.getSelectedTimeFrame());
-        });
-
-        pp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
-            selectedProgram.setSetpointTemp(
-                    pp.setpointTemperatureSelector.getSelectedTemperature());
-        });
-
-        pp.modeSelector.addChangeListener((ChangeEvent e) -> {
-            selectedProgram.setMode(pp.modeSelector.getSelectedMode());
-        });
-
-        pp.fanSpeedSelector.addChangeListener((ChangeEvent e) -> {
-            selectedProgram.setFanSpeed(pp.fanSpeedSelector.getSelectedFanSpeed());
-        });
-
         pp.cancelButton.addActionListener((ActionEvent e) -> {
             switchToProgrammingTab();
+        });
+
+        pp.saveChangesButton.addActionListener((ActionEvent e) -> {
+            ACProgram modifiedProgram = pp.programSettingsComponent.getSelectedProgram();
+            selectedProgram.setEnabled(modifiedProgram.isEnabled());
+            selectedProgram.setDaysOfWeekSelection(modifiedProgram.getDaysOfWeekSelection());
+            selectedProgram.setTimeFrame(modifiedProgram.getTimeFrame());
+            selectedProgram.setSetpointTemp(modifiedProgram.getSetpointTemp());
+            selectedProgram.setMode(modifiedProgram.getMode());
+            selectedProgram.setFanSpeed(modifiedProgram.getFanSpeed());
+            
+            switchToProgrammingTab();
+        });
+        
+        pp.deleteProgramButton.addActionListener((ActionEvent e) -> {
+            confirmSelectedProgramDeletion();
         });
     }
 
@@ -296,19 +288,19 @@ public final class Controller {
         pp.programListMainPanel.setVisible(false);
         pp.programSettingsMainPanel.setVisible(true);
 
-        pp.deviceLabel.setText(selectedDevice.getGivenName());
-
-        pp.toggleButton.setToggledOn(selectedProgram.isEnabled());
-
-        pp.daysOfWeekSelector.setSelection(selectedProgram.getDaysOfWeekSelection());
-
-        pp.setpointTemperatureSelector.setSelectedTemperature(selectedProgram.getSetpointTemp());
-
-        pp.timeFrameSelector.setSelectedTimeFrame(selectedProgram.getTimeFrame());
-
-        pp.modeSelector.setSelectedMode(selectedProgram.getMode());
-
-        pp.fanSpeedSelector.setSelectedFanSpeed(selectedProgram.getFanSpeed());
+        pp.programSettingsComponent.setSelectedDeviceName(selectedDevice.getGivenName());
+        pp.programSettingsComponent.setSelectedProgram(selectedProgram);
+    }
+    
+    private void confirmSelectedProgramDeletion() {
+        // TODO: Ask user to confirm
+        deleteSelectedProgram();
+    }
+    
+    private void deleteSelectedProgram() {
+        selectedDevice.getPrograms().remove(selectedProgram);
+        
+        switchToProgrammingTab();
     }
 
     // TODO
@@ -319,12 +311,22 @@ public final class Controller {
     private void switchTemperatureUnit() {
         view.getHomePanel().setpointTemperatureSelector.setTemperatureUnit(
                 model.getTempUnit());
-        view.getProgrammingPanel().setpointTemperatureSelector.setTemperatureUnit(
+        view.getProgrammingPanel().programSettingsComponent.setTemperatureUnit(
                 model.getTempUnit());
+        view.getProgrammingPanel().newProgramComponent.setTemperatureUnit(
+                model.getTempUnit());
+        
+        reloadDeviceList();
+        reloadProgramList();
     }
 
     private void switchTimeFormat() {
-        view.getProgrammingPanel().timeFrameSelector.setTimeFormat(
+        view.getProgrammingPanel().programSettingsComponent.setTimeFormat(
                 model.getTimeFormat());
+        view.getProgrammingPanel().newProgramComponent.setTimeFormat(
+                model.getTimeFormat());
+        
+        reloadDeviceList();
+        reloadProgramList();
     }
 }
