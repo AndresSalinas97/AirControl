@@ -237,7 +237,7 @@ public final class Controller {
         hp.currentTempLabel.setText(
                 selectedDevice.getCurrentTemp().getString(model.getTempUnit()));
 
-        hp.setpointTemperatureSelector.setTemperature(selectedDevice.getSetpointTemp());
+        hp.setpointTemperatureSelector.setSelectedTemperature(selectedDevice.getSetpointTemp());
 
         hp.modeButtons.setSelectedMode(selectedDevice.getMode());
 
@@ -302,9 +302,9 @@ public final class Controller {
 
         pp.daysOfWeekSelector.setSelection(selectedProgram.getDaysOfWeekSelection());
 
-        pp.setpointTemperatureSelector.setTemperature(selectedProgram.getSetpointTemp());
+        pp.setpointTemperatureSelector.setSelectedTemperature(selectedProgram.getSetpointTemp());
 
-        pp.timeFrameSelector.setTimeFrame(selectedProgram.getTimeFrame());
+        pp.timeFrameSelector.setSelectedTimeFrame(selectedProgram.getTimeFrame());
 
         pp.modeSelector.setSelectedMode(selectedProgram.getMode());
 

@@ -30,7 +30,7 @@ public final class SetpointTemperatureSelector extends javax.swing.JPanel {
      *
      * @param temperature
      */
-    public void setTemperature(Temperature temperature) {
+    public void setSelectedTemperature(Temperature temperature) {
         switch (tempUnit) {
             case CELSIUS:
                 celsiusSpinner.setValue(temperature.getTemperature(tempUnit));

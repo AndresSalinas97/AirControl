@@ -75,7 +75,7 @@ public final class TimeFrameSelector extends javax.swing.JPanel {
     /**
      * @param timeFrame the time frame to be shown to the user
      */
-    public void setTimeFrame(TimeFrame timeFrame) {
+    public void setSelectedTimeFrame(TimeFrame timeFrame) {
         int startHour, startMinute, endHour, endMinute;
         Time.DayPeriod startDayPeriod, endDayPeriod;
 
