@@ -61,13 +61,13 @@ public final class Model {
     }
 
     private void addExampleDevices() {
-        AirConditioner ac1 = new AirConditioner("Living Room",
+        AirConditioner ac1 = new AirConditioner("Salón",
                 "Daikin Wall Split Model A34GH3", "A34GH3", "DYPTP7584JCLK3",
                 true, true);
         ac1.setTurnedOn(true);
         devices.add(ac1);
 
-        AirConditioner ac2 = new AirConditioner("Bedroom",
+        AirConditioner ac2 = new AirConditioner("Dormitorio",
                 "Daikin Wall Split Model A34GH5", "A34GH5", "DYPTP7584ALKSJ3",
                 false, false);
         ac2.setTurnedOn(true);
@@ -75,7 +75,7 @@ public final class Model {
         ac2.setMode(AirConditioner.Mode.COOL);
         devices.add(ac2);
 
-        AirConditioner ac3 = new AirConditioner("Office",
+        AirConditioner ac3 = new AirConditioner("Oficina",
                 "Daikin Wall Split Model A34GH3", "A34GH3", "DYPTP7584JCLK3",
                 true, true);
         ac3.setFanSpeed(AirConditioner.FanSpeed.HIGH);
