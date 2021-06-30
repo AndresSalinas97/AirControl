@@ -38,7 +38,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         addProgramButton = new javax.swing.JButton();
         programSettingsMainPanel = new javax.swing.JPanel();
         programSettingsScrollPane = new javax.swing.JScrollPane();
-        programSettingsComponent = new i52salia.aircontrol.components.ProgramSettingsComponent();
+        programSettingsComponent = new i52salia.aircontrol.components.ProgramSettingsPanel();
         programSettingsButtonsPanel = new javax.swing.JPanel();
         programSettingsButtonsPanel2 = new javax.swing.JPanel();
         deleteProgramButton = new javax.swing.JButton();
@@ -58,7 +58,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         nextStepButton = new javax.swing.JButton();
         newProgramStep2MainPanel = new javax.swing.JPanel();
         newProgramStep2ScrollPane = new javax.swing.JScrollPane();
-        newProgramComponent = new i52salia.aircontrol.components.ProgramSettingsComponent();
+        newProgramComponent = new i52salia.aircontrol.components.ProgramSettingsPanel();
         newProgramStep2ButtonsPanel = new javax.swing.JPanel();
         programSettingsButtonsPanel5 = new javax.swing.JPanel();
         backToStep1Button = new javax.swing.JButton();
@@ -207,7 +207,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator invisibleSeparator1;
     private javax.swing.JSeparator invisibleSeparator2;
     private javax.swing.JSeparator invisibleSeparator3;
-    public i52salia.aircontrol.components.ProgramSettingsComponent newProgramComponent;
+    public i52salia.aircontrol.components.ProgramSettingsPanel newProgramComponent;
     private javax.swing.JPanel newProgramStep1ButtonsPanel;
     public javax.swing.JPanel newProgramStep1MainPanel;
     private javax.swing.JPanel newProgramStep1Panel;
@@ -225,7 +225,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
     private javax.swing.JPanel programSettingsButtonsPanel3;
     private javax.swing.JPanel programSettingsButtonsPanel5;
     private javax.swing.JPanel programSettingsButtonsPanel6;
-    public i52salia.aircontrol.components.ProgramSettingsComponent programSettingsComponent;
+    public i52salia.aircontrol.components.ProgramSettingsPanel programSettingsComponent;
     public javax.swing.JPanel programSettingsMainPanel;
     private javax.swing.JScrollPane programSettingsScrollPane;
     public javax.swing.JButton saveChangesButton;

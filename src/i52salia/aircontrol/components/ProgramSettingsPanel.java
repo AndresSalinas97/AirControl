@@ -11,12 +11,12 @@ import i52salia.aircontrol.utils.Time;
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
-public class ProgramSettingsComponent extends javax.swing.JPanel {
+public class ProgramSettingsPanel extends javax.swing.JPanel {
 
     /**
      * Creates and initializes the JPanel.
      */
-    public ProgramSettingsComponent() {
+    public ProgramSettingsPanel() {
         initComponents();
     }
 

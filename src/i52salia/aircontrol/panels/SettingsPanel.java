@@ -1,6 +1,5 @@
 package i52salia.aircontrol.panels;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
 /**
