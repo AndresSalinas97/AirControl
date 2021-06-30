@@ -51,7 +51,7 @@ public final class Temperature {
     }
 
     /**
-     * Converts temperature value to a different temperature unit.
+     * Converts temperature values to a different temperature unit.
      *
      * @param temp input temperature value
      * @param inUnit input temperature unit
@@ -82,7 +82,7 @@ public final class Temperature {
 
                 return (oneDecimalFormat.format(c_value) + " ºC");
             case FAHRENHEIT:
-                return ((int)getTemperature(TempUnit.FAHRENHEIT) + " ºF");
+                return ((int) getTemperature(TempUnit.FAHRENHEIT) + " ºF");
             default:
                 throw new UnsupportedOperationException();
         }

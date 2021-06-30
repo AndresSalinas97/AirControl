@@ -26,7 +26,7 @@ import javax.swing.event.ChangeEvent;
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public final class Controller {
-    
+
     private final Model model;
     private View view;
     private AirConditioner selectedDevice;
@@ -41,28 +41,28 @@ public final class Controller {
     public Controller(Model model, View view) {
         this.model = model;
         this.view = view;
-        
+
         initController();
         initView();
     }
-    
+
     private void initController() {
         initTabBarController();
         initHomePanelController();
         initProgrammingPanelController();
         initSettingsPanelController();
     }
-    
+
     private void initView() {
         switchToHomeTab();
-        
-        switchTemperatureUnit();
-        switchTimeFormat();
-        
+
+        changeTemperatureUnit();
+        changeTimeFormat();
+
         view.setVisible(true);
         view.setFocusable(true);
     }
-    
+
     private void initTabBarController() {
         view.homeTab.addMouseListener(new MouseAdapter() {
             @Override
@@ -70,14 +70,14 @@ public final class Controller {
                 switchToHomeTab();
             }
         });
-        
+
         view.programmingTab.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 switchToProgrammingTab();
             }
         });
-        
+
         view.settingsTab.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -85,43 +85,43 @@ public final class Controller {
             }
         });
     }
-    
+
     private void initHomePanelController() {
         HomePanel hp = view.getHomePanel();
-        
+
         hp.onOffButton.addActionListener((ActionEvent e) -> {
             selectedDevice.setTurnedOn(!selectedDevice.isTurnedOn());
         });
-        
+
         hp.setpointTemperatureSelector.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setSetpointTemp(
                     hp.setpointTemperatureSelector.getSelectedTemperature());
         });
-        
+
         hp.modeButtons.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setMode(hp.modeButtons.getSelectedMode());
         });
-        
+
         hp.fanSpeedSelector.addChangeListener((ChangeEvent e) -> {
             selectedDevice.setFanSpeed(hp.fanSpeedSelector.getSelectedFanSpeed());
         });
-        
+
         hp.backButton.addActionListener((ActionEvent e) -> {
             switchToHomeTab();
         });
     }
-    
+
     private void initProgrammingPanelController() {
         ProgrammingPanel pp = view.getProgrammingPanel();
-        
+
         pp.addProgramButton.addActionListener((ActionEvent e) -> {
-            addNewProgramStep1();
+            switchToAddNewProgramStep1();
         });
-        
+
         pp.cancelChangesButton.addActionListener((ActionEvent e) -> {
             switchToProgrammingTab();
         });
-        
+
         pp.saveChangesButton.addActionListener((ActionEvent e) -> {
             ACProgram modifiedProgram = pp.programSettingsComponent.getSelectedProgram();
             selectedProgram.setEnabled(modifiedProgram.isEnabled());
@@ -130,63 +130,63 @@ public final class Controller {
             selectedProgram.setSetpointTemp(modifiedProgram.getSetpointTemp());
             selectedProgram.setMode(modifiedProgram.getMode());
             selectedProgram.setFanSpeed(modifiedProgram.getFanSpeed());
-            
+
             switchToProgrammingTab();
         });
-        
+
         pp.deleteProgramButton.addActionListener((ActionEvent e) -> {
             confirmSelectedProgramDeletion();
         });
-        
+
         pp.cancelStep1Button.addActionListener((ActionEvent e) -> {
             switchToProgrammingTab();
         });
-        
+
         pp.nextStepButton.addActionListener((ActionEvent e) -> {
-            addNewProgramStep2();
+            switchToAddNewProgramStep2();
         });
-        
+
         pp.backToStep1Button.addActionListener((ActionEvent e) -> {
-            addNewProgramStep1();
+            switchToAddNewProgramStep1();
         });
-        
+
         pp.saveNewProgramButton.addActionListener((ActionEvent e) -> {
-            addNewProgramStep3();
+            addNewProgram();
         });
     }
-    
+
     private void initSettingsPanelController() {
         SettingsPanel sp = view.getSettingsPanel();
-        
+
         sp.languageComboBox.addActionListener((ActionEvent e) -> {
             if (sp.languageComboBox.getSelectedIndex() == 0) {
-                switchLanguage("en");
+                changeLanguage("en");
             } else if (sp.languageComboBox.getSelectedIndex() == 1) {
-                switchLanguage("es");
+                changeLanguage("es");
             }
         });
-        
+
         sp.tempUnitComboBox.addActionListener((ActionEvent e) -> {
             if (sp.tempUnitComboBox.getSelectedIndex() == 0) {
                 model.setTempUnit(Temperature.TempUnit.CELSIUS);
             } else if (sp.tempUnitComboBox.getSelectedIndex() == 1) {
                 model.setTempUnit(Temperature.TempUnit.FAHRENHEIT);
             }
-            
-            switchTemperatureUnit();
+
+            changeTemperatureUnit();
         });
-        
+
         sp.timeFormatComboBox.addActionListener((ActionEvent e) -> {
             if (sp.timeFormatComboBox.getSelectedIndex() == 0) {
                 model.setTimeFormat(Time.TimeFormat.TF24HOUR);
             } else if (sp.timeFormatComboBox.getSelectedIndex() == 1) {
                 model.setTimeFormat(Time.TimeFormat.TF12HOUR);
             }
-            
-            switchTimeFormat();
+
+            changeTimeFormat();
         });
     }
-    
+
     private void switchToHomeTab() {
         // Prepare home tab
         reloadDeviceList();
@@ -201,7 +201,7 @@ public final class Controller {
         // Set tab title
         view.titleLabel.setText(bundle.getString("View.tabs.Home"));
     }
-    
+
     private void switchToProgrammingTab() {
         // Prepare programming tab
         reloadProgramList();
@@ -218,8 +218,8 @@ public final class Controller {
         // Set tab title
         view.titleLabel.setText(bundle.getString("View.tabs.Programming"));
     }
-    
-    private void addNewProgramStep1() {
+
+    private void switchToAddNewProgramStep1() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
         // Fill the devices list
@@ -241,8 +241,8 @@ public final class Controller {
         // Set tab title
         view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
     }
-    
-    private void addNewProgramStep2() {
+
+    private void switchToAddNewProgramStep2() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
         // Check if a device has been selected
@@ -272,21 +272,21 @@ public final class Controller {
         // Set tab title
         view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
     }
-    
-    private void addNewProgramStep3() {
+
+    private void addNewProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
-        
+
         ACProgram newProgram = pp.newProgramComponent.getSelectedProgram();
-        
+
         selectedDevice.getPrograms().add(newProgram);
-        
+
         switchToProgrammingTab();
     }
-    
+
     private void switchToSettingsTab() {
         SettingsPanel sp = view.getSettingsPanel();
 
-        // Select the active settings in the comboboxes
+        // Select the active settings in the comboBoxes
         if (Locale.getDefault().getLanguage().equals("es")) {
             sp.languageComboBox.setSelectedIndex(1);
         } else {
@@ -322,7 +322,7 @@ public final class Controller {
                 );
         sp.devicesList.setModel(devicesListModel);
 
-        // Switch to settings tab
+        // Switch to the settings tab
         view.getProgrammingPanel()
                 .setVisible(false);
         view.getHomePanel()
@@ -333,12 +333,12 @@ public final class Controller {
         // Set tab title
         view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
     }
-    
+
     private void reloadDeviceList() {
         javax.swing.JPanel listPanel = view.getHomePanel().deviceListPanel;
-        
+
         listPanel.removeAll();
-        
+
         model.getDevices().stream().map((device) -> {
             DeviceListItemComponent newDeviceComponent = new DeviceListItemComponent();
             newDeviceComponent.nameLabel.setText(device.getGivenName());
@@ -381,40 +381,40 @@ public final class Controller {
         }).forEach((newDeviceComponent) -> {
             listPanel.add(newDeviceComponent);
         });
-        
+
         listPanel.revalidate();
         listPanel.repaint();
     }
-    
+
     private void openSelectedDevice() {
         HomePanel hp = view.getHomePanel();
-        
+
         hp.deviceListMainPanel.setVisible(false);
         hp.deviceSettingsMainPanel.setVisible(true);
-        
+
         hp.onOffButton.setTurnedOn(selectedDevice.isTurnedOn());
-        
+
         hp.currentTempLabel.setText(
                 selectedDevice.getCurrentTemp().getString(model.getTempUnit()));
-        
+
         hp.setpointTemperatureSelector.setSelectedTemperature(selectedDevice.getSetpointTemp());
-        
+
         hp.modeButtons.setSelectedMode(selectedDevice.getMode());
-        
+
         hp.fanSpeedSelector.setSelectedFanSpeed(selectedDevice.getFanSpeed());
-        
+
         view.titleLabel.setText(selectedDevice.getGivenName());
     }
-    
+
     private void reloadProgramList() {
         JPanel listPanel = view.getProgrammingPanel().programListPanel;
-        
+
         listPanel.removeAll();
-        
+
         model.getDevices().stream().forEach((device) -> {
             device.getPrograms().stream().map((program) -> {
                 ProgramListItemComponent newDeviceComponent = new ProgramListItemComponent();
-                
+
                 newDeviceComponent.nameLabel.setText(device.getGivenName());
                 newDeviceComponent.toggleButton.setToggledOn(program.isEnabled());
                 newDeviceComponent.daysLabel.setText(
@@ -425,7 +425,7 @@ public final class Controller {
                         program.getSetpointTemp().getString(model.getTempUnit()));
                 newDeviceComponent.modeLabel.setText(program.getModeString());
                 newDeviceComponent.fanSpeedLabel.setText(program.getFanSpeedString());
-                
+
                 newDeviceComponent.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
@@ -437,51 +437,58 @@ public final class Controller {
                 newDeviceComponent.toggleButton.addActionListener((ActionEvent e) -> {
                     program.setEnabled(!program.isEnabled());
                 });
-                
+
                 return newDeviceComponent;
             }).forEach((newDeviceComponent) -> {
                 listPanel.add(newDeviceComponent);
             });
         });
-        
+
         listPanel.revalidate();
         listPanel.repaint();
     }
-    
+
     private void openSelectedProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
-        
+
         view.titleLabel.setText(bundle.getString("ProgrammingPanel.ProgramTitle"));
-        
+
         pp.programListMainPanel.setVisible(false);
         pp.programSettingsMainPanel.setVisible(true);
-        
+
         pp.programSettingsComponent.setSelectedDeviceName(selectedDevice.getGivenName());
         pp.programSettingsComponent.setSelectedProgram(selectedProgram);
     }
-    
+
     private void confirmSelectedProgramDeletion() {
         if (DialogBoxes.confirmDeletion(view)) {
             deleteSelectedProgram();
         }
     }
-    
+
     private void deleteSelectedProgram() {
         selectedDevice.getPrograms().remove(selectedProgram);
-        
+
         switchToProgrammingTab();
     }
-    
-    private void switchLanguage(String language) {
+
+    private void changeLanguage(String language) {
         // Check if it is actually a different language than the current one
         if (Locale.getDefault().getLanguage().equals(language)) {
             return; // Nothing to do
         }
 
+        // Set new Locale and reload interface
+        reloadLocale(new Locale(language));
+
+        // Switch back to settings tab
+        switchToSettingsTab();
+    }
+
+    private void reloadLocale(Locale locale) {
         // Set new Locale
-        Locale newLocale = new Locale(language);
-        Locale.setDefault(newLocale);
-        JOptionPane.setDefaultLocale(newLocale); // For predefined dialog boxes
+        Locale.setDefault(locale);
+        JOptionPane.setDefaultLocale(locale); // For predefined dialog boxes
 
         // Update the language bundle for this controller
         bundle = ResourceBundle.getBundle(
@@ -494,29 +501,26 @@ public final class Controller {
         view = new View();
         initController();
         initView();
-
-        // Switch back to settings tab
-        switchToSettingsTab();
     }
-    
-    private void switchTemperatureUnit() {
+
+    private void changeTemperatureUnit() {
         view.getHomePanel().setpointTemperatureSelector.setTemperatureUnit(
                 model.getTempUnit());
         view.getProgrammingPanel().programSettingsComponent.setTemperatureUnit(
                 model.getTempUnit());
         view.getProgrammingPanel().newProgramComponent.setTemperatureUnit(
                 model.getTempUnit());
-        
+
         reloadDeviceList();
         reloadProgramList();
     }
-    
-    private void switchTimeFormat() {
+
+    private void changeTimeFormat() {
         view.getProgrammingPanel().programSettingsComponent.setTimeFormat(
                 model.getTimeFormat());
         view.getProgrammingPanel().newProgramComponent.setTimeFormat(
                 model.getTimeFormat());
-        
+
         reloadDeviceList();
         reloadProgramList();
     }

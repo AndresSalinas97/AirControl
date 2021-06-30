@@ -45,6 +45,9 @@ public final class Time {
      *
      * @param hour hour (integer from 0 to 23)
      * @param minute minute (integer from 0 to 59)
+     *
+     * @throws IllegalArgumentException if the hour or minute values aren't
+     * correct for the 24-hour format
      */
     public Time(int hour, int minute) {
         setTime(hour, minute);
@@ -56,6 +59,9 @@ public final class Time {
      * @param hour hour (integer from 1 to 12)
      * @param minute minute (integer from 0 to 59)
      * @param period DayPeriod (AM or PM)
+     *
+     * @throws IllegalArgumentException if the hour or minute values aren't
+     * correct for the 12-hour format
      */
     public Time(int hour, int minute, DayPeriod period) {
         setTime(hour, minute, period);

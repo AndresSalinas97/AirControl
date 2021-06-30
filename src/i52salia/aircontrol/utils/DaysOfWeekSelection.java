@@ -165,7 +165,7 @@ public final class DaysOfWeekSelection {
     public String getString() {
         ResourceBundle bundle = ResourceBundle.getBundle(
                 "i52salia/aircontrol/resources/languagebundles/Bundle");
-                
+
         String str = "";
 
         if (onMondays && onTuesdays && onWednesdays && onThursdays

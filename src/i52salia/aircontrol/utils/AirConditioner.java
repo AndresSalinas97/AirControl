@@ -318,7 +318,7 @@ public final class AirConditioner {
 
         String str = bundle.getString("AirConditioner.FanSpeed");
         str += ": ";
-        
+
         switch (fanSpeed) {
             case LOW:
                 return str + bundle.getString("AirConditioner.FanSpeed.Low");

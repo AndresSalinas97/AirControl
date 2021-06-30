@@ -6,14 +6,14 @@ import javax.swing.JOptionPane;
 
 /**
  * A class to help with the creation of dialog boxes.
- * 
+ *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
 public class DialogBoxes {
 
     /**
      * Shows an error dialog box with the introduced message.
-     * 
+     *
      * @param parent the JFrame that owns the dialog box
      * @param m the message to be shown
      */
@@ -31,7 +31,7 @@ public class DialogBoxes {
 
     /**
      * Shows a yes/no deletion confirmation dialog box.
-     * 
+     *
      * @param parent the JFrame that owns the dialog box
      * @return true if the user clicked on the 'yes' option
      */

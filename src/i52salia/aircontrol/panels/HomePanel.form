@@ -120,7 +120,7 @@
                       </Border>
                     </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[500, 100]"/>
+                      <Dimension value="[500, 90]"/>
                     </Property>
                   </Properties>
 
@@ -143,7 +143,7 @@
                       </Border>
                     </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[500, 100]"/>
+                      <Dimension value="[500, 70]"/>
                     </Property>
                   </Properties>
 
@@ -172,7 +172,7 @@
                       </Border>
                     </Property>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[500, 100]"/>
+                      <Dimension value="[500, 70]"/>
                     </Property>
                   </Properties>
 

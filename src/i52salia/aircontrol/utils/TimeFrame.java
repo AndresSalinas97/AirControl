@@ -28,7 +28,7 @@ public final class TimeFrame {
     }
 
     /**
-     * @param startTime startTime start time of the time period
+     * @param startTime start time of the time period
      */
     public void setStartTime(Time startTime) {
         this.startTime = startTime;
