@@ -15,7 +15,7 @@ public final class View extends javax.swing.JFrame {
     /**
      * Initial dimensions for the AirControl App main window.
      */
-    private final static Dimension INITIAL_SIZE = new Dimension(450, 650);
+    private final static Dimension INITIAL_SIZE = new Dimension(500, 700);
 
     private ProgrammingPanel programmingPanel;
     private HomePanel homePanel;

@@ -64,6 +64,9 @@ public class ProgramSettingsPanel extends javax.swing.JPanel {
         fanSpeedSelector.setSelectedFanSpeed(program.getFanSpeed());
     }
     
+    /**
+     * @param name the name of the device that owns the program
+     */
     public void setSelectedDeviceName(String name) {
         deviceLabel.setText(name);
     }
