@@ -12,6 +12,7 @@ import i52salia.aircontrol.utils.Time;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
@@ -24,7 +25,7 @@ import javax.swing.event.ChangeEvent;
 public final class Controller {
 
     private final Model model;
-    private final View view;
+    private View view;
     private AirConditioner selectedDevice;
     private ACProgram selectedProgram;
 
@@ -50,7 +51,6 @@ public final class Controller {
     private void initView() {
         switchToHomeTab();
 
-        switchLanguage();
         switchTemperatureUnit();
         switchTimeFormat();
 
@@ -153,6 +153,21 @@ public final class Controller {
     private void initSettingsPanelController() {
         SettingsPanel sp = view.getSettingsPanel();
 
+        sp.languageComboBox.addActionListener((ActionEvent e) -> {
+            String oldLang = Locale.getDefault().getLanguage();
+
+            if (sp.languageComboBox.getSelectedIndex() == 0) {
+                Locale.setDefault(new Locale("en"));
+            } else if (sp.languageComboBox.getSelectedIndex() == 1) {
+                Locale.setDefault(new Locale("es"));
+            }
+
+            if (!oldLang.equals(Locale.getDefault().getLanguage())) {
+                switchLanguage();
+            }
+
+        });
+
         sp.tempUnitComboBox.addActionListener((ActionEvent e) -> {
             if (sp.tempUnitComboBox.getSelectedIndex() == 0) {
                 model.setTempUnit(Temperature.TempUnit.CELSIUS);
@@ -186,7 +201,7 @@ public final class Controller {
         view.getSettingsPanel().setVisible(false);
 
         // Set tab title
-        view.titleLabel.setText("Home");
+        view.titleLabel.setText(java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("View.tab.home"));
     }
 
     private void switchToProgrammingTab() {
@@ -203,7 +218,7 @@ public final class Controller {
         view.getSettingsPanel().setVisible(false);
 
         // Set tab title
-        view.titleLabel.setText("Programming");
+        view.titleLabel.setText(java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("View.tab.programming"));
     }
 
     private void addNewProgramStep1() {
@@ -272,20 +287,53 @@ public final class Controller {
     private void switchToSettingsTab() {
         SettingsPanel sp = view.getSettingsPanel();
 
+        // Select the active settings in the comboboxes
+        if (Locale.getDefault().getLanguage().equals("es")) {
+            sp.languageComboBox.setSelectedIndex(1);
+        } else {
+            sp.languageComboBox.setSelectedIndex(0);
+        }
+        switch (model.getTempUnit()) {
+            case CELSIUS:
+                sp.tempUnitComboBox.setSelectedIndex(0);
+                break;
+            case FAHRENHEIT:
+                sp.tempUnitComboBox.setSelectedIndex(1);
+                break;
+            default:
+                throw new UnsupportedOperationException();
+        }
+        switch (model.getTimeFormat()) {
+            case TF24HOUR:
+                sp.timeFormatComboBox.setSelectedIndex(0);
+                break;
+            case TF12HOUR:
+                sp.timeFormatComboBox.setSelectedIndex(1);
+                break;
+            default:
+                throw new UnsupportedOperationException();
+        }
+
         // Fill the devices list
         DefaultListModel devicesListModel = new DefaultListModel();
-        model.getDevices().stream().forEach((device) -> {
-            devicesListModel.addElement(device.getGivenName());
-        });
+
+        model.getDevices()
+                .stream().forEach((device) -> {
+                    devicesListModel.addElement(device.getGivenName());
+                }
+                );
         sp.devicesList.setModel(devicesListModel);
 
         // Switch to settings tab
-        view.getProgrammingPanel().setVisible(false);
-        view.getHomePanel().setVisible(false);
-        view.getSettingsPanel().setVisible(true);
+        view.getProgrammingPanel()
+                .setVisible(false);
+        view.getHomePanel()
+                .setVisible(false);
+        view.getSettingsPanel()
+                .setVisible(true);
 
         // Set tab title
-        view.titleLabel.setText("Settings");
+        view.titleLabel.setText(java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("View.tab.settings"));
     }
 
     private void reloadDeviceList() {
@@ -425,9 +473,17 @@ public final class Controller {
         switchToProgrammingTab();
     }
 
-    // TODO
     private void switchLanguage() {
+        // Destroy current window
+        view.dispose();
 
+        // Create and initialize new window
+        view = new View();
+        initController();
+        initView();
+
+        // Switch back to settings tab
+        switchToSettingsTab();
     }
 
     private void switchTemperatureUnit() {

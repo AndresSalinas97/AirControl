@@ -62,7 +62,6 @@ public final class SettingsPanel extends javax.swing.JPanel {
         jPanel1.add(LanguageLabel, gridBagConstraints);
 
         languageComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Spanish" }));
-        languageComboBox.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
