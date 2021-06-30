@@ -61,23 +61,23 @@ public final class Model {
     }
 
     private void addExampleDevices() {
-        AirConditioner ac1 = new AirConditioner("Dormitorio", "Daikin Wall Split Model A34GH3",
+        AirConditioner ac1 = new AirConditioner("Living Room", "Daikin Wall Split Model A34GH3",
                 "A34GH3", "DYPTP7584JCLK3", true, true);
         ac1.setTurnedOn(true);
         devices.add(ac1);
 
-        AirConditioner ac2 = new AirConditioner("Salón", "Daikin Wall Split Model A34GH5",
+        AirConditioner ac2 = new AirConditioner("Bedroom", "Daikin Wall Split Model A34GH5",
                 "A34GH5", "DYPTP7584ALKSJ3", false, false);
         ac2.setTurnedOn(true);
+        ac2.setFanSpeed(AirConditioner.FanSpeed.LOW);
+        ac2.setMode(AirConditioner.Mode.COOL);
         devices.add(ac2);
 
-        AirConditioner ac3 = new AirConditioner("Cocina", "Daikin Wall Split Model A34GH3",
+        AirConditioner ac3 = new AirConditioner("Office", "Daikin Wall Split Model A34GH3",
                 "A34GH3", "DYPTP7584JCLK3", true, true);
+        ac3.setFanSpeed(AirConditioner.FanSpeed.HIGH);
+        ac3.setMode(AirConditioner.Mode.FAN);
         devices.add(ac3);
-
-        AirConditioner ac4 = new AirConditioner("Despacho", "Daikin Wall Split Model A34GH5",
-                "A34GH5", "DYPTP7584ALKSJ3", false, false);
-        devices.add(ac4);
     }
 
     private void addExamplePrograms() {
@@ -92,14 +92,15 @@ public final class Model {
         p2.setDaysOfWeekSelection(new DaysOfWeekSelection(
                 true, true, true, true, true, true, true));
         p2.setTimeFrame(new TimeFrame(new Time(16, 0), new Time(21, 30)));
+        p2.setFanSpeed(AirConditioner.FanSpeed.HIGH);
         p2.setEnabled(true);
         devices.get(0).getPrograms().add(p2);
 
         ACProgram p3 = new ACProgram();
         p3.setDaysOfWeekSelection(new DaysOfWeekSelection(
                 true, true, true, true, true, false, false));
-        p3.setTimeFrame(new TimeFrame(new Time(9, 0), new Time(14, 30)));
-        p3.setFanSpeed(AirConditioner.FanSpeed.HIGH);
+        p3.setTimeFrame(new TimeFrame(new Time(22, 0), new Time(7, 30)));
+        p3.setFanSpeed(AirConditioner.FanSpeed.LOW);
         p3.setMode(AirConditioner.Mode.COOL);
         p3.setSetpointTemp(new Temperature(24, Temperature.TempUnit.CELSIUS));
         devices.get(1).getPrograms().add(p3);
