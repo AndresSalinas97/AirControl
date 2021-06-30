@@ -66,7 +66,8 @@ public final class HomePanel extends javax.swing.JPanel {
         deviceListButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         addDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/add-icon.png"))); // NOI18N
-        addDeviceButton.setText("Add New Device");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        addDeviceButton.setText(bundle.getString("HomePanel.AddDevice")); // NOI18N
         addDeviceButton.setEnabled(false);
         deviceListButtonsPanel.add(addDeviceButton);
 
@@ -81,13 +82,13 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceSettingsListPanel.setLayout(new javax.swing.BoxLayout(deviceSettingsListPanel, javax.swing.BoxLayout.Y_AXIS));
 
-        powerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Power"));
+        powerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.Power"))); // NOI18N
         powerPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         powerPanel.add(onOffButton);
 
         deviceSettingsListPanel.add(powerPanel);
 
-        currentTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Current Temperature"));
+        currentTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.CurTemp"))); // NOI18N
         currentTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
 
         currentTempLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -96,19 +97,19 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceSettingsListPanel.add(currentTempPanel);
 
-        setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
+        setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.SetTemp"))); // NOI18N
         setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         setPointTempPanel.add(setpointTemperatureSelector);
 
         deviceSettingsListPanel.add(setPointTempPanel);
 
-        modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
+        modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.Mode"))); // NOI18N
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
         modePanel.add(modeButtons);
 
         deviceSettingsListPanel.add(modePanel);
 
-        fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
+        fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.FanSpeed"))); // NOI18N
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         fanSpeedPanel.add(fanSpeedSelector);
 
@@ -121,7 +122,7 @@ public final class HomePanel extends javax.swing.JPanel {
         deviceSettingsButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
-        backButton.setText("Go Back");
+        backButton.setText(bundle.getString("HomePanel.GoBack")); // NOI18N
         deviceSettingsButtonsPanel.add(backButton);
 
         invisibleSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -130,7 +131,7 @@ public final class HomePanel extends javax.swing.JPanel {
         deviceSettingsButtonsPanel.add(invisibleSeparator);
 
         moreSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/settings-small-icon.png"))); // NOI18N
-        moreSettingsButton.setText("More Settings");
+        moreSettingsButton.setText(bundle.getString("HomePanel.MoreSettings")); // NOI18N
         moreSettingsButton.setEnabled(false);
         deviceSettingsButtonsPanel.add(moreSettingsButton);
 

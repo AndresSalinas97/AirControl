@@ -103,29 +103,30 @@ public final class DaysOfWeekSelector extends javax.swing.JPanel {
 
         weekdaysPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 2));
 
-        monButton.setText("Mon");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        monButton.setText(bundle.getString("DaysOfWeekSelection.Mon")); // NOI18N
         weekdaysPanel.add(monButton);
 
-        tueButton.setText("Tue");
+        tueButton.setText(bundle.getString("DaysOfWeekSelection.Tue")); // NOI18N
         weekdaysPanel.add(tueButton);
 
-        wedButton.setText("Wed");
+        wedButton.setText(bundle.getString("DaysOfWeekSelection.Wed")); // NOI18N
         weekdaysPanel.add(wedButton);
 
-        thuButton.setText("Thu");
+        thuButton.setText(bundle.getString("DaysOfWeekSelection.Thu")); // NOI18N
         weekdaysPanel.add(thuButton);
 
-        friButton.setText("Fri");
+        friButton.setText(bundle.getString("DaysOfWeekSelection.Fri")); // NOI18N
         weekdaysPanel.add(friButton);
 
         add(weekdaysPanel, java.awt.BorderLayout.NORTH);
 
         weekendPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 4, 2));
 
-        satButton.setText("Sat");
+        satButton.setText(bundle.getString("DaysOfWeekSelection.Sat")); // NOI18N
         weekendPanel.add(satButton);
 
-        sunButton.setText("Sun");
+        sunButton.setText(bundle.getString("DaysOfWeekSelection.Sun")); // NOI18N
         weekendPanel.add(sunButton);
 
         add(weekendPanel, java.awt.BorderLayout.SOUTH);

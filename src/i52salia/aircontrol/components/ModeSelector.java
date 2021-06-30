@@ -193,7 +193,8 @@ public final class ModeSelector extends javax.swing.JPanel {
         coolLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/cool-icon.png"))); // NOI18N
         coolPanel.add(coolLabel);
 
-        coolButton.setText("Cool");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        coolButton.setText(bundle.getString("AirConditioner.Mode.Cool")); // NOI18N
         coolButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         coolPanel.add(coolButton);
 
@@ -206,7 +207,7 @@ public final class ModeSelector extends javax.swing.JPanel {
         fanLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/fan-icon.png"))); // NOI18N
         fanPanel.add(fanLabel);
 
-        fanButton.setText("Fan");
+        fanButton.setText(bundle.getString("AirConditioner.Mode.Fan")); // NOI18N
         fanButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fanPanel.add(fanButton);
 
@@ -219,7 +220,7 @@ public final class ModeSelector extends javax.swing.JPanel {
         dryLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/dry-icon.png"))); // NOI18N
         dryPanel.add(dryLabel);
 
-        dryButton.setText("Dry");
+        dryButton.setText(bundle.getString("AirConditioner.Mode.Dry")); // NOI18N
         dryButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dryPanel.add(dryButton);
 
@@ -232,7 +233,7 @@ public final class ModeSelector extends javax.swing.JPanel {
         heatLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/heat-icon.png"))); // NOI18N
         heatPanel.add(heatLabel);
 
-        heatButton.setText("Heat");
+        heatButton.setText(bundle.getString("AirConditioner.Mode.Heat")); // NOI18N
         heatButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heatPanel.add(heatButton);
 
@@ -245,7 +246,7 @@ public final class ModeSelector extends javax.swing.JPanel {
         autoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/auto-icon.png"))); // NOI18N
         autoPanel.add(autoLabel);
 
-        autoButton.setText("AUTO");
+        autoButton.setText(bundle.getString("AirConditioner.FanSpeed.Auto")); // NOI18N
         autoButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         autoPanel.add(autoButton);
 

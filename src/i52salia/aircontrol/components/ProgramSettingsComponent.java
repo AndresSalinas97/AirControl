@@ -94,7 +94,8 @@ public class ProgramSettingsComponent extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
-        devicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Device"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        devicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("ACProgram.Device"))); // NOI18N
         devicePanel.setMaximumSize(new java.awt.Dimension(500, 100));
 
         deviceLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
@@ -103,37 +104,37 @@ public class ProgramSettingsComponent extends javax.swing.JPanel {
 
         add(devicePanel);
 
-        StatusPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Status"));
+        StatusPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("ACProgram.Status"))); // NOI18N
         StatusPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         StatusPanel.add(toggleButton);
 
         add(StatusPanel);
 
-        daysOfWeekPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Days of the Week"));
+        daysOfWeekPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("ACProgram.DaysWeek"))); // NOI18N
         daysOfWeekPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         daysOfWeekPanel.add(daysOfWeekSelector);
 
         add(daysOfWeekPanel);
 
-        timeFramePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Time Frame"));
+        timeFramePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("ACProgram.TimeFrame"))); // NOI18N
         timeFramePanel.setMaximumSize(new java.awt.Dimension(500, 100));
         timeFramePanel.add(timeFrameSelector);
 
         add(timeFramePanel);
 
-        setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Setpoint Temperature"));
+        setPointTempPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.SetTemp"))); // NOI18N
         setPointTempPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         setPointTempPanel.add(setpointTemperatureSelector);
 
         add(setPointTempPanel);
 
-        modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
+        modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.Mode"))); // NOI18N
         modePanel.setMaximumSize(new java.awt.Dimension(500, 100));
         modePanel.add(modeSelector);
 
         add(modePanel);
 
-        fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Fan Speed"));
+        fanSpeedPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("AirConditioner.FanSpeed"))); // NOI18N
         fanSpeedPanel.setMaximumSize(new java.awt.Dimension(500, 100));
         fanSpeedPanel.add(fanSpeedSelector);
 

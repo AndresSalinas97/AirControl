@@ -171,7 +171,8 @@ public final class FanSpeedSelector extends javax.swing.JPanel {
         lowLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/low-fanspeed-icon.png"))); // NOI18N
         lowPanel.add(lowLabel);
 
-        lowButton.setText("Low");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        lowButton.setText(bundle.getString("AirConditioner.FanSpeed.Low")); // NOI18N
         lowButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lowPanel.add(lowButton);
 
@@ -184,7 +185,7 @@ public final class FanSpeedSelector extends javax.swing.JPanel {
         mediumLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/medium-fanspeed-icon.png"))); // NOI18N
         mediumPanel.add(mediumLabel);
 
-        mediumButton.setText("Medium");
+        mediumButton.setText(bundle.getString("AirConditioner.FanSpeed.Medium")); // NOI18N
         mediumButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mediumPanel.add(mediumButton);
 
@@ -197,7 +198,7 @@ public final class FanSpeedSelector extends javax.swing.JPanel {
         highLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/high-fanspeed-icon.png"))); // NOI18N
         highPanel.add(highLabel);
 
-        highButton.setText("High");
+        highButton.setText(bundle.getString("AirConditioner.FanSpeed.High")); // NOI18N
         highButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         highPanel.add(highButton);
 
@@ -210,7 +211,7 @@ public final class FanSpeedSelector extends javax.swing.JPanel {
         autoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/auto-icon.png"))); // NOI18N
         autoPanel.add(autoLabel);
 
-        autoButton.setText("AUTO");
+        autoButton.setText(bundle.getString("AirConditioner.FanSpeed.Auto")); // NOI18N
         autoButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         autoPanel.add(autoButton);
 

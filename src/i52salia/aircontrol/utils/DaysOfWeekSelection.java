@@ -1,5 +1,7 @@
 package i52salia.aircontrol.utils;
 
+import java.util.ResourceBundle;
+
 /**
  * A class to handle a selection of days of the week.
  *
@@ -159,68 +161,69 @@ public final class DaysOfWeekSelection {
 
     /**
      * @return A formatted and localized string with the selection
-     *
-     * TODO: Localize
      */
     public String getString() {
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "i52salia/aircontrol/resources/languagebundles/Bundle");
+                
         String str = "";
 
         if (onMondays && onTuesdays && onWednesdays && onThursdays
                 && onFridays && onSaturdays && onSundays) {
-            str = "Everyday";
+            str = bundle.getString("DaysOfWeekSelection.Everyday");
         } else if (onMondays && onTuesdays && onWednesdays && onThursdays
                 && onFridays && !onSaturdays && !onSundays) {
-            str = "Weekdays";
+            str = bundle.getString("DaysOfWeekSelection.Weekdays");
         } else if (!onMondays && !onTuesdays && !onWednesdays && !onThursdays
                 && !onFridays && onSaturdays && onSundays) {
-            str = "Weekends";
+            str = bundle.getString("DaysOfWeekSelection.Weekends");
         } else {
             boolean first = true;
 
             if (onMondays) {
-                str += "Mon";
+                str += bundle.getString("DaysOfWeekSelection.Mon");
                 first = false;
             }
             if (onTuesdays) {
                 if (!first) {
                     str += ", ";
                 }
-                str += "Tue";
+                str += bundle.getString("DaysOfWeekSelection.Tue");
                 first = false;
             }
             if (onWednesdays) {
                 if (!first) {
                     str += ", ";
                 }
-                str += "Wed";
+                str += bundle.getString("DaysOfWeekSelection.Wed");
                 first = false;
             }
             if (onThursdays) {
                 if (!first) {
                     str += ", ";
                 }
-                str += "Thu";
+                str += bundle.getString("DaysOfWeekSelection.Thu");
                 first = false;
             }
             if (onFridays) {
                 if (!first) {
                     str += ", ";
                 }
-                str += "Fri";
+                str += bundle.getString("DaysOfWeekSelection.Fri");
                 first = false;
             }
             if (onSaturdays) {
                 if (!first) {
                     str += ", ";
                 }
-                str += "Sat";
+                str += bundle.getString("DaysOfWeekSelection.Sat");
                 first = false;
             }
             if (onSundays) {
                 if (!first) {
                     str += ", ";
                 }
-                str += "Sun";
+                str += bundle.getString("DaysOfWeekSelection.Sun");
             }
         }
 

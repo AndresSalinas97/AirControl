@@ -79,7 +79,8 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programListButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         addProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
-        addProgramButton.setText("Add New Program");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        addProgramButton.setText(bundle.getString("ProgrammingPanel.AddProgram")); // NOI18N
         programListButtonsPanel.add(addProgramButton);
 
         programListMainPanel.add(programListButtonsPanel, java.awt.BorderLayout.SOUTH);
@@ -98,7 +99,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel.setLayout(new javax.swing.BoxLayout(programSettingsButtonsPanel, javax.swing.BoxLayout.Y_AXIS));
 
         deleteProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/delete-program-icon.png"))); // NOI18N
-        deleteProgramButton.setText("Delete Program");
+        deleteProgramButton.setText(bundle.getString("ProgrammingPanel.DeleteProgram")); // NOI18N
         deleteProgramButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         programSettingsButtonsPanel2.add(deleteProgramButton);
 
@@ -107,7 +108,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel3.setBorder(null);
 
         cancelChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
-        cancelChangesButton.setText("Cancel");
+        cancelChangesButton.setText(bundle.getString("ProgrammingPanel.Cancel")); // NOI18N
         programSettingsButtonsPanel3.add(cancelChangesButton);
 
         invisibleSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -116,7 +117,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel3.add(invisibleSeparator3);
 
         saveChangesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
-        saveChangesButton.setText("Save");
+        saveChangesButton.setText(bundle.getString("ProgrammingPanel.Save")); // NOI18N
         programSettingsButtonsPanel3.add(saveChangesButton);
 
         programSettingsButtonsPanel.add(programSettingsButtonsPanel3);
@@ -145,7 +146,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel6.setBorder(null);
 
         cancelStep1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
-        cancelStep1Button.setText("Cancel");
+        cancelStep1Button.setText(bundle.getString("ProgrammingPanel.Cancel")); // NOI18N
         programSettingsButtonsPanel6.add(cancelStep1Button);
 
         invisibleSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -154,7 +155,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel6.add(invisibleSeparator2);
 
         nextStepButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/next-icon.png"))); // NOI18N
-        nextStepButton.setText("Next");
+        nextStepButton.setText(bundle.getString("ProgrammingPanel.Next")); // NOI18N
         programSettingsButtonsPanel6.add(nextStepButton);
 
         newProgramStep1ButtonsPanel.add(programSettingsButtonsPanel6);
@@ -177,7 +178,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel5.setBorder(null);
 
         backToStep1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
-        backToStep1Button.setText("Go Back");
+        backToStep1Button.setText(bundle.getString("ProgrammingPanel.GoBack")); // NOI18N
         programSettingsButtonsPanel5.add(backToStep1Button);
 
         invisibleSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -186,7 +187,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         programSettingsButtonsPanel5.add(invisibleSeparator1);
 
         saveNewProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
-        saveNewProgramButton.setText("Save");
+        saveNewProgramButton.setText(bundle.getString("ProgrammingPanel.Save")); // NOI18N
         programSettingsButtonsPanel5.add(saveNewProgramButton);
 
         newProgramStep2ButtonsPanel.add(programSettingsButtonsPanel5);

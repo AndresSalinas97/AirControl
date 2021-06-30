@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
@@ -28,6 +29,8 @@ public final class Controller {
     private View view;
     private AirConditioner selectedDevice;
     private ACProgram selectedProgram;
+    private ResourceBundle bundle = ResourceBundle.getBundle(
+            "i52salia/aircontrol/resources/languagebundles/Bundle");
 
     /**
      * @param model the AirControl model
@@ -201,7 +204,7 @@ public final class Controller {
         view.getSettingsPanel().setVisible(false);
 
         // Set tab title
-        view.titleLabel.setText(java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("View.tab.home"));
+        view.titleLabel.setText(bundle.getString("View.tabs.Home"));
     }
 
     private void switchToProgrammingTab() {
@@ -218,7 +221,7 @@ public final class Controller {
         view.getSettingsPanel().setVisible(false);
 
         // Set tab title
-        view.titleLabel.setText(java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("View.tab.programming"));
+        view.titleLabel.setText(bundle.getString("View.tabs.Programming"));
     }
 
     private void addNewProgramStep1() {
@@ -241,7 +244,7 @@ public final class Controller {
         pp.newProgramStep2MainPanel.setVisible(false);
 
         // Set tab title
-        view.titleLabel.setText("New Program");
+        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
     }
 
     private void addNewProgramStep2() {
@@ -271,7 +274,7 @@ public final class Controller {
         pp.newProgramStep2MainPanel.setVisible(true);
 
         // Set tab title
-        view.titleLabel.setText("New Program");
+        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
     }
 
     private void addNewProgramStep3() {
@@ -316,7 +319,6 @@ public final class Controller {
 
         // Fill the devices list
         DefaultListModel devicesListModel = new DefaultListModel();
-
         model.getDevices()
                 .stream().forEach((device) -> {
                     devicesListModel.addElement(device.getGivenName());
@@ -333,7 +335,7 @@ public final class Controller {
                 .setVisible(true);
 
         // Set tab title
-        view.titleLabel.setText(java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("View.tab.settings"));
+        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
     }
 
     private void reloadDeviceList() {
@@ -453,7 +455,7 @@ public final class Controller {
     private void openSelectedProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
-        view.titleLabel.setText("Program");
+        view.titleLabel.setText(bundle.getString("ProgrammingPanel.ProgramTitle"));
 
         pp.programListMainPanel.setVisible(false);
         pp.programSettingsMainPanel.setVisible(true);
@@ -481,6 +483,10 @@ public final class Controller {
         view = new View();
         initController();
         initView();
+
+        // Update the bundle for this controller
+        bundle = ResourceBundle.getBundle(
+                "i52salia/aircontrol/resources/languagebundles/Bundle");
 
         // Switch back to settings tab
         switchToSettingsTab();

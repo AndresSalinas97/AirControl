@@ -22,7 +22,9 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Start Time"/>
+                <TitledBorder title="Start Time">
+                  <ResourceString PropertyName="titleX" bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="ACProgram.TimeFrame.Start" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </TitledBorder>
               </Border>
             </Property>
           </Properties>
@@ -54,7 +56,9 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="End Time"/>
+                <TitledBorder title="End Time">
+                  <ResourceString PropertyName="titleX" bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="ACProgram.TimeFrame.End" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </TitledBorder>
               </Border>
             </Property>
           </Properties>

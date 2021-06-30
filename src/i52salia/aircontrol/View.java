@@ -132,7 +132,7 @@ public final class View extends javax.swing.JFrame {
         ProgrammingTabLabel.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
         ProgrammingTabLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
-        ProgrammingTabLabel.setText(bundle.getString("View.tab.programming")); // NOI18N
+        ProgrammingTabLabel.setText(bundle.getString("View.tabs.Programming")); // NOI18N
         programmingTab.add(ProgrammingTabLabel);
 
         tabBarPanel.add(programmingTab);
@@ -148,7 +148,7 @@ public final class View extends javax.swing.JFrame {
 
         homeTabLabel.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
         homeTabLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        homeTabLabel.setText(bundle.getString("View.tab.home")); // NOI18N
+        homeTabLabel.setText(bundle.getString("View.tabs.Home")); // NOI18N
         homeTabLabel.setBorder(null);
         homeTab.add(homeTabLabel);
 
@@ -164,7 +164,7 @@ public final class View extends javax.swing.JFrame {
 
         settingsTabLabel.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
         settingsTabLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        settingsTabLabel.setText(bundle.getString("View.tab.settings")); // NOI18N
+        settingsTabLabel.setText(bundle.getString("View.tabs.Settings")); // NOI18N
         settingsTabLabel.setBorder(null);
         settingsTab.add(settingsTabLabel);
 

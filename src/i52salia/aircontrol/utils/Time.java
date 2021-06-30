@@ -1,7 +1,8 @@
 package i52salia.aircontrol.utils;
 
 /**
- * A class to deal with time, both in 24-hour and 12-hour formats.
+ * A class to deal with time (hour and minute), both in 24-hour and 12-hour
+ * formats.
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */

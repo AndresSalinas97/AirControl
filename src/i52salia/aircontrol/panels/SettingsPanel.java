@@ -1,5 +1,8 @@
 package i52salia.aircontrol.panels;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  * JPanel for the Settings tab.
  *
@@ -14,6 +17,12 @@ public final class SettingsPanel extends javax.swing.JPanel {
      */
     public SettingsPanel() {
         initComponents();
+
+        timeFormatComboBox.setModel(new DefaultComboBoxModel(new String[]{
+            java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("SettingsPanel.TimeFormatBox.24"),
+            java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle").getString("SettingsPanel.TimeFormatBox.12")
+        }));
+
     }
 
     /**
@@ -38,15 +47,17 @@ public final class SettingsPanel extends javax.swing.JPanel {
         devicesLabel = new javax.swing.JLabel();
         devicesScrollPane = new javax.swing.JScrollPane();
         devicesList = new javax.swing.JList();
+        addDeviceButton = new javax.swing.JButton();
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWidths = new int[] {200, 200};
-        jPanel1Layout.rowHeights = new int[] {50, 50, 50, 50, 20, 50, 50};
+        jPanel1Layout.rowHeights = new int[] {50, 50, 50, 50, 20, 50, 50, 50};
         jPanel1Layout.columnWeights = new double[] {1.0, 1.0};
         jPanel1.setLayout(jPanel1Layout);
 
         appSettingsLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        appSettingsLabel.setText("App Settings");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        appSettingsLabel.setText(bundle.getString("SettingsPanel.AppSettings")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -54,14 +65,14 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         jPanel1.add(appSettingsLabel, gridBagConstraints);
 
-        LanguageLabel.setText("Language");
+        LanguageLabel.setText(bundle.getString("SettingsPanel.Language")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         jPanel1.add(LanguageLabel, gridBagConstraints);
 
-        languageComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Spanish" }));
+        languageComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "English", "Español" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -69,7 +80,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         jPanel1.add(languageComboBox, gridBagConstraints);
 
-        tempUnitLabel.setText("Temperature Unit");
+        tempUnitLabel.setText(bundle.getString("SettingsPanel.TempUnit")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -84,14 +95,12 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         jPanel1.add(tempUnitComboBox, gridBagConstraints);
 
-        timeFormatLabel.setText("Time Format");
+        timeFormatLabel.setText(bundle.getString("SettingsPanel.TimeFormat")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         jPanel1.add(timeFormatLabel, gridBagConstraints);
-
-        timeFormatComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-hour clock", "12-hour clock" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -106,7 +115,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         jPanel1.add(jSeparator1, gridBagConstraints);
 
         devicesLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        devicesLabel.setText("Devices");
+        devicesLabel.setText(bundle.getString("SettingsPanel.Devices")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -123,11 +132,20 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         jPanel1.add(devicesScrollPane, gridBagConstraints);
 
+        addDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/add-icon.png"))); // NOI18N
+        addDeviceButton.setText(bundle.getString("SettingsPanel.AddDevice")); // NOI18N
+        addDeviceButton.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridwidth = 2;
+        jPanel1.add(addDeviceButton, gridBagConstraints);
+
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LanguageLabel;
+    private javax.swing.JButton addDeviceButton;
     private javax.swing.JLabel appSettingsLabel;
     private javax.swing.JLabel devicesLabel;
     public javax.swing.JList devicesList;

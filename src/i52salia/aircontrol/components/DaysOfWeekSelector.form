@@ -30,27 +30,37 @@
       <SubComponents>
         <Component class="javax.swing.JToggleButton" name="monButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mon"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Mon" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="tueButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tue"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Tue" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="wedButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Wed"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Wed" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="thuButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Thu"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Thu" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="friButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fri"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Fri" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -69,12 +79,16 @@
       <SubComponents>
         <Component class="javax.swing.JToggleButton" name="satButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sat"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Sat" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="sunButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Sun"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="i52salia/aircontrol/resources/languagebundles/Bundle.properties" key="DaysOfWeekSelection.Sun" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

@@ -1,6 +1,7 @@
 package i52salia.aircontrol.utils;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * Class to hold the information, settings and current state of an air
@@ -113,8 +114,8 @@ public final class AirConditioner {
      * @return a random temperature float value between 5 and 35
      */
     private float getRandomCurrentCelsius() {
-        float min = 5;
-        float max = 35;
+        float min = 10;
+        float max = 30;
 
         return (float) (min + Math.random() * (max - min));
     }
@@ -283,21 +284,25 @@ public final class AirConditioner {
     /**
      * @param mode desired AC mode
      * @return a formatted and localized string with the introduced mode
-     *
-     * TODO: Localize
      */
     public final static String getModeString(Mode mode) {
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "i52salia/aircontrol/resources/languagebundles/Bundle");
+
+        String str = bundle.getString("AirConditioner.Mode");
+        str += ": ";
+
         switch (mode) {
             case COOL:
-                return "Mode: Cool";
+                return str + bundle.getString("AirConditioner.Mode.Cool");
             case FAN:
-                return "Mode: Fan";
+                return str + bundle.getString("AirConditioner.Mode.Fan");
             case DRY:
-                return "Mode: Dry";
+                return str + bundle.getString("AirConditioner.Mode.Dry");
             case HEAT:
-                return "Mode: Heat";
+                return str + bundle.getString("AirConditioner.Mode.Heat");
             case AUTO:
-                return "Mode: Auto";
+                return str + bundle.getString("AirConditioner.Mode.Auto");
             default:
                 throw new UnsupportedOperationException();
         }
@@ -306,19 +311,23 @@ public final class AirConditioner {
     /**
      * @param fanSpeed desired AC fan speed
      * @return a formatted and localized string with the introduced fan speed
-     *
-     * TODO: Localize
      */
     public final static String getFanSpeedString(FanSpeed fanSpeed) {
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "i52salia/aircontrol/resources/languagebundles/Bundle");
+
+        String str = bundle.getString("AirConditioner.FanSpeed");
+        str += ": ";
+        
         switch (fanSpeed) {
             case LOW:
-                return "Fan Speed: Low";
+                return str + bundle.getString("AirConditioner.FanSpeed.Low");
             case MEDIUM:
-                return "Fan Speed: Medium";
+                return str + bundle.getString("AirConditioner.FanSpeed.Medium");
             case HIGH:
-                return "Fan Speed: High";
+                return str + bundle.getString("AirConditioner.FanSpeed.High");
             case AUTO:
-                return "Fan Speed: Auto";
+                return str + bundle.getString("AirConditioner.FanSpeed.Auto");
             default:
                 throw new UnsupportedOperationException();
         }

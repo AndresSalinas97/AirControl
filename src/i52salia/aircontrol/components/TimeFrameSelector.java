@@ -204,7 +204,8 @@ public final class TimeFrameSelector extends javax.swing.JPanel {
 
         setLayout(new javax.swing.OverlayLayout(this));
 
-        startTimePanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("Start Time"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i52salia/aircontrol/resources/languagebundles/Bundle"); // NOI18N
+        startTimePanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("ACProgram.TimeFrame.Start"))); // NOI18N
 
         startHour24Spinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
         startTimePanel24.add(startHour24Spinner);
@@ -217,7 +218,7 @@ public final class TimeFrameSelector extends javax.swing.JPanel {
 
         tf24HourPanel.add(startTimePanel24);
 
-        endTimePanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("End Time"));
+        endTimePanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("ACProgram.TimeFrame.End"))); // NOI18N
 
         endHour24Spinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
         endTimePanel24.add(endHour24Spinner);
