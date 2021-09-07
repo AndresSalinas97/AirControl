@@ -133,7 +133,6 @@ public final class HomePanel extends javax.swing.JPanel {
 
         moreSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/settings-small-icon.png"))); // NOI18N
         moreSettingsButton.setText(bundle.getString("HomePanel.MoreSettings")); // NOI18N
-        moreSettingsButton.setEnabled(false);
         deviceSettingsButtonsPanel.add(moreSettingsButton);
 
         deviceSettingsMainPanel.add(deviceSettingsButtonsPanel, java.awt.BorderLayout.SOUTH);
@@ -159,7 +158,7 @@ public final class HomePanel extends javax.swing.JPanel {
     private javax.swing.JSeparator invisibleSeparator;
     public i52salia.aircontrol.components.ModeSelector modeButtons;
     private javax.swing.JPanel modePanel;
-    private javax.swing.JButton moreSettingsButton;
+    public javax.swing.JButton moreSettingsButton;
     public i52salia.aircontrol.components.OnOffButton onOffButton;
     private javax.swing.JPanel powerPanel;
     private javax.swing.JPanel setPointTempPanel;

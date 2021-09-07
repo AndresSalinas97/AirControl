@@ -65,6 +65,8 @@ public final class Model {
                 "Daikin Wall Split Model A34GH3", "A34GH3", "DYPTP7584JCLK3",
                 true, true);
         ac1.setTurnedOn(true);
+        ac1.setHorizontalVanesSwinging(true);
+        ac1.setVerticalVanesSwinging(true);
         devices.add(ac1);
 
         AirConditioner ac2 = new AirConditioner("Dormitorio",

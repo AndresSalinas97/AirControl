@@ -315,7 +315,6 @@ public final class SettingsPanel extends javax.swing.JPanel {
 
         deleteDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/delete-icon.png"))); // NOI18N
         deleteDeviceButton.setText(bundle.getString("SettingsPanel.DeleteDevice")); // NOI18N
-        deleteDeviceButton.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = 2;
@@ -342,7 +341,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
     public javax.swing.JTextField deviceNameField;
     private javax.swing.JLabel deviceNameLabel;
     private javax.swing.JLabel deviceSettingsLabel;
-    private javax.swing.JScrollPane deviceSettingsMainPanel;
+    public javax.swing.JScrollPane deviceSettingsMainPanel;
     private javax.swing.JPanel deviceSettingsPanel;
     private javax.swing.JLabel devicesLabel;
     public javax.swing.JList devicesList;
@@ -360,7 +359,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
     public javax.swing.JButton saveButton;
     public javax.swing.JTextField serialNumberField;
     private javax.swing.JLabel serialNumberLabel;
-    private javax.swing.JScrollPane settingsMainPanel;
+    public javax.swing.JScrollPane settingsMainPanel;
     private javax.swing.JPanel settingsPanel;
     public javax.swing.JComboBox tempUnitComboBox;
     private javax.swing.JLabel tempUnitLabel;

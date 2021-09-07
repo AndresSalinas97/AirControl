@@ -109,6 +109,10 @@ public final class Controller {
         hp.backButton.addActionListener((ActionEvent e) -> {
             switchToHomeTab();
         });
+
+        hp.moreSettingsButton.addActionListener((ActionEvent e) -> {
+            openSelectedDeviceSettings();
+        });
     }
 
     private void initProgrammingPanelController() {
@@ -185,11 +189,24 @@ public final class Controller {
 
             changeTimeFormat();
         });
+        
+        sp.saveButton.addActionListener((ActionEvent e) -> {
+            selectedDevice.setGivenName(sp.deviceNameField.getText());
+            selectedDevice.setHorizontalVanesSwinging(
+                    sp.horizontalSwingCheckBox.isSelected());
+            selectedDevice.setVerticalVanesSwinging(
+                    sp.VerticalSwingCheckBox.isSelected());
+            openSelectedDeviceSettings();
+        });
+        
+        sp.deleteDeviceButton.addActionListener((ActionEvent e) -> {
+            confirmSelectedDeviceDeletion();
+        });
     }
 
     private void switchToHomeTab() {
         // Prepare home tab
-        reloadDeviceList();
+        reloadHomeDeviceList();
         view.getHomePanel().deviceListMainPanel.setVisible(true);
         view.getHomePanel().deviceSettingsMainPanel.setVisible(false);
 
@@ -286,6 +303,27 @@ public final class Controller {
     private void switchToSettingsTab() {
         SettingsPanel sp = view.getSettingsPanel();
 
+        // Prepare settings tab
+        reloadSettingsComboBoxes();
+        reloadSettingsDeviceList();
+        sp.settingsMainPanel.setVisible(true);
+        sp.deviceSettingsMainPanel.setVisible(false);
+
+        // Switch to the settings tab
+        view.getProgrammingPanel()
+                .setVisible(false);
+        view.getHomePanel()
+                .setVisible(false);
+        view.getSettingsPanel()
+                .setVisible(true);
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
+    }
+
+    private void reloadSettingsComboBoxes() {
+        SettingsPanel sp = view.getSettingsPanel();
+
         // Select the active settings in the comboBoxes
         if (Locale.getDefault().getLanguage().equals("es")) {
             sp.languageComboBox.setSelectedIndex(1);
@@ -312,7 +350,9 @@ public final class Controller {
             default:
                 throw new UnsupportedOperationException();
         }
+    }
 
+    private void reloadSettingsDeviceList() {
         // Fill the devices list
         DefaultListModel devicesListModel = new DefaultListModel();
         model.getDevices()
@@ -320,21 +360,10 @@ public final class Controller {
                     devicesListModel.addElement(device.getGivenName());
                 }
                 );
-        sp.devicesList.setModel(devicesListModel);
-
-        // Switch to the settings tab
-        view.getProgrammingPanel()
-                .setVisible(false);
-        view.getHomePanel()
-                .setVisible(false);
-        view.getSettingsPanel()
-                .setVisible(true);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
+        view.getSettingsPanel().devicesList.setModel(devicesListModel);
     }
 
-    private void reloadDeviceList() {
+    private void reloadHomeDeviceList() {
         javax.swing.JPanel listPanel = view.getHomePanel().deviceListPanel;
 
         listPanel.removeAll();
@@ -375,7 +404,7 @@ public final class Controller {
             });
             newDeviceComponent.onOffButton.addActionListener((ActionEvent e) -> {
                 device.setTurnedOn(!device.isTurnedOn());
-                reloadDeviceList();
+                reloadHomeDeviceList();
             });
             return newDeviceComponent;
         }).forEach((newDeviceComponent) -> {
@@ -451,11 +480,14 @@ public final class Controller {
     private void openSelectedProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
+        // Set tab title
         view.titleLabel.setText(bundle.getString("ProgrammingPanel.ProgramTitle"));
 
+        // Switch to the right subpanel
         pp.programListMainPanel.setVisible(false);
         pp.programSettingsMainPanel.setVisible(true);
 
+        // Prepare the panel
         pp.programSettingsComponent.setSelectedDeviceName(selectedDevice.getGivenName());
         pp.programSettingsComponent.setSelectedProgram(selectedProgram);
     }
@@ -470,6 +502,66 @@ public final class Controller {
         selectedDevice.getPrograms().remove(selectedProgram);
 
         switchToProgrammingTab();
+    }
+
+    private void confirmSelectedDeviceDeletion() {
+        if (DialogBoxes.confirmDeletion(view)) {
+            deleteSelectedDevice();
+        }
+    }
+
+    private void deleteSelectedDevice() {
+        model.getDevices().remove(selectedDevice);
+
+        switchToSettingsTab();
+    }
+
+    private void openSelectedDeviceSettings() {
+        SettingsPanel sp = view.getSettingsPanel();
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("View.tabs.Settings")
+                + " - "
+                + selectedDevice.getGivenName());
+
+        // Switch to the settings tab
+        view.getProgrammingPanel()
+                .setVisible(false);
+        view.getHomePanel()
+                .setVisible(false);
+        view.getSettingsPanel()
+                .setVisible(true);
+
+        // Switch to the right subpanel
+        sp.settingsMainPanel.setVisible(false);
+        sp.deviceSettingsMainPanel.setVisible(true);
+
+        // Fill the panel
+        sp.deviceNameField.setText(selectedDevice.getGivenName());
+        if (selectedDevice.hasHorizontalVanes()) {
+            sp.horizontalSwingLabel.setEnabled(true);
+            sp.horizontalSwingCheckBox.setEnabled(true);
+            sp.horizontalSwingCheckBox.setSelected(
+                    selectedDevice.isHorizontalVanesSwinging());
+        } else {
+            sp.horizontalSwingLabel.setEnabled(false);
+            sp.horizontalSwingCheckBox.setEnabled(false);
+            sp.horizontalSwingCheckBox.setSelected(false);
+        }
+        if (selectedDevice.hasVerticalVanes()) {
+            sp.verticalSwingLabel.setEnabled(true);
+            sp.VerticalSwingCheckBox.setEnabled(true);
+            sp.VerticalSwingCheckBox.setSelected(
+                    selectedDevice.isVerticalVanesSwinging());
+        } else {
+            sp.verticalSwingLabel.setEnabled(false);
+            sp.VerticalSwingCheckBox.setEnabled(false);
+            sp.VerticalSwingCheckBox.setSelected(false);
+
+        }
+        sp.modelNameField.setText(selectedDevice.getModelName());
+        sp.modelNumberField.setText(selectedDevice.getModelNumber());
+        sp.serialNumberField.setText(selectedDevice.getSerialNumber());
     }
 
     private void changeLanguage(String language) {
@@ -511,7 +603,7 @@ public final class Controller {
         view.getProgrammingPanel().newProgramComponent.setTemperatureUnit(
                 model.getTempUnit());
 
-        reloadDeviceList();
+        reloadHomeDeviceList();
         reloadProgramList();
     }
 
@@ -521,7 +613,7 @@ public final class Controller {
         view.getProgrammingPanel().newProgramComponent.setTimeFormat(
                 model.getTimeFormat());
 
-        reloadDeviceList();
+        reloadHomeDeviceList();
         reloadProgramList();
     }
 }
