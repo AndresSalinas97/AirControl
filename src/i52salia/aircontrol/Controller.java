@@ -189,18 +189,32 @@ public final class Controller {
 
             changeTimeFormat();
         });
-        
+
         sp.saveButton.addActionListener((ActionEvent e) -> {
             selectedDevice.setGivenName(sp.deviceNameField.getText());
             selectedDevice.setHorizontalVanesSwinging(
                     sp.horizontalSwingCheckBox.isSelected());
             selectedDevice.setVerticalVanesSwinging(
-                    sp.VerticalSwingCheckBox.isSelected());
+                    sp.verticalSwingCheckBox.isSelected());
             openSelectedDeviceSettings();
         });
-        
+
         sp.deleteDeviceButton.addActionListener((ActionEvent e) -> {
             confirmSelectedDeviceDeletion();
+        });
+
+        sp.openDeviceSettingsButton.addActionListener((ActionEvent e) -> {
+            // Check if a device has been selected
+            int selectedDeviceIndex = sp.devicesList.getSelectedIndex();
+            if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
+                DialogBoxes.showErrrorMessage(
+                        view, bundle.getString("Controller.addNewProgramStep2.Error"));
+                return;
+            }
+
+            // Open selected device settings
+            selectedDevice = model.getDevices().get(selectedDeviceIndex);
+            openSelectedDeviceSettings();
         });
     }
 
@@ -550,13 +564,13 @@ public final class Controller {
         }
         if (selectedDevice.hasVerticalVanes()) {
             sp.verticalSwingLabel.setEnabled(true);
-            sp.VerticalSwingCheckBox.setEnabled(true);
-            sp.VerticalSwingCheckBox.setSelected(
+            sp.verticalSwingCheckBox.setEnabled(true);
+            sp.verticalSwingCheckBox.setSelected(
                     selectedDevice.isVerticalVanesSwinging());
         } else {
             sp.verticalSwingLabel.setEnabled(false);
-            sp.VerticalSwingCheckBox.setEnabled(false);
-            sp.VerticalSwingCheckBox.setSelected(false);
+            sp.verticalSwingCheckBox.setEnabled(false);
+            sp.verticalSwingCheckBox.setSelected(false);
 
         }
         sp.modelNameField.setText(selectedDevice.getModelName());

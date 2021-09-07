@@ -57,6 +57,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         devicesLabel = new javax.swing.JLabel();
         devicesScrollPane = new javax.swing.JScrollPane();
         devicesList = new javax.swing.JList();
+        openDeviceSettingsButton = new javax.swing.JButton();
         addDeviceButton = new javax.swing.JButton();
         deviceSettingsMainPanel = new javax.swing.JScrollPane();
         containerPanel2 = new javax.swing.JPanel();
@@ -67,7 +68,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         horizontalSwingLabel = new javax.swing.JLabel();
         horizontalSwingCheckBox = new javax.swing.JCheckBox();
         verticalSwingLabel = new javax.swing.JLabel();
-        VerticalSwingCheckBox = new javax.swing.JCheckBox();
+        verticalSwingCheckBox = new javax.swing.JCheckBox();
         saveButton = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         deviceInfoLabel = new javax.swing.JLabel();
@@ -157,7 +158,6 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         settingsPanel.add(devicesLabel, gridBagConstraints);
 
-        devicesList.setEnabled(false);
         devicesScrollPane.setViewportView(devicesList);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -167,6 +167,14 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         settingsPanel.add(devicesScrollPane, gridBagConstraints);
+
+        openDeviceSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/next-icon.png"))); // NOI18N
+        openDeviceSettingsButton.setText(bundle.getString("SettingsPanel.OpenDeviceSettings")); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        settingsPanel.add(openDeviceSettingsButton, gridBagConstraints);
 
         addDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/add-icon.png"))); // NOI18N
         addDeviceButton.setText(bundle.getString("SettingsPanel.AddDevice")); // NOI18N
@@ -231,7 +239,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
-        deviceSettingsPanel.add(VerticalSwingCheckBox, gridBagConstraints);
+        deviceSettingsPanel.add(verticalSwingCheckBox, gridBagConstraints);
 
         saveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-icon.png"))); // NOI18N
         saveButton.setText(bundle.getString("SettingsPanel.Save")); // NOI18N
@@ -330,8 +338,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LanguageLabel;
-    public javax.swing.JCheckBox VerticalSwingCheckBox;
-    private javax.swing.JButton addDeviceButton;
+    public javax.swing.JButton addDeviceButton;
     private javax.swing.JLabel appSettingsLabel;
     private javax.swing.JPanel containerPanel1;
     private javax.swing.JPanel containerPanel2;
@@ -356,6 +363,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel modelNameLabel;
     public javax.swing.JTextField modelNumberField;
     private javax.swing.JLabel modelNumberLabel;
+    public javax.swing.JButton openDeviceSettingsButton;
     public javax.swing.JButton saveButton;
     public javax.swing.JTextField serialNumberField;
     private javax.swing.JLabel serialNumberLabel;
@@ -365,6 +373,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel tempUnitLabel;
     public javax.swing.JComboBox timeFormatComboBox;
     private javax.swing.JLabel timeFormatLabel;
+    public javax.swing.JCheckBox verticalSwingCheckBox;
     public javax.swing.JLabel verticalSwingLabel;
     // End of variables declaration//GEN-END:variables
 }
