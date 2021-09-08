@@ -10,7 +10,6 @@ import i52salia.aircontrol.utils.AirConditioner;
 import i52salia.aircontrol.utils.DialogBoxes;
 import i52salia.aircontrol.utils.Temperature;
 import i52salia.aircontrol.utils.Time;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -138,42 +137,32 @@ public final class Controller {
     private void initProgrammingPanelController() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
+        // Main panel
         pp.addProgramButton.addActionListener((ActionEvent e) -> {
             switchToAddNewProgramStep1();
         });
 
+        // Program settings panel
         pp.cancelChangesButton.addActionListener((ActionEvent e) -> {
             switchToProgrammingMainPanel();
         });
-
         pp.saveChangesButton.addActionListener((ActionEvent e) -> {
-            ACProgram modifiedProgram = pp.programSettingsComponent.getSelectedProgram();
-            selectedProgram.setEnabled(modifiedProgram.isEnabled());
-            selectedProgram.setDaysOfWeekSelection(modifiedProgram.getDaysOfWeekSelection());
-            selectedProgram.setTimeFrame(modifiedProgram.getTimeFrame());
-            selectedProgram.setSetpointTemp(modifiedProgram.getSetpointTemp());
-            selectedProgram.setMode(modifiedProgram.getMode());
-            selectedProgram.setFanSpeed(modifiedProgram.getFanSpeed());
-
-            switchToProgrammingMainPanel();
+            saveProgramSettingsChanges();
         });
-
         pp.deleteProgramButton.addActionListener((ActionEvent e) -> {
             confirmSelectedProgramDeletion();
         });
 
+        // New program panels
         pp.cancelStep1Button.addActionListener((ActionEvent e) -> {
             switchToProgrammingMainPanel();
         });
-
         pp.nextStepButton.addActionListener((ActionEvent e) -> {
             switchToAddNewProgramStep2();
         });
-
         pp.backToStep1Button.addActionListener((ActionEvent e) -> {
             switchToAddNewProgramStep1();
         });
-
         pp.saveNewProgramButton.addActionListener((ActionEvent e) -> {
             saveNewProgram();
         });
@@ -186,6 +175,7 @@ public final class Controller {
     private void initSettingsPanelController() {
         SettingsPanel sp = view.getSettingsPanel();
 
+        // Main Panel
         sp.languageComboBox.addActionListener((ActionEvent e) -> {
             if (sp.languageComboBox.getSelectedIndex() == 0) {
                 changeLanguage("en");
@@ -193,7 +183,6 @@ public final class Controller {
                 changeLanguage("es");
             }
         });
-
         sp.tempUnitComboBox.addActionListener((ActionEvent e) -> {
             if (sp.tempUnitComboBox.getSelectedIndex() == 0) {
                 model.setTempUnit(Temperature.TempUnit.CELSIUS);
@@ -203,7 +192,6 @@ public final class Controller {
 
             changeTemperatureUnit();
         });
-
         sp.timeFormatComboBox.addActionListener((ActionEvent e) -> {
             if (sp.timeFormatComboBox.getSelectedIndex() == 0) {
                 model.setTimeFormat(Time.TimeFormat.TF24HOUR);
@@ -213,50 +201,34 @@ public final class Controller {
 
             changeTimeFormat();
         });
-
-        sp.saveButton.addActionListener((ActionEvent e) -> {
-            selectedDevice.setGivenName(sp.deviceNameField.getText());
-            selectedDevice.setHorizontalVanesSwinging(
-                    sp.horizontalSwingCheckBox.isSelected());
-            selectedDevice.setVerticalVanesSwinging(
-                    sp.verticalSwingCheckBox.isSelected());
-            switchToSelectedDeviceSettings();
-        });
-
-        sp.deleteDeviceButton.addActionListener((ActionEvent e) -> {
-            confirmSelectedDeviceDeletion();
-        });
-
         sp.openDeviceSettingsButton.addActionListener((ActionEvent e) -> {
-            // Check if a device has been selected
-            int selectedDeviceIndex = sp.devicesList.getSelectedIndex();
-            if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
-                DialogBoxes.showErrrorMessage(
-                        view, bundle.getString("Controller.openDeviceSettingsButton.Error"));
-                return;
-            }
-
-            // Open selected device settings
-            selectedDevice = model.getDevices().get(selectedDeviceIndex);
-            switchToSelectedDeviceSettings();
+            openSelectedDeviceSettings();
         });
-
         sp.addDeviceButton.addActionListener((ActionEvent e) -> {
             switchToAddNewDeviceStep1();
         });
 
+        // Device settings panel
+        sp.saveChangesButton.addActionListener((ActionEvent e) -> {
+            saveDeviceSettingsChanges();
+        });
+        sp.cancelChangesButton.addActionListener((ActionEvent e) -> {
+            switchToSettingsMainPanel();
+        });
+        sp.deleteDeviceButton.addActionListener((ActionEvent e) -> {
+            confirmSelectedDeviceDeletion();
+        });
+
+        // Add new device panels
         sp.nextStepButton.addActionListener((ActionEvent e) -> {
             switchToAddNewDeviceStep2();
         });
-
         sp.cancelStep1Button.addActionListener((ActionEvent e) -> {
             switchToSettingsMainPanel();
         });
-
         sp.backToStep1Button.addActionListener((ActionEvent e) -> {
             switchToAddNewDeviceStep1();
         });
-
         sp.saveNewDeviceButton.addActionListener((ActionEvent e) -> {
             saveNewDevice();
         });
@@ -716,6 +688,41 @@ public final class Controller {
         pp.programSettingsComponent.setSelectedProgram(selectedProgram);
     }
 
+    private void saveProgramSettingsChanges() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
+
+        ACProgram modifiedProgram = pp.programSettingsComponent.getSelectedProgram();
+        
+        selectedProgram.setEnabled(modifiedProgram.isEnabled());
+        selectedProgram.setDaysOfWeekSelection(modifiedProgram.getDaysOfWeekSelection());
+        selectedProgram.setTimeFrame(modifiedProgram.getTimeFrame());
+        selectedProgram.setSetpointTemp(modifiedProgram.getSetpointTemp());
+        selectedProgram.setMode(modifiedProgram.getMode());
+        selectedProgram.setFanSpeed(modifiedProgram.getFanSpeed());
+
+        switchToProgrammingMainPanel();
+    }
+
+    /**
+     * Tries to open the settings of the device selected in the list of the
+     * settings main panel.
+     */
+    private void openSelectedDeviceSettings() {
+        SettingsPanel sp = view.getSettingsPanel();
+
+        // Check if a device has been selected
+        int selectedDeviceIndex = sp.devicesList.getSelectedIndex();
+        if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
+            DialogBoxes.showErrrorMessage(
+                    view, bundle.getString("Controller.openDeviceSettingsButton.Error"));
+            return;
+        }
+
+        selectedDevice = model.getDevices().get(selectedDeviceIndex);
+
+        switchToSelectedDeviceSettings();
+    }
+
     /**
      * Prepares the content and switches to the panel with the selected AC
      * device settings and info.
@@ -764,6 +771,21 @@ public final class Controller {
         sp.modelNameField.setText(selectedDevice.getModelName());
         sp.modelNumberField.setText(selectedDevice.getModelNumber());
         sp.serialNumberField.setText(selectedDevice.getSerialNumber());
+    }
+
+    /**
+     * Saves the changes made to the selected device.
+     */
+    private void saveDeviceSettingsChanges() {
+        SettingsPanel sp = view.getSettingsPanel();
+
+        selectedDevice.setGivenName(sp.deviceNameField.getText());
+        selectedDevice.setHorizontalVanesSwinging(
+                sp.horizontalSwingCheckBox.isSelected());
+        selectedDevice.setVerticalVanesSwinging(
+                sp.verticalSwingCheckBox.isSelected());
+
+        switchToSettingsMainPanel();
     }
 
     /**
