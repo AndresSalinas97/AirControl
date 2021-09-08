@@ -189,7 +189,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 0);
         settingsPanel.add(devicesScrollPane, gridBagConstraints);
 
         openDeviceSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/next-icon.png"))); // NOI18N
@@ -205,7 +205,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
         settingsPanel.add(addDeviceButton, gridBagConstraints);
 
         containerPanel1.add(settingsPanel);
