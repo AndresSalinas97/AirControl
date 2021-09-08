@@ -46,6 +46,9 @@ public final class Controller {
         initView();
     }
 
+    /**
+     * Initializes the controller of the different panels.
+     */
     private void initController() {
         initTabBarController();
         initHomePanelController();
@@ -53,6 +56,10 @@ public final class Controller {
         initSettingsPanelController();
     }
 
+    /**
+     * Initializes the view: selects the right unit format and switches to the
+     * home panel.
+     */
     private void initView() {
         switchToHomeTab();
 
@@ -63,6 +70,10 @@ public final class Controller {
         view.setFocusable(true);
     }
 
+    /**
+     * Initializes the tab bar controller: adds the right event listeners to the
+     * right buttons.
+     */
     private void initTabBarController() {
         view.homeTab.addMouseListener(new MouseAdapter() {
             @Override
@@ -86,6 +97,10 @@ public final class Controller {
         });
     }
 
+    /**
+     * Initializes the Home panel controller: adds the right event listeners to
+     * the right buttons.
+     */
     private void initHomePanelController() {
         HomePanel hp = view.getHomePanel();
 
@@ -111,10 +126,14 @@ public final class Controller {
         });
 
         hp.moreSettingsButton.addActionListener((ActionEvent e) -> {
-            openSelectedDeviceSettings();
+            switchToSelectedDeviceSettings();
         });
     }
 
+    /**
+     * Initializes the Programming panel controller: adds the right event
+     * listeners to the right buttons.
+     */
     private void initProgrammingPanelController() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
@@ -159,6 +178,10 @@ public final class Controller {
         });
     }
 
+    /**
+     * Initializes the Settings panel controller: adds the right event listeners
+     * to the right buttons.
+     */
     private void initSettingsPanelController() {
         SettingsPanel sp = view.getSettingsPanel();
 
@@ -196,7 +219,7 @@ public final class Controller {
                     sp.horizontalSwingCheckBox.isSelected());
             selectedDevice.setVerticalVanesSwinging(
                     sp.verticalSwingCheckBox.isSelected());
-            openSelectedDeviceSettings();
+            switchToSelectedDeviceSettings();
         });
 
         sp.deleteDeviceButton.addActionListener((ActionEvent e) -> {
@@ -208,19 +231,22 @@ public final class Controller {
             int selectedDeviceIndex = sp.devicesList.getSelectedIndex();
             if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
                 DialogBoxes.showErrrorMessage(
-                        view, bundle.getString("Controller.addNewProgramStep2.Error"));
+                        view, bundle.getString("Controller.openDeviceSettingsButton.Error"));
                 return;
             }
 
             // Open selected device settings
             selectedDevice = model.getDevices().get(selectedDeviceIndex);
-            openSelectedDeviceSettings();
+            switchToSelectedDeviceSettings();
         });
     }
 
+    /**
+     * Prepares the content and switches to the main Home tab.
+     */
     private void switchToHomeTab() {
         // Prepare home tab
-        reloadHomeDeviceList();
+        reloadHomeTabDeviceList();
         view.getHomePanel().deviceListMainPanel.setVisible(true);
         view.getHomePanel().deviceSettingsMainPanel.setVisible(false);
 
@@ -233,151 +259,10 @@ public final class Controller {
         view.titleLabel.setText(bundle.getString("View.tabs.Home"));
     }
 
-    private void switchToProgrammingTab() {
-        // Prepare programming tab
-        reloadProgramList();
-        view.getProgrammingPanel().programListMainPanel.setVisible(true);
-        view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
-        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(false);
-        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(false);
-
-        // Switch to programming tab
-        view.getProgrammingPanel().setVisible(true);
-        view.getHomePanel().setVisible(false);
-        view.getSettingsPanel().setVisible(false);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("View.tabs.Programming"));
-    }
-
-    private void switchToAddNewProgramStep1() {
-        ProgrammingPanel pp = view.getProgrammingPanel();
-
-        // Fill the devices list
-        DefaultListModel devicesListModel = new DefaultListModel();
-        model.getDevices().stream().forEach((device) -> {
-            devicesListModel.addElement(device.getGivenName());
-        });
-        pp.devicesList.setModel(devicesListModel);
-
-        // Show the right panel
-        view.getHomePanel().setVisible(false);
-        view.getSettingsPanel().setVisible(false);
-        pp.setVisible(true);
-        pp.programListMainPanel.setVisible(false);
-        pp.programSettingsMainPanel.setVisible(false);
-        pp.newProgramStep1MainPanel.setVisible(true);
-        pp.newProgramStep2MainPanel.setVisible(false);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
-    }
-
-    private void switchToAddNewProgramStep2() {
-        ProgrammingPanel pp = view.getProgrammingPanel();
-
-        // Check if a device has been selected
-        int selectedDeviceIndex = pp.devicesList.getSelectedIndex();
-        if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
-            DialogBoxes.showErrrorMessage(
-                    view, bundle.getString("Controller.addNewProgramStep2.Error"));
-            return;
-        }
-
-        // Get the selected device
-        selectedDevice = model.getDevices().get(selectedDeviceIndex);
-
-        // Fill the newProgramComponent
-        pp.newProgramComponent.setSelectedDeviceName(selectedDevice.getGivenName());
-        pp.newProgramComponent.setSelectedProgram(new ACProgram());
-
-        // Show the right panel
-        view.getHomePanel().setVisible(false);
-        view.getSettingsPanel().setVisible(false);
-        pp.setVisible(true);
-        pp.programListMainPanel.setVisible(false);
-        pp.programSettingsMainPanel.setVisible(false);
-        pp.newProgramStep1MainPanel.setVisible(false);
-        pp.newProgramStep2MainPanel.setVisible(true);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
-    }
-
-    private void addNewProgram() {
-        ProgrammingPanel pp = view.getProgrammingPanel();
-
-        ACProgram newProgram = pp.newProgramComponent.getSelectedProgram();
-
-        selectedDevice.getPrograms().add(newProgram);
-
-        switchToProgrammingTab();
-    }
-
-    private void switchToSettingsTab() {
-        SettingsPanel sp = view.getSettingsPanel();
-
-        // Prepare settings tab
-        reloadSettingsComboBoxes();
-        reloadSettingsDeviceList();
-        sp.settingsMainPanel.setVisible(true);
-        sp.deviceSettingsMainPanel.setVisible(false);
-
-        // Switch to the settings tab
-        view.getProgrammingPanel()
-                .setVisible(false);
-        view.getHomePanel()
-                .setVisible(false);
-        view.getSettingsPanel()
-                .setVisible(true);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
-    }
-
-    private void reloadSettingsComboBoxes() {
-        SettingsPanel sp = view.getSettingsPanel();
-
-        // Select the active settings in the comboBoxes
-        if (Locale.getDefault().getLanguage().equals("es")) {
-            sp.languageComboBox.setSelectedIndex(1);
-        } else {
-            sp.languageComboBox.setSelectedIndex(0);
-        }
-        switch (model.getTempUnit()) {
-            case CELSIUS:
-                sp.tempUnitComboBox.setSelectedIndex(0);
-                break;
-            case FAHRENHEIT:
-                sp.tempUnitComboBox.setSelectedIndex(1);
-                break;
-            default:
-                throw new UnsupportedOperationException();
-        }
-        switch (model.getTimeFormat()) {
-            case TF24HOUR:
-                sp.timeFormatComboBox.setSelectedIndex(0);
-                break;
-            case TF12HOUR:
-                sp.timeFormatComboBox.setSelectedIndex(1);
-                break;
-            default:
-                throw new UnsupportedOperationException();
-        }
-    }
-
-    private void reloadSettingsDeviceList() {
-        // Fill the devices list
-        DefaultListModel devicesListModel = new DefaultListModel();
-        model.getDevices()
-                .stream().forEach((device) -> {
-                    devicesListModel.addElement(device.getGivenName());
-                }
-                );
-        view.getSettingsPanel().devicesList.setModel(devicesListModel);
-    }
-
-    private void reloadHomeDeviceList() {
+    /**
+     * Reloads the list of devices in the main panel of the Home tab.
+     */
+    private void reloadHomeTabDeviceList() {
         javax.swing.JPanel listPanel = view.getHomePanel().deviceListPanel;
 
         listPanel.removeAll();
@@ -413,12 +298,12 @@ public final class Controller {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     selectedDevice = device;
-                    openSelectedDevice();
+                    switchToSelectedDevice();
                 }
             });
             newDeviceComponent.onOffButton.addActionListener((ActionEvent e) -> {
                 device.setTurnedOn(!device.isTurnedOn());
-                reloadHomeDeviceList();
+                reloadHomeTabDeviceList();
             });
             return newDeviceComponent;
         }).forEach((newDeviceComponent) -> {
@@ -429,27 +314,30 @@ public final class Controller {
         listPanel.repaint();
     }
 
-    private void openSelectedDevice() {
-        HomePanel hp = view.getHomePanel();
+    /**
+     * Prepares the content and switches to the main Programming tab.
+     */
+    private void switchToProgrammingTab() {
+        // Prepare programming tab
+        reloadProgrammingTabProgramList();
+        view.getProgrammingPanel().programListMainPanel.setVisible(true);
+        view.getProgrammingPanel().programSettingsMainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep1MainPanel.setVisible(false);
+        view.getProgrammingPanel().newProgramStep2MainPanel.setVisible(false);
 
-        hp.deviceListMainPanel.setVisible(false);
-        hp.deviceSettingsMainPanel.setVisible(true);
+        // Switch to programming tab
+        view.getProgrammingPanel().setVisible(true);
+        view.getHomePanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
 
-        hp.onOffButton.setTurnedOn(selectedDevice.isTurnedOn());
-
-        hp.currentTempLabel.setText(
-                selectedDevice.getCurrentTemp().getString(model.getTempUnit()));
-
-        hp.setpointTemperatureSelector.setSelectedTemperature(selectedDevice.getSetpointTemp());
-
-        hp.modeButtons.setSelectedMode(selectedDevice.getMode());
-
-        hp.fanSpeedSelector.setSelectedFanSpeed(selectedDevice.getFanSpeed());
-
-        view.titleLabel.setText(selectedDevice.getGivenName());
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("View.tabs.Programming"));
     }
 
-    private void reloadProgramList() {
+    /**
+     * Reloads the list of programs in the main panel of the Programming tab.
+     */
+    private void reloadProgrammingTabProgramList() {
         JPanel listPanel = view.getProgrammingPanel().programListPanel;
 
         listPanel.removeAll();
@@ -474,7 +362,7 @@ public final class Controller {
                     public void mousePressed(MouseEvent e) {
                         selectedDevice = device;
                         selectedProgram = program;
-                        openSelectedProgram();
+                        switchToSelectedProgram();
                     }
                 });
                 newDeviceComponent.toggleButton.addActionListener((ActionEvent e) -> {
@@ -491,7 +379,188 @@ public final class Controller {
         listPanel.repaint();
     }
 
-    private void openSelectedProgram() {
+    /**
+     * Prepares the content and switches to the main Settings tab.
+     */
+    private void switchToSettingsTab() {
+        SettingsPanel sp = view.getSettingsPanel();
+
+        // Prepare settings tab
+        reloadSettingsTabComboBoxes();
+        reloadSettingsTabDeviceList();
+        sp.settingsMainPanel.setVisible(true);
+        sp.deviceSettingsMainPanel.setVisible(false);
+
+        // Switch to the settings tab
+        view.getProgrammingPanel()
+                .setVisible(false);
+        view.getHomePanel()
+                .setVisible(false);
+        view.getSettingsPanel()
+                .setVisible(true);
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
+    }
+
+    /**
+     * Reloads the comboBoxes (selecting the active settings) in the main panel
+     * of the Settings tab.
+     */
+    private void reloadSettingsTabComboBoxes() {
+        SettingsPanel sp = view.getSettingsPanel();
+
+        // Language
+        if (Locale.getDefault().getLanguage().equals("es")) {
+            sp.languageComboBox.setSelectedIndex(1);
+        } else {
+            sp.languageComboBox.setSelectedIndex(0);
+        }
+
+        // Temperature unit
+        switch (model.getTempUnit()) {
+            case CELSIUS:
+                sp.tempUnitComboBox.setSelectedIndex(0);
+                break;
+            case FAHRENHEIT:
+                sp.tempUnitComboBox.setSelectedIndex(1);
+                break;
+            default:
+                throw new UnsupportedOperationException();
+        }
+
+        // Time format
+        switch (model.getTimeFormat()) {
+            case TF24HOUR:
+                sp.timeFormatComboBox.setSelectedIndex(0);
+                break;
+            case TF12HOUR:
+                sp.timeFormatComboBox.setSelectedIndex(1);
+                break;
+            default:
+                throw new UnsupportedOperationException();
+        }
+    }
+
+    /**
+     * Reloads the list of devices of the main panel of the Settings tab.
+     */
+    private void reloadSettingsTabDeviceList() {
+        // Fill the devices list
+        DefaultListModel devicesListModel = new DefaultListModel();
+
+        model.getDevices()
+                .stream().forEach((device) -> {
+                    devicesListModel.addElement(device.getGivenName());
+                });
+
+        view.getSettingsPanel().devicesList.setModel(devicesListModel);
+    }
+
+    /**
+     * Prepares the content and switches to the panel with the first step to add
+     * a new program.
+     */
+    private void switchToAddNewProgramStep1() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
+
+        // Fill the devices list
+        DefaultListModel devicesListModel = new DefaultListModel();
+        model.getDevices().stream().forEach((device) -> {
+            devicesListModel.addElement(device.getGivenName());
+        });
+        pp.devicesList.setModel(devicesListModel);
+
+        // Show the right panel
+        view.getHomePanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
+        pp.setVisible(true);
+        pp.programListMainPanel.setVisible(false);
+        pp.programSettingsMainPanel.setVisible(false);
+        pp.newProgramStep1MainPanel.setVisible(true);
+        pp.newProgramStep2MainPanel.setVisible(false);
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
+    }
+
+    /**
+     * Prepares the content and switches to the panel with the second step to
+     * add a new program.
+     */
+    private void switchToAddNewProgramStep2() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
+
+        // Check if a device has been selected
+        int selectedDeviceIndex = pp.devicesList.getSelectedIndex();
+        if (selectedDeviceIndex < 0 || selectedDeviceIndex >= model.getDevices().size()) {
+            DialogBoxes.showErrrorMessage(
+                    view, bundle.getString("Controller.addNewProgramStep2.Error"));
+            return;
+        }
+
+        // Get the selected device
+        selectedDevice = model.getDevices().get(selectedDeviceIndex);
+
+        // Fill the newProgramComponent
+        pp.newProgramComponent.setSelectedDeviceName(selectedDevice.getGivenName());
+        pp.newProgramComponent.setSelectedProgram(new ACProgram());
+
+        // Show the right panel
+        view.getHomePanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
+        pp.setVisible(true);
+        pp.programListMainPanel.setVisible(false);
+        pp.programSettingsMainPanel.setVisible(false);
+        pp.newProgramStep1MainPanel.setVisible(false);
+        pp.newProgramStep2MainPanel.setVisible(true);
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
+    }
+
+    /**
+     * Saves the new program as configured by the user in the second step.
+     */
+    private void addNewProgram() {
+        ProgrammingPanel pp = view.getProgrammingPanel();
+
+        ACProgram newProgram = pp.newProgramComponent.getSelectedProgram();
+
+        selectedDevice.getPrograms().add(newProgram);
+
+        switchToProgrammingTab();
+    }
+
+    /**
+     * Prepares the content and switches to the panel with the selected AC
+     * device current status.
+     */
+    private void switchToSelectedDevice() {
+        HomePanel hp = view.getHomePanel();
+
+        hp.deviceListMainPanel.setVisible(false);
+        hp.deviceSettingsMainPanel.setVisible(true);
+
+        hp.onOffButton.setTurnedOn(selectedDevice.isTurnedOn());
+
+        hp.currentTempLabel.setText(
+                selectedDevice.getCurrentTemp().getString(model.getTempUnit()));
+
+        hp.setpointTemperatureSelector.setSelectedTemperature(selectedDevice.getSetpointTemp());
+
+        hp.modeButtons.setSelectedMode(selectedDevice.getMode());
+
+        hp.fanSpeedSelector.setSelectedFanSpeed(selectedDevice.getFanSpeed());
+
+        view.titleLabel.setText(selectedDevice.getGivenName());
+    }
+
+    /**
+     * Prepares the content and switches to the panel with the selected program
+     * configuration.
+     */
+    private void switchToSelectedProgram() {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
         // Set tab title
@@ -506,31 +575,11 @@ public final class Controller {
         pp.programSettingsComponent.setSelectedProgram(selectedProgram);
     }
 
-    private void confirmSelectedProgramDeletion() {
-        if (DialogBoxes.confirmDeletion(view)) {
-            deleteSelectedProgram();
-        }
-    }
-
-    private void deleteSelectedProgram() {
-        selectedDevice.getPrograms().remove(selectedProgram);
-
-        switchToProgrammingTab();
-    }
-
-    private void confirmSelectedDeviceDeletion() {
-        if (DialogBoxes.confirmDeletion(view)) {
-            deleteSelectedDevice();
-        }
-    }
-
-    private void deleteSelectedDevice() {
-        model.getDevices().remove(selectedDevice);
-
-        switchToSettingsTab();
-    }
-
-    private void openSelectedDeviceSettings() {
+    /**
+     * Prepares the content and switches to the panel with the selected AC
+     * device settings and info.
+     */
+    private void switchToSelectedDeviceSettings() {
         SettingsPanel sp = view.getSettingsPanel();
 
         // Set tab title
@@ -578,6 +627,48 @@ public final class Controller {
         sp.serialNumberField.setText(selectedDevice.getSerialNumber());
     }
 
+    /**
+     * Asks the user to confirm before deleting the program.
+     */
+    private void confirmSelectedProgramDeletion() {
+        if (DialogBoxes.confirmDeletion(view)) {
+            deleteSelectedProgram();
+        }
+    }
+
+    /**
+     * Deletes the selected program.
+     */
+    private void deleteSelectedProgram() {
+        selectedDevice.getPrograms().remove(selectedProgram);
+
+        switchToProgrammingTab();
+    }
+
+    /**
+     * Asks the user to confirm before deleting the device.
+     */
+    private void confirmSelectedDeviceDeletion() {
+        if (DialogBoxes.confirmDeletion(view)) {
+            deleteSelectedDevice();
+        }
+    }
+
+    /**
+     * Deletes the selected device.
+     */
+    private void deleteSelectedDevice() {
+        model.getDevices().remove(selectedDevice);
+
+        switchToSettingsTab();
+    }
+
+    /**
+     * Changes the App language.
+     *
+     * @param language the desired language (right now only "en" or "es" are
+     * possible)
+     */
     private void changeLanguage(String language) {
         // Check if it is actually a different language than the current one
         if (Locale.getDefault().getLanguage().equals(language)) {
@@ -591,6 +682,11 @@ public final class Controller {
         switchToSettingsTab();
     }
 
+    /**
+     * Reloads the App using the new Locale.
+     *
+     * @param locale
+     */
     private void reloadLocale(Locale locale) {
         // Set new Locale
         Locale.setDefault(locale);
@@ -609,6 +705,9 @@ public final class Controller {
         initView();
     }
 
+    /**
+     * Changes the temperature unit used in various components of the App.
+     */
     private void changeTemperatureUnit() {
         view.getHomePanel().setpointTemperatureSelector.setTemperatureUnit(
                 model.getTempUnit());
@@ -617,17 +716,20 @@ public final class Controller {
         view.getProgrammingPanel().newProgramComponent.setTemperatureUnit(
                 model.getTempUnit());
 
-        reloadHomeDeviceList();
-        reloadProgramList();
+        reloadHomeTabDeviceList();
+        reloadProgrammingTabProgramList();
     }
 
+    /**
+     * Changes the time format used in various components of the App.
+     */
     private void changeTimeFormat() {
         view.getProgrammingPanel().programSettingsComponent.setTimeFormat(
                 model.getTimeFormat());
         view.getProgrammingPanel().newProgramComponent.setTimeFormat(
                 model.getTimeFormat());
 
-        reloadHomeDeviceList();
-        reloadProgramList();
+        reloadHomeTabDeviceList();
+        reloadProgrammingTabProgramList();
     }
 }
