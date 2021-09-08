@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public final class Model {
 
     private final ArrayList<AirConditioner> devices;
+    private final ArrayList<AirConditioner> networkDevices;
     private Temperature.TempUnit tempUnit;
     private Time.TimeFormat timeFormat;
 
@@ -24,11 +25,13 @@ public final class Model {
      */
     public Model() {
         devices = new ArrayList<>();
+        networkDevices = new ArrayList<>();
 
         tempUnit = Temperature.TempUnit.CELSIUS;
         timeFormat = Time.TimeFormat.TF24HOUR;
 
         addExampleDevices();
+        addExampleNetworkDevices();
         addExamplePrograms();
     }
 
@@ -61,28 +64,37 @@ public final class Model {
     }
 
     private void addExampleDevices() {
-        AirConditioner ac1 = new AirConditioner("Salón",
-                "Daikin Wall Split Model A34GH3", "A34GH3", "DYPTP7584JCLK3",
-                true, true);
+        AirConditioner ac1 = new AirConditioner("Daikin Wall Split Model A34GH3",
+                "A34GH3", "DYPTP7584JCLK3", true, true);
+        ac1.setGivenName("Salón");
         ac1.setTurnedOn(true);
         ac1.setHorizontalVanesSwinging(true);
         ac1.setVerticalVanesSwinging(true);
         devices.add(ac1);
 
-        AirConditioner ac2 = new AirConditioner("Dormitorio",
-                "Daikin Wall Split Model A34GH5", "A34GH5", "DYPTP7584ALKSJ3",
-                false, false);
+        AirConditioner ac2 = new AirConditioner("Daikin Wall Split Model A34GH5",
+                "A34GH5", "DYPTP7584ALKSJ3", false, false);
+        ac2.setGivenName("Dormitorio");
         ac2.setTurnedOn(true);
         ac2.setFanSpeed(AirConditioner.FanSpeed.LOW);
         ac2.setMode(AirConditioner.Mode.COOL);
         devices.add(ac2);
 
-        AirConditioner ac3 = new AirConditioner("Oficina",
-                "Daikin Wall Split Model A34GH3", "A34GH3", "DYPTP7584JCLK3",
-                true, true);
+        AirConditioner ac3 = new AirConditioner("Daikin Wall Split Model A34GH3", "A34GH3", "DYPTP7584JCLK3", true, true);
+        ac3.setGivenName("Oficina");
         ac3.setFanSpeed(AirConditioner.FanSpeed.HIGH);
         ac3.setMode(AirConditioner.Mode.FAN);
         devices.add(ac3);
+    }
+
+    private void addExampleNetworkDevices() {
+        AirConditioner ac1 = new AirConditioner("Daikin Wall Split Model A34GH3",
+                "A34GH3", "DYPTP7584JCLK3", true, true);
+        networkDevices.add(ac1);
+
+        AirConditioner ac2 = new AirConditioner("Daikin Wall Split Model A34GH5",
+                "A34GH5", "DYPTP7584ALKSJ3", false, false);
+        networkDevices.add(ac2);
     }
 
     private void addExamplePrograms() {
@@ -123,5 +135,13 @@ public final class Model {
      */
     public ArrayList<AirConditioner> getDevices() {
         return devices;
+    }
+
+    /**
+     * @return the list of air conditioning devices in the network waiting to be
+     * added to the App
+     */
+    public ArrayList<AirConditioner> getNetworkDevices() {
+        return networkDevices;
     }
 }

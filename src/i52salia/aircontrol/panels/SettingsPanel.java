@@ -21,6 +21,8 @@ public final class SettingsPanel extends javax.swing.JPanel {
         // Hide subpanels
         settingsMainPanel.setVisible(true);
         deviceSettingsMainPanel.setVisible(false);
+        newDeviceStep1MainPanel.setVisible(false);
+        newDeviceStep2MainPanel.setVisible(false);
 
         // Fill timeFormatComboBox with localized strings
         timeFormatComboBox.setModel(new DefaultComboBoxModel(new String[]{
@@ -81,6 +83,28 @@ public final class SettingsPanel extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         dangerZoneLabel = new javax.swing.JLabel();
         deleteDeviceButton = new javax.swing.JButton();
+        newDeviceStep1MainPanel = new javax.swing.JScrollPane();
+        containerPanel4 = new javax.swing.JPanel();
+        newDeviceStep1NetworkPanel = new javax.swing.JPanel();
+        scanningNetowrkLabel = new javax.swing.JLabel();
+        devicesFoundLabel = new javax.swing.JLabel();
+        newDeviceStep1ListPanel = new javax.swing.JPanel();
+        selectDeviceLabel = new javax.swing.JLabel();
+        newProgramStep1ScrollPane = new javax.swing.JScrollPane();
+        newDevicesList = new javax.swing.JList();
+        newDeviceStep1ButtonsPanel = new javax.swing.JPanel();
+        cancelStep1Button = new javax.swing.JButton();
+        invisibleSeparator2 = new javax.swing.JSeparator();
+        nextStepButton = new javax.swing.JButton();
+        newDeviceStep2MainPanel = new javax.swing.JScrollPane();
+        containerPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        newDeviceNameLabel = new javax.swing.JLabel();
+        newDeviceNameField = new javax.swing.JTextField();
+        newDeviceStep2ButtonsPanel = new javax.swing.JPanel();
+        backToStep1Button = new javax.swing.JButton();
+        invisibleSeparator1 = new javax.swing.JSeparator();
+        saveNewDeviceButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.OverlayLayout(this));
 
@@ -178,7 +202,6 @@ public final class SettingsPanel extends javax.swing.JPanel {
 
         addDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/add-icon.png"))); // NOI18N
         addDeviceButton.setText(bundle.getString("SettingsPanel.AddDevice")); // NOI18N
-        addDeviceButton.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = 2;
@@ -334,14 +357,116 @@ public final class SettingsPanel extends javax.swing.JPanel {
         deviceSettingsMainPanel.setViewportView(containerPanel2);
 
         add(deviceSettingsMainPanel);
+
+        newDeviceStep1MainPanel.setBorder(null);
+
+        containerPanel4.setLayout(new java.awt.BorderLayout());
+
+        newDeviceStep1NetworkPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 20, 1));
+
+        scanningNetowrkLabel.setForeground(new java.awt.Color(133, 126, 126));
+        scanningNetowrkLabel.setText(bundle.getString("SettingsPanel.ScanningTheNetowrk")); // NOI18N
+        newDeviceStep1NetworkPanel.add(scanningNetowrkLabel);
+
+        devicesFoundLabel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        devicesFoundLabel.setForeground(new java.awt.Color(133, 126, 126));
+        devicesFoundLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        devicesFoundLabel.setText(bundle.getString("SettingsPanel.2DevicesFound")); // NOI18N
+        newDeviceStep1NetworkPanel.add(devicesFoundLabel);
+
+        containerPanel4.add(newDeviceStep1NetworkPanel, java.awt.BorderLayout.NORTH);
+
+        newDeviceStep1ListPanel.setLayout(new java.awt.BorderLayout(0, 5));
+
+        selectDeviceLabel.setText(bundle.getString("SettingsPanel.SelectDevice")); // NOI18N
+        newDeviceStep1ListPanel.add(selectDeviceLabel, java.awt.BorderLayout.NORTH);
+
+        newDevicesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        newProgramStep1ScrollPane.setViewportView(newDevicesList);
+
+        newDeviceStep1ListPanel.add(newProgramStep1ScrollPane, java.awt.BorderLayout.CENTER);
+
+        containerPanel4.add(newDeviceStep1ListPanel, java.awt.BorderLayout.CENTER);
+
+        newDeviceStep1ButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        cancelStep1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
+        cancelStep1Button.setText(bundle.getString("SettingsPanel.Cancel")); // NOI18N
+        newDeviceStep1ButtonsPanel.add(cancelStep1Button);
+
+        invisibleSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        invisibleSeparator2.setBorder(null);
+        invisibleSeparator2.setPreferredSize(new java.awt.Dimension(25, 0));
+        newDeviceStep1ButtonsPanel.add(invisibleSeparator2);
+
+        nextStepButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/next-icon.png"))); // NOI18N
+        nextStepButton.setText(bundle.getString("SettingsPanel.Next")); // NOI18N
+        newDeviceStep1ButtonsPanel.add(nextStepButton);
+
+        containerPanel4.add(newDeviceStep1ButtonsPanel, java.awt.BorderLayout.SOUTH);
+
+        newDeviceStep1MainPanel.setViewportView(containerPanel4);
+
+        add(newDeviceStep1MainPanel);
+
+        newDeviceStep2MainPanel.setBorder(null);
+
+        containerPanel3.setEnabled(false);
+        containerPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        newDeviceNameLabel.setText(bundle.getString("SettingsPanel.NewDeviceName")); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        jPanel1.add(newDeviceNameLabel, gridBagConstraints);
+
+        newDeviceNameField.setText("newDeviceNameField");
+        newDeviceNameField.setMaximumSize(new java.awt.Dimension(250, 35));
+        newDeviceNameField.setMinimumSize(new java.awt.Dimension(250, 35));
+        newDeviceNameField.setPreferredSize(new java.awt.Dimension(250, 35));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        jPanel1.add(newDeviceNameField, gridBagConstraints);
+
+        containerPanel3.add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        newDeviceStep2ButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        backToStep1Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
+        backToStep1Button.setText(bundle.getString("SettingsPanel.GoBack")); // NOI18N
+        newDeviceStep2ButtonsPanel.add(backToStep1Button);
+
+        invisibleSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        invisibleSeparator1.setBorder(null);
+        invisibleSeparator1.setPreferredSize(new java.awt.Dimension(25, 0));
+        newDeviceStep2ButtonsPanel.add(invisibleSeparator1);
+
+        saveNewDeviceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-icon.png"))); // NOI18N
+        saveNewDeviceButton.setText(bundle.getString("SettingsPanel.Save")); // NOI18N
+        newDeviceStep2ButtonsPanel.add(saveNewDeviceButton);
+
+        containerPanel3.add(newDeviceStep2ButtonsPanel, java.awt.BorderLayout.SOUTH);
+
+        newDeviceStep2MainPanel.setViewportView(containerPanel3);
+
+        add(newDeviceStep2MainPanel);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LanguageLabel;
     public javax.swing.JButton addDeviceButton;
     private javax.swing.JLabel appSettingsLabel;
+    public javax.swing.JButton backToStep1Button;
+    public javax.swing.JButton cancelStep1Button;
     private javax.swing.JPanel containerPanel1;
     private javax.swing.JPanel containerPanel2;
+    private javax.swing.JPanel containerPanel3;
+    private javax.swing.JPanel containerPanel4;
     private javax.swing.JLabel dangerZoneLabel;
     public javax.swing.JButton deleteDeviceButton;
     private javax.swing.JLabel deviceInfoLabel;
@@ -350,11 +475,15 @@ public final class SettingsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel deviceSettingsLabel;
     public javax.swing.JScrollPane deviceSettingsMainPanel;
     private javax.swing.JPanel deviceSettingsPanel;
+    private javax.swing.JLabel devicesFoundLabel;
     private javax.swing.JLabel devicesLabel;
     public javax.swing.JList devicesList;
     private javax.swing.JScrollPane devicesScrollPane;
     public javax.swing.JCheckBox horizontalSwingCheckBox;
     public javax.swing.JLabel horizontalSwingLabel;
+    private javax.swing.JSeparator invisibleSeparator1;
+    private javax.swing.JSeparator invisibleSeparator2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -363,8 +492,22 @@ public final class SettingsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel modelNameLabel;
     public javax.swing.JTextField modelNumberField;
     private javax.swing.JLabel modelNumberLabel;
+    public javax.swing.JTextField newDeviceNameField;
+    private javax.swing.JLabel newDeviceNameLabel;
+    private javax.swing.JPanel newDeviceStep1ButtonsPanel;
+    private javax.swing.JPanel newDeviceStep1ListPanel;
+    public javax.swing.JScrollPane newDeviceStep1MainPanel;
+    private javax.swing.JPanel newDeviceStep1NetworkPanel;
+    private javax.swing.JPanel newDeviceStep2ButtonsPanel;
+    public javax.swing.JScrollPane newDeviceStep2MainPanel;
+    public javax.swing.JList newDevicesList;
+    private javax.swing.JScrollPane newProgramStep1ScrollPane;
+    public javax.swing.JButton nextStepButton;
     public javax.swing.JButton openDeviceSettingsButton;
     public javax.swing.JButton saveButton;
+    public javax.swing.JButton saveNewDeviceButton;
+    private javax.swing.JLabel scanningNetowrkLabel;
+    private javax.swing.JLabel selectDeviceLabel;
     public javax.swing.JTextField serialNumberField;
     private javax.swing.JLabel serialNumberLabel;
     public javax.swing.JScrollPane settingsMainPanel;
