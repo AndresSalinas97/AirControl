@@ -12,5 +12,13 @@
             </test-roots>
         </data>
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1"/>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>app</word>
+            <word>Asignatura</word>
+            <word>Interactivos</word>
+            <word>Prácticas</word>
+            <word>Sistemas</word>
+            <word>Trabajo</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>

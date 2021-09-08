@@ -9,7 +9,7 @@ import i52salia.aircontrol.utils.TimeFrame;
 import java.util.ArrayList;
 
 /**
- * The Model of the AirControl App.
+ * The Model of the AirControl app.
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
@@ -36,28 +36,28 @@ public final class Model {
     }
 
     /**
-     * @return temperature unit to be used in the App
+     * @return temperature unit to be used in the app
      */
     public Temperature.TempUnit getTempUnit() {
         return tempUnit;
     }
 
     /**
-     * @param tempUnit temperature unit to be used in the App
+     * @param tempUnit temperature unit to be used in the app
      */
     public void setTempUnit(Temperature.TempUnit tempUnit) {
         this.tempUnit = tempUnit;
     }
 
     /**
-     * @return time format to be used in the App
+     * @return time format to be used in the app
      */
     public Time.TimeFormat getTimeFormat() {
         return timeFormat;
     }
 
     /**
-     * @param timeFormat time format to be used in the App
+     * @param timeFormat time format to be used in the app
      */
     public void setTimeFormat(Time.TimeFormat timeFormat) {
         this.timeFormat = timeFormat;
@@ -126,6 +126,7 @@ public final class Model {
         p4.setDaysOfWeekSelection(new DaysOfWeekSelection(
                 true, true, true, true, true, true, false));
         p4.setTimeFrame(new TimeFrame(new Time(16, 0), new Time(21, 30)));
+        p4.setMode(AirConditioner.Mode.HEAT);
         p4.setEnabled(true);
         devices.get(2).getPrograms().add(p4);
     }
@@ -139,7 +140,7 @@ public final class Model {
 
     /**
      * @return the list of air conditioning devices in the network waiting to be
-     * added to the App
+     * added to the app
      */
     public ArrayList<AirConditioner> getNetworkDevices() {
         return networkDevices;

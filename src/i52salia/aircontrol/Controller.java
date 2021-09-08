@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 
 /**
- * The Controller of the AirControl App.
+ * The Controller of the AirControl app.
  *
  * @author Andrés Salinas Lima (i52salia@uco.es)
  */
@@ -825,7 +825,7 @@ public final class Controller {
     }
 
     /**
-     * Changes the App language.
+     * Changes the app language.
      *
      * @param language the desired language (right now only "en" or "es" are
      * possible)
@@ -844,7 +844,7 @@ public final class Controller {
     }
 
     /**
-     * Reloads the App using the new Locale.
+     * Reloads the app using the new Locale.
      *
      * @param locale
      */
@@ -867,7 +867,7 @@ public final class Controller {
     }
 
     /**
-     * Changes the temperature unit used in various components of the App.
+     * Changes the temperature unit used in various components of the app.
      */
     private void changeTemperatureUnit() {
         view.getHomePanel().setpointTemperatureSelector.setTemperatureUnit(
@@ -882,7 +882,7 @@ public final class Controller {
     }
 
     /**
-     * Changes the time format used in various components of the App.
+     * Changes the time format used in various components of the app.
      */
     private void changeTimeFormat() {
         view.getProgrammingPanel().programSettingsComponent.setTimeFormat(
