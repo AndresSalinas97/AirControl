@@ -10,6 +10,7 @@ import i52salia.aircontrol.utils.AirConditioner;
 import i52salia.aircontrol.utils.DialogBoxes;
 import i52salia.aircontrol.utils.Temperature;
 import i52salia.aircontrol.utils.Time;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -61,7 +62,7 @@ public final class Controller {
      * home panel.
      */
     private void initView() {
-        switchToHomeTab();
+        switchToHomeMainPanel();
 
         changeTemperatureUnit();
         changeTimeFormat();
@@ -78,21 +79,21 @@ public final class Controller {
         view.homeTab.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                switchToHomeTab();
+                switchToHomeMainPanel();
             }
         });
 
         view.programmingTab.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                switchToProgrammingTab();
+                switchToProgrammingMainPanel();
             }
         });
 
         view.settingsTab.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                switchToSettingsTab();
+                switchToSettingsMainPanel();
             }
         });
     }
@@ -142,7 +143,7 @@ public final class Controller {
         });
 
         pp.cancelChangesButton.addActionListener((ActionEvent e) -> {
-            switchToProgrammingTab();
+            switchToProgrammingMainPanel();
         });
 
         pp.saveChangesButton.addActionListener((ActionEvent e) -> {
@@ -154,7 +155,7 @@ public final class Controller {
             selectedProgram.setMode(modifiedProgram.getMode());
             selectedProgram.setFanSpeed(modifiedProgram.getFanSpeed());
 
-            switchToProgrammingTab();
+            switchToProgrammingMainPanel();
         });
 
         pp.deleteProgramButton.addActionListener((ActionEvent e) -> {
@@ -162,7 +163,7 @@ public final class Controller {
         });
 
         pp.cancelStep1Button.addActionListener((ActionEvent e) -> {
-            switchToProgrammingTab();
+            switchToProgrammingMainPanel();
         });
 
         pp.nextStepButton.addActionListener((ActionEvent e) -> {
@@ -249,7 +250,7 @@ public final class Controller {
         });
         
         sp.cancelStep1Button.addActionListener((ActionEvent e) -> {
-            switchToSettingsTab();
+            switchToSettingsMainPanel();
         });
         
         sp.backToStep1Button.addActionListener((ActionEvent e) -> {
@@ -262,25 +263,68 @@ public final class Controller {
     }
 
     /**
-     * Prepares the content and switches to the main Home tab.
+     * Switches to the Home tab.
      */
     private void switchToHomeTab() {
-        HomePanel hp = view.getHomePanel();
-        ProgrammingPanel pp = view.getProgrammingPanel();
-        SettingsPanel sp = view.getSettingsPanel();
-        
-        // Prepare home tab
-        reloadHomeTabDeviceList();
-        hp.deviceListMainPanel.setVisible(true);
-        hp.deviceSettingsMainPanel.setVisible(false);
-
         // Switch to home tab
-        pp.setVisible(false);
-        hp.setVisible(true);
-        sp.setVisible(false);
+        view.getHomePanel().setVisible(true);
+        view.getProgrammingPanel().setVisible(false);
+        view.getSettingsPanel().setVisible(false);
+    
+        // Paint tabs
+        view.homeTab.setBackground(View.SELECTED_TAB_BG);
+        view.programmingTab.setBackground(View.UNSELECTED_TAB_BG);
+        view.settingsTab.setBackground(View.UNSELECTED_TAB_BG);                
+    }
+
+    /**
+     * Switches to the Programming tab.
+     */
+    private void switchToProgrammingTab() {
+        // Switch to home tab
+        view.getHomePanel().setVisible(false);
+        view.getProgrammingPanel().setVisible(true);
+        view.getSettingsPanel().setVisible(false);
+    
+        // Paint tabs
+        view.homeTab.setBackground(View.UNSELECTED_TAB_BG);
+        view.programmingTab.setBackground(View.SELECTED_TAB_BG);
+        view.settingsTab.setBackground(View.UNSELECTED_TAB_BG);                    
+    }
+
+    /**
+     * Switches to the Settings tab.
+     */
+    private void switchToSettingsTab() {
+        // Switch to home tab
+        view.getHomePanel().setVisible(false);
+        view.getProgrammingPanel().setVisible(false);
+        view.getSettingsPanel().setVisible(true);
+    
+        // Paint tabs
+        view.homeTab.setBackground(View.UNSELECTED_TAB_BG);
+        view.programmingTab.setBackground(View.UNSELECTED_TAB_BG);
+        view.settingsTab.setBackground(View.SELECTED_TAB_BG);                     
+    }
+    
+    
+    /**
+     * Prepares the content and switches to the main panel of the Home tab.
+     */
+    private void switchToHomeMainPanel() {
+        HomePanel hp = view.getHomePanel();
+
+        switchToHomeTab();
 
         // Set tab title
         view.titleLabel.setText(bundle.getString("View.tabs.Home"));
+        
+        // Prepare home tab
+        reloadHomeTabDeviceList();
+        
+        // Show the right subpanel
+        hp.deviceListMainPanel.setVisible(true);
+        hp.deviceSettingsMainPanel.setVisible(false);
     }
 
     /**
@@ -339,27 +383,24 @@ public final class Controller {
     }
 
     /**
-     * Prepares the content and switches to the main Programming tab.
+     * Prepares the content and switches to the main panel of the Programming tab.
      */
-    private void switchToProgrammingTab() {
-        HomePanel hp = view.getHomePanel();
+    private void switchToProgrammingMainPanel() {
         ProgrammingPanel pp = view.getProgrammingPanel();
-        SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToProgrammingTab();
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("View.tabs.Programming"));
         
         // Prepare programming tab
         reloadProgrammingTabProgramList();
+        
+        // Show the right subpanel
         pp.programListMainPanel.setVisible(true);
         pp.programSettingsMainPanel.setVisible(false);
         pp.newProgramStep1MainPanel.setVisible(false);
         pp.newProgramStep2MainPanel.setVisible(false);
-
-        // Switch to programming tab
-        pp.setVisible(true);
-        hp.setVisible(false);
-        sp.setVisible(false);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("View.tabs.Programming"));
     }
 
     /**
@@ -408,28 +449,25 @@ public final class Controller {
     }
 
     /**
-     * Prepares the content and switches to the main Settings tab.
+     * Prepares the content and switches to the main panel of the Settings tab.
      */
-    private void switchToSettingsTab() {
-        HomePanel hp = view.getHomePanel();
-        ProgrammingPanel pp = view.getProgrammingPanel();
+    private void switchToSettingsMainPanel() {
         SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToSettingsTab();
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
 
         // Prepare settings tab
         reloadSettingsTabComboBoxes();
         reloadSettingsTabDeviceList();
+        
+        // Show the right subpanel
         sp.settingsMainPanel.setVisible(true);
         sp.deviceSettingsMainPanel.setVisible(false);
         sp.newDeviceStep1MainPanel.setVisible(false);
         sp.newDeviceStep2MainPanel.setVisible(false);
-
-        // Switch to the settings tab
-        pp.setVisible(false);
-        hp.setVisible(false);
-        sp.setVisible(true);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("View.tabs.Settings"));
     }
 
     /**
@@ -491,9 +529,18 @@ public final class Controller {
      * a new program.
      */
     private void switchToAddNewProgramStep1() {
-        HomePanel hp = view.getHomePanel();
         ProgrammingPanel pp = view.getProgrammingPanel();
-        SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToProgrammingTab();
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
+
+        // Show the right subpanel
+        pp.programListMainPanel.setVisible(false);
+        pp.programSettingsMainPanel.setVisible(false);
+        pp.newProgramStep1MainPanel.setVisible(true);
+        pp.newProgramStep2MainPanel.setVisible(false);
 
         // Fill the devices list
         DefaultListModel devicesListModel = new DefaultListModel();
@@ -501,18 +548,6 @@ public final class Controller {
             devicesListModel.addElement(device.getGivenName());
         });
         pp.devicesList.setModel(devicesListModel);
-
-        // Show the right panel
-        hp.setVisible(false);
-        sp.setVisible(false);
-        pp.setVisible(true);
-        pp.programListMainPanel.setVisible(false);
-        pp.programSettingsMainPanel.setVisible(false);
-        pp.newProgramStep1MainPanel.setVisible(true);
-        pp.newProgramStep2MainPanel.setVisible(false);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("ProgrammingPanel.NewProgramTitle"));
     }
 
     /**
@@ -552,7 +587,7 @@ public final class Controller {
 
         selectedDevice.getPrograms().add(newProgram);
 
-        switchToProgrammingTab();
+        switchToProgrammingMainPanel();
     }
 
     /**
@@ -560,9 +595,18 @@ public final class Controller {
      * a new device.
      */
     private void switchToAddNewDeviceStep1() {
-        HomePanel hp = view.getHomePanel();
-        ProgrammingPanel pp = view.getProgrammingPanel();
         SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToSettingsTab();
+
+        // Set tab title
+        view.titleLabel.setText(bundle.getString("SettingsPanel.NewDeviceTitle"));
+
+        // Show the right subpanel
+        sp.settingsMainPanel.setVisible(false);
+        sp.deviceSettingsMainPanel.setVisible(false);
+        sp.newDeviceStep1MainPanel.setVisible(true);
+        sp.newDeviceStep2MainPanel.setVisible(false);
 
         // Fill the devices list
         DefaultListModel devicesListModel = new DefaultListModel();
@@ -570,18 +614,6 @@ public final class Controller {
             devicesListModel.addElement(device.getModelName());
         });
         sp.newDevicesList.setModel(devicesListModel);
-
-        // Show the right panel
-        hp.setVisible(false);
-        pp.setVisible(false);
-        sp.setVisible(true);
-        sp.settingsMainPanel.setVisible(false);
-        sp.deviceSettingsMainPanel.setVisible(false);
-        sp.newDeviceStep1MainPanel.setVisible(true);
-        sp.newDeviceStep2MainPanel.setVisible(false);
-
-        // Set tab title
-        view.titleLabel.setText(bundle.getString("SettingsPanel.NewDeviceTitle"));
     }
 
     /**
@@ -629,16 +661,13 @@ public final class Controller {
      */
     private void switchToSelectedDevice() {
         HomePanel hp = view.getHomePanel();
-        ProgrammingPanel pp = view.getProgrammingPanel();
-        SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToHomeTab();
 
         // Set tab title
         view.titleLabel.setText(selectedDevice.getGivenName());
 
-        // Switch to the right subpanel
-        sp.setVisible(false);
-        pp.setVisible(false);
-        hp.setVisible(true);
+        // Show the right subpanel
         hp.deviceListMainPanel.setVisible(false);
         hp.deviceSettingsMainPanel.setVisible(true);
 
@@ -660,17 +689,14 @@ public final class Controller {
      * configuration.
      */
     private void switchToSelectedProgram() {
-        HomePanel hp = view.getHomePanel();
         ProgrammingPanel pp = view.getProgrammingPanel();
-        SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToProgrammingTab();
 
         // Set tab title
         view.titleLabel.setText(bundle.getString("ProgrammingPanel.ProgramTitle"));
 
-        // Switch to the right subpanel
-        hp.setVisible(false);
-        hp.setVisible(false);
-        pp.setVisible(true);
+        // Show the right subpanel
         pp.programListMainPanel.setVisible(false);
         pp.programSettingsMainPanel.setVisible(true);
         pp.newProgramStep1MainPanel.setVisible(false);
@@ -686,16 +712,14 @@ public final class Controller {
      * device settings and info.
      */
     private void switchToSelectedDeviceSettings() {
-        HomePanel hp = view.getHomePanel();
-        ProgrammingPanel pp = view.getProgrammingPanel();
         SettingsPanel sp = view.getSettingsPanel();
+        
+        switchToSettingsTab();
 
         // Set tab title
         view.titleLabel.setText(bundle.getString("SettingsPanel.DeviceSettingsTitle"));
 
-        // Switch to the right subpanel
-        pp.setVisible(false);
-        hp.setVisible(false);
+        // Show the right subpanel
         sp.setVisible(true);
         sp.settingsMainPanel.setVisible(false);
         sp.deviceSettingsMainPanel.setVisible(true);
@@ -745,7 +769,7 @@ public final class Controller {
     private void deleteSelectedProgram() {
         selectedDevice.getPrograms().remove(selectedProgram);
 
-        switchToProgrammingTab();
+        switchToProgrammingMainPanel();
     }
 
     /**
@@ -763,7 +787,7 @@ public final class Controller {
     private void deleteSelectedDevice() {
         model.getDevices().remove(selectedDevice);
 
-        switchToSettingsTab();
+        switchToSettingsMainPanel();
     }
 
     /**
@@ -782,7 +806,7 @@ public final class Controller {
         reloadLocale(new Locale(language));
 
         // Switch back to settings tab
-        switchToSettingsTab();
+        switchToSettingsMainPanel();
     }
 
     /**

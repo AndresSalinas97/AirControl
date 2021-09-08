@@ -3,6 +3,7 @@ package i52salia.aircontrol;
 import i52salia.aircontrol.panels.SettingsPanel;
 import i52salia.aircontrol.panels.HomePanel;
 import i52salia.aircontrol.panels.ProgrammingPanel;
+import java.awt.Color;
 import java.awt.Dimension;
 
 /**
@@ -18,6 +19,9 @@ public final class View extends javax.swing.JFrame {
     private final static Dimension INITIAL_SIZE = new Dimension(500, 700);
     private final static Dimension MINIMUM_SIZE = new Dimension(300, 500);
     private final static Dimension MAXIMUM_SIZE = new Dimension(700, 1000);
+    
+    public final static Color UNSELECTED_TAB_BG = new Color(242, 241, 240);
+    public final static Color SELECTED_TAB_BG = new Color(202, 201, 200);
 
     private ProgrammingPanel programmingPanel;
     private HomePanel homePanel;
