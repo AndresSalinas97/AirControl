@@ -178,7 +178,7 @@ public final class ProgrammingPanel extends javax.swing.JPanel {
         newProgramStep2ButtonsPanel.add(invisibleSeparator1);
 
         saveNewProgramButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/save-program-icon.png"))); // NOI18N
-        saveNewProgramButton.setText(bundle.getString("ProgrammingPanel.Save")); // NOI18N
+        saveNewProgramButton.setText(bundle.getString("ProgrammingPanel.SaveNewProgram")); // NOI18N
         newProgramStep2ButtonsPanel.add(saveNewProgramButton);
 
         newProgramStep2MainPanel.add(newProgramStep2ButtonsPanel, java.awt.BorderLayout.SOUTH);
