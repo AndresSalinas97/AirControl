@@ -49,8 +49,6 @@ public final class HomePanel extends javax.swing.JPanel {
         fanSpeedPanel = new javax.swing.JPanel();
         fanSpeedSelector = new i52salia.aircontrol.components.FanSpeedSelector();
         deviceSettingsButtonsPanel = new javax.swing.JPanel();
-        backButton = new javax.swing.JButton();
-        invisibleSeparator = new javax.swing.JSeparator();
         moreSettingsButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.OverlayLayout(this));
@@ -121,15 +119,6 @@ public final class HomePanel extends javax.swing.JPanel {
 
         deviceSettingsButtonsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/back-icon.png"))); // NOI18N
-        backButton.setText(bundle.getString("HomePanel.GoBack")); // NOI18N
-        deviceSettingsButtonsPanel.add(backButton);
-
-        invisibleSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        invisibleSeparator.setBorder(null);
-        invisibleSeparator.setPreferredSize(new java.awt.Dimension(25, 0));
-        deviceSettingsButtonsPanel.add(invisibleSeparator);
-
         moreSettingsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/i52salia/aircontrol/resources/images/settings-small-icon.png"))); // NOI18N
         moreSettingsButton.setText(bundle.getString("HomePanel.MoreSettings")); // NOI18N
         deviceSettingsButtonsPanel.add(moreSettingsButton);
@@ -141,7 +130,6 @@ public final class HomePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton addDeviceButton;
-    public javax.swing.JButton backButton;
     public javax.swing.JLabel currentTempLabel;
     private javax.swing.JPanel currentTempPanel;
     private javax.swing.JPanel deviceListButtonsPanel;
@@ -154,7 +142,6 @@ public final class HomePanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane deviceSettingsScrollPane;
     private javax.swing.JPanel fanSpeedPanel;
     public i52salia.aircontrol.components.FanSpeedSelector fanSpeedSelector;
-    private javax.swing.JSeparator invisibleSeparator;
     public i52salia.aircontrol.components.ModeSelector modeButtons;
     private javax.swing.JPanel modePanel;
     public javax.swing.JButton moreSettingsButton;

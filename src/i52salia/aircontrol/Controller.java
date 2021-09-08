@@ -121,10 +121,6 @@ public final class Controller {
             selectedDevice.setFanSpeed(hp.fanSpeedSelector.getSelectedFanSpeed());
         });
 
-        hp.backButton.addActionListener((ActionEvent e) -> {
-            switchToHomeTab();
-        });
-
         hp.moreSettingsButton.addActionListener((ActionEvent e) -> {
             switchToSelectedDeviceSettings();
         });
