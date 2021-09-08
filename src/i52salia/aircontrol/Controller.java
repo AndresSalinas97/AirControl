@@ -691,9 +691,7 @@ public final class Controller {
         SettingsPanel sp = view.getSettingsPanel();
 
         // Set tab title
-        view.titleLabel.setText(bundle.getString("View.tabs.Settings")
-                + " - "
-                + selectedDevice.getGivenName());
+        view.titleLabel.setText(bundle.getString("SettingsPanel.DeviceSettingsTitle"));
 
         // Switch to the right subpanel
         pp.setVisible(false);
