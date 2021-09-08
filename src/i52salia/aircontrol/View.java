@@ -19,8 +19,15 @@ public final class View extends javax.swing.JFrame {
     private final static Dimension INITIAL_SIZE = new Dimension(500, 700);
     private final static Dimension MINIMUM_SIZE = new Dimension(300, 500);
     private final static Dimension MAXIMUM_SIZE = new Dimension(700, 1000);
-    
+
+    /**
+     * Background color for the unselected tabs in the tab bar.
+     */
     public final static Color UNSELECTED_TAB_BG = new Color(242, 241, 240);
+
+    /**
+     * Background color for the selected tab in the tab bar.
+     */
     public final static Color SELECTED_TAB_BG = new Color(202, 201, 200);
 
     private ProgrammingPanel programmingPanel;

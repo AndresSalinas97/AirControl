@@ -692,7 +692,7 @@ public final class Controller {
         ProgrammingPanel pp = view.getProgrammingPanel();
 
         ACProgram modifiedProgram = pp.programSettingsComponent.getSelectedProgram();
-        
+
         selectedProgram.setEnabled(modifiedProgram.isEnabled());
         selectedProgram.setDaysOfWeekSelection(modifiedProgram.getDaysOfWeekSelection());
         selectedProgram.setTimeFrame(modifiedProgram.getTimeFrame());

@@ -17,7 +17,7 @@ public final class SettingsPanel extends javax.swing.JPanel {
      */
     public SettingsPanel() {
         initComponents();
-        
+
         // Hide subpanels
         settingsMainPanel.setVisible(true);
         deviceSettingsMainPanel.setVisible(false);
