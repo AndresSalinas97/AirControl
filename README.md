@@ -14,7 +14,7 @@ Various prototypes of the interface were made prior to implementation using [Pen
 
 
 
-## Getting Started
+## Getting Started
 
 The `AirControl.jar` is available in [releases](https://github.com/AndresSalinas97/AirControl-Java-Swing-App-Interface/releases) and ready to be played with.
 
@@ -22,7 +22,7 @@ This project was created using NetBeans IDE 8. You can import the project and st
 
 
 
-## Screenshots
+## Screenshots
 
 ![](docs/images/Home-1.png)
 ![](docs/images/Home-2.png)
